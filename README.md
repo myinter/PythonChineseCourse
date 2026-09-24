@@ -1,0 +1,2 @@
+# PythonChineseCourse
+中文动态Python教程，同时可以作为讲义和学生自学教程
