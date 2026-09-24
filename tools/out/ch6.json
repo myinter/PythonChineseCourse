@@ -1,0 +1,1977 @@
+{
+  "chapter": 6,
+  "name": "文件读写与异常",
+  "subtitle": "让程序有记忆、能应对意外",
+  "source": "第六章：交互 - 文件读写与异常.pptx",
+  "slide_count": 14,
+  "slides": [
+    {
+      "n": 1,
+      "title_guess": "第7节：交互 - 文件读写与异常",
+      "notes": "大家好，欢迎来到第七章的学习。本章我们将探讨两个非常重要的主题：文件读写和异常处理。它们分别让我们的程序学会了如何“记忆”数据和如何“应对意外”，是编写健壮程序的关键。",
+      "blocks": [
+        {
+          "text": "第7节：交互 - 文件读写与异常",
+          "lines": [
+            "第7节：交互 - 文件读写与异常"
+          ],
+          "pos": {
+            "x": 3.67,
+            "y": 1.15,
+            "w": 5.99,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "让程序拥有持久记忆     让错误的处理从主流程中分离出去",
+          "lines": [
+            "让程序拥有持久记忆     让错误的处理从主流程中分离出去"
+          ],
+          "pos": {
+            "x": 3.28,
+            "y": 1.98,
+            "w": 6.76,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "持久化存储 · 文件读写",
+          "lines": [
+            "持久化存储 · 文件读写"
+          ],
+          "pos": {
+            "x": 3.0,
+            "y": 5.4,
+            "w": 2.2,
+            "h": 0.31
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "程序健壮性 · 异常处理",
+          "lines": [
+            "程序健壮性 · 异常处理"
+          ],
+          "pos": {
+            "x": 8.14,
+            "y": 5.4,
+            "w": 2.2,
+            "h": 0.31
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "核心目标：掌握数据持久化方法，构建能够抵御错误输入的鲁棒性程序",
+          "lines": [
+            "核心目标：掌握数据持久化方法，构建能够抵御错误输入的鲁棒性程序"
+          ],
+          "pos": {
+            "x": 3.65,
+            "y": 6.94,
+            "w": 6.04,
+            "h": 0.28
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 2,
+      "title_guess": "本节课，你将学到什么？",
+      "notes": "在本章结束时，大家将能够理解文件操作的意义，掌握文件读写的基本方法，并学会如何使用异常处理机制来提高程序的健壮性，最终编写出能够处理文件并优雅应对错误的程序。",
+      "blocks": [
+        {
+          "text": "本节课，你将学到什么？",
+          "lines": [
+            "本节课，你将学到什么？"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.59,
+            "w": 4.9,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "理解文件操作",
+          "lines": [
+            "理解文件操作"
+          ],
+          "pos": {
+            "x": 0.97,
+            "y": 2.95,
+            "w": 2.43,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "掌握文件读写",
+          "lines": [
+            "掌握文件读写"
+          ],
+          "pos": {
+            "x": 3.89,
+            "y": 2.95,
+            "w": 2.43,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "认识异常处理",
+          "lines": [
+            "认识异常处理"
+          ],
+          "pos": {
+            "x": 6.81,
+            "y": 2.95,
+            "w": 2.43,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "学会异常处理",
+          "lines": [
+            "学会异常处理"
+          ],
+          "pos": {
+            "x": 9.72,
+            "y": 2.95,
+            "w": 2.43,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "掌握程序与外部世界进行数据交换的核心方式",
+          "lines": [
+            "掌握程序与外部世界进行数据交换的核心方式"
+          ],
+          "pos": {
+            "x": 0.97,
+            "y": 3.5,
+            "w": 2.43,
+            "h": 0.5
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "学会如何读取和写入文件，实现数据的持久化存储",
+          "lines": [
+            "学会如何读取和写入文件，实现数据的持久化存储"
+          ],
+          "pos": {
+            "x": 3.89,
+            "y": 3.5,
+            "w": 2.43,
+            "h": 0.5
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "理解程序运行中可能出现的“意外”情况及其原因",
+          "lines": [
+            "理解程序运行中可能出现的“意外”情况及其原因"
+          ],
+          "pos": {
+            "x": 6.81,
+            "y": 3.5,
+            "w": 2.43,
+            "h": 0.5
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "掌握让程序更加健壮、友好的核心技巧与方法",
+          "lines": [
+            "掌握让程序更加健壮、友好的核心技巧与方法"
+          ],
+          "pos": {
+            "x": 9.72,
+            "y": 3.5,
+            "w": 2.43,
+            "h": 0.5
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "🎯 核心目标：编写能够处理文件并优雅应对错误的程序，让代码在面对复杂情况时依然稳健运行。",
+          "lines": [
+            "🎯 核心目标：编写能够处理文件并优雅应对错误的程序，让代码在面对复杂情况时依然稳健运行。"
+          ],
+          "pos": {
+            "x": 2.5,
+            "y": 5.06,
+            "w": 9.58,
+            "h": 0.85
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "34495E"
+          ]
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 3,
+      "title_guess": "场景：游戏存档、软件配置",
+      "notes": "首先，我们来理解为什么程序需要读写文件。主要有三个原因：数据持久化，即将内存中的数据保存到硬盘；数据交换，即不同程序通过文件共享数据；以及配置存储，即用文件来保存程序的设置。",
+      "blocks": [
+        {
+          "text": "场景：游戏存档、软件配置",
+          "lines": [
+            "场景：游戏存档、软件配置"
+          ],
+          "pos": {
+            "x": 0.02,
+            "y": 0.15,
+            "w": 3.15,
+            "h": 0.25
+          },
+          "depth": 1,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "场景：爬虫数据、数据分析",
+          "lines": [
+            "场景：爬虫数据、数据分析"
+          ],
+          "pos": {
+            "x": 0.02,
+            "y": 0.15,
+            "w": 3.15,
+            "h": 0.25
+          },
+          "depth": 1,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "场景：服务器参数、游戏设置",
+          "lines": [
+            "场景：服务器参数、游戏设置"
+          ],
+          "pos": {
+            "x": 0.02,
+            "y": 0.15,
+            "w": 3.15,
+            "h": 0.25
+          },
+          "depth": 1,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "为什么程序需要读写文件？",
+          "lines": [
+            "为什么程序需要读写文件？"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.59,
+            "w": 5.35,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "1. 数据持久化",
+          "lines": [
+            "1. 数据持久化"
+          ],
+          "pos": {
+            "x": 0.97,
+            "y": 4.04,
+            "w": 3.19,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "2. 数据交换",
+          "lines": [
+            "2. 数据交换"
+          ],
+          "pos": {
+            "x": 5.07,
+            "y": 4.04,
+            "w": 3.19,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "3. 配置存储",
+          "lines": [
+            "3. 配置存储"
+          ],
+          "pos": {
+            "x": 9.17,
+            "y": 4.04,
+            "w": 3.19,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "文件是程序间通用的数据接口，一个程序的输出文件可直接作为另一个程序的输入。",
+          "lines": [
+            "文件是程序间通用的数据接口，一个程序的输出文件可直接作为另一个程序的输入。"
+          ],
+          "pos": {
+            "x": 5.07,
+            "y": 4.56,
+            "w": 3.19,
+            "h": 0.88
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "将运行参数保存在外部文件中，无需修改代码即可灵活调整程序的行为和逻辑。",
+          "lines": [
+            "将运行参数保存在外部文件中，无需修改代码即可灵活调整程序的行为和逻辑。"
+          ],
+          "pos": {
+            "x": 9.17,
+            "y": 4.56,
+            "w": 3.19,
+            "h": 0.88
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "将内存中的临时数据写入硬盘，实现程序退出后数据依然长期保存。",
+          "lines": [
+            "将内存中的临时数据写入硬盘，实现程序退出后数据依然长期保存。"
+          ],
+          "pos": {
+            "x": 0.97,
+            "y": 4.71,
+            "w": 3.19,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 4,
+      "title_guess": "file = open('test.txt', 'r')",
+      "notes": "操作文件通常遵循“打开-操作-关闭”的三步曲。首先用open函数打开文件，然后进行读写操作，最后一定要用close函数关闭文件，以释放资源。",
+      "blocks": [
+        {
+          "text": "content = file.read()\n# file.write(\"Hi\")",
+          "lines": [
+            "content = file.read()",
+            "# file.write(\"Hi\")"
+          ],
+          "pos": {
+            "x": 0.16,
+            "y": 0.27,
+            "w": 2.88,
+            "h": 0.44
+          },
+          "depth": 1,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "file = open('test.txt', 'r')",
+          "lines": [
+            "file = open('test.txt', 'r')"
+          ],
+          "pos": {
+            "x": 0.16,
+            "y": 0.39,
+            "w": 2.88,
+            "h": 0.19
+          },
+          "depth": 1,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "file.close()",
+          "lines": [
+            "file.close()"
+          ],
+          "pos": {
+            "x": 0.16,
+            "y": 0.39,
+            "w": 2.88,
+            "h": 0.19
+          },
+          "depth": 1,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "操作文件的“三步曲”：Open → Operate → Close",
+          "lines": [
+            "操作文件的“三步曲”：Open → Operate → Close"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.59,
+            "w": 9.87,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "1. 打开 (Open)",
+          "lines": [
+            "1. 打开 (Open)"
+          ],
+          "pos": {
+            "x": 1.04,
+            "y": 3.49,
+            "w": 3.19,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "2. 读写 (Read/Write)",
+          "lines": [
+            "2. 读写 (Read/Write)"
+          ],
+          "pos": {
+            "x": 5.07,
+            "y": 3.49,
+            "w": 3.19,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "3. 关闭 (Close)",
+          "lines": [
+            "3. 关闭 (Close)"
+          ],
+          "pos": {
+            "x": 9.1,
+            "y": 3.49,
+            "w": 3.19,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "建立连接，获取操作文件的“句柄”\n文件句柄其实就是在程序里面文件的“身份证号”",
+          "lines": [
+            "建立连接，获取操作文件的“句柄”",
+            "文件句柄其实就是在程序里面文件的“身份证号”"
+          ],
+          "pos": {
+            "x": 1.04,
+            "y": 3.86,
+            "w": 3.19,
+            "h": 0.75
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "通过句柄读取内容或写入新数据",
+          "lines": [
+            "通过句柄读取内容或写入新数据"
+          ],
+          "pos": {
+            "x": 5.07,
+            "y": 4.11,
+            "w": 3.19,
+            "h": 0.25
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "释放系统资源，确保数据写入硬盘",
+          "lines": [
+            "释放系统资源，确保数据写入硬盘"
+          ],
+          "pos": {
+            "x": 9.1,
+            "y": 4.11,
+            "w": 3.19,
+            "h": 0.25
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "重要提醒：忘记关闭文件是初学者最常见的错误，可能导致资源泄漏或数据丢失！",
+          "lines": [
+            "重要提醒：忘记关闭文件是初学者最常见的错误，可能导致资源泄漏或数据丢失！"
+          ],
+          "pos": {
+            "x": 1.88,
+            "y": 6.51,
+            "w": 10.28,
+            "h": 0.31
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "content = file.read()\n# file.write(\"Hi\")",
+          "lines": [
+            "content = file.read()",
+            "# file.write(\"Hi\")"
+          ],
+          "pos": {
+            "x": 0.16,
+            "y": 0.27,
+            "w": 2.88,
+            "h": 0.44
+          },
+          "depth": 1,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "title_guess": "文件打开模式详解：Python 核心 I/O 操作指南",
+      "notes": "在打开文件时，我们需要指定模式。r是只读，w是写入并会覆盖文件，a是追加。特别要注意，w模式会清空文件原有内容，使用时一定要小心。",
+      "blocks": [
+        {
+          "text": "文件打开模式详解：Python 核心 I/O 操作指南",
+          "lines": [
+            "文件打开模式详解：Python 核心 I/O 操作指南"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.59,
+            "w": 9.15,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "'r' 只读模式\n默认模式。文件必须存在，否则抛出异常。",
+          "lines": [
+            "'r' 只读模式",
+            "默认模式。文件必须存在，否则抛出异常。"
+          ],
+          "pos": {
+            "x": 1.81,
+            "y": 1.97,
+            "w": 2.36,
+            "h": 1.2
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "'w' 只写模式\n不存在则创建，存在则清空覆盖原有内容。",
+          "lines": [
+            "'w' 只写模式",
+            "不存在则创建，存在则清空覆盖原有内容。"
+          ],
+          "pos": {
+            "x": 5.69,
+            "y": 1.97,
+            "w": 2.36,
+            "h": 1.2
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "E74C3C"
+          ]
+        },
+        {
+          "text": "'a' 追加模式\n不存在则创建，存在则在文件末尾追加数据。",
+          "lines": [
+            "'a' 追加模式",
+            "不存在则创建，存在则在文件末尾追加数据。"
+          ],
+          "pos": {
+            "x": 9.58,
+            "y": 1.97,
+            "w": 2.36,
+            "h": 1.2
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "'r+' 读写模式\n文件必须存在，可读可写。写入从开头覆盖。",
+          "lines": [
+            "'r+' 读写模式",
+            "文件必须存在，可读可写。写入从开头覆盖。"
+          ],
+          "pos": {
+            "x": 3.61,
+            "y": 4.19,
+            "w": 2.36,
+            "h": 1.2
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "'b' 二进制模式\n配合其他模式使用(如'rb')，用于处理图片、视频等。",
+          "lines": [
+            "'b' 二进制模式",
+            "配合其他模式使用(如'rb')，用于处理图片、视频等。"
+          ],
+          "pos": {
+            "x": 7.5,
+            "y": 4.19,
+            "w": 2.36,
+            "h": 1.2
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "⚠️ 核心警告：使用 'w' 模式前务必确认！该模式会直接清空并覆盖文件原有内容，数据不可恢复。",
+          "lines": [
+            "⚠️ 核心警告：使用 'w' 模式前务必确认！该模式会直接清空并覆盖文件原有内容，数据不可恢复。"
+          ],
+          "pos": {
+            "x": 1.88,
+            "y": 6.35,
+            "w": 10.42,
+            "h": 0.36
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 6,
+      "title_guess": "推荐的文件操作方式：with 语句",
+      "notes": "为了避免忘记关闭文件的问题，Python提供了更优雅的with语句。它能自动管理文件资源，代码块结束后自动关闭文件，既简洁又安全。我们应该从一开始就养成使用with语句的好习惯。",
+      "blocks": [
+        {
+          "text": "推荐的文件操作方式：with 语句",
+          "lines": [
+            "推荐的文件操作方式：with 语句"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.59,
+            "w": 6.36,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "传统方式：冗长且易错",
+          "lines": [
+            "传统方式：冗长且易错"
+          ],
+          "pos": {
+            "x": 1.81,
+            "y": 2.07,
+            "w": 4.31,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "with 语句：简洁且安全",
+          "lines": [
+            "with 语句：简洁且安全"
+          ],
+          "pos": {
+            "x": 7.92,
+            "y": 2.07,
+            "w": 4.31,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "file = open('file.txt', 'r')\ntry:\ncontent = file.read()\nfinally:\nfile.close() # 必须手动关闭",
+          "lines": [
+            "file = open('file.txt', 'r')",
+            "try:",
+            "content = file.read()",
+            "finally:",
+            "file.close() # 必须手动关闭"
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 3.14,
+            "w": 4.72,
+            "h": 1.21
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "with open('file.txt', 'r') as file:\ncontent = file.read()\n# 离开with块后自动关闭，无需操心",
+          "lines": [
+            "with open('file.txt', 'r') as file:",
+            "content = file.read()",
+            "# 离开with块后自动关闭，无需操心"
+          ],
+          "pos": {
+            "x": 7.36,
+            "y": 3.25,
+            "w": 4.72,
+            "h": 0.73
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals",
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "自动关闭：无论异常与否，资源自动释放",
+          "lines": [
+            "自动关闭：无论异常与否，资源自动释放"
+          ],
+          "pos": {
+            "x": 7.64,
+            "y": 4.75,
+            "w": 4.58,
+            "h": 0.28
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "弊端：需要编写 try-finally 结构保证安全，代码冗余且容易在异常场景下遗漏 close() 操作。",
+          "lines": [
+            "弊端：需要编写 try-finally 结构保证安全，代码冗余且容易在异常场景下遗漏 close() 操作。"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 4.93,
+            "w": 5.0,
+            "h": 0.6
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "代码简洁：结构清晰，可读性强，不易出错",
+          "lines": [
+            "代码简洁：结构清晰，可读性强，不易出错"
+          ],
+          "pos": {
+            "x": 7.64,
+            "y": 5.31,
+            "w": 4.58,
+            "h": 0.28
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "核心建议：从一开始就养成使用 with 语句操作文件的好习惯！",
+          "lines": [
+            "核心建议：从一开始就养成使用 with 语句操作文件的好习惯！"
+          ],
+          "pos": {
+            "x": 1.74,
+            "y": 6.58,
+            "w": 10.56,
+            "h": 0.31
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "with open('file.txt', 'r') as file:\ncontent = file.read()\n# 离开with块后自动关闭，无需操心",
+          "lines": [
+            "with open('file.txt', 'r') as file:",
+            "content = file.read()",
+            "# 离开with块后自动关闭，无需操心"
+          ],
+          "pos": {
+            "x": 7.36,
+            "y": 3.25,
+            "w": 4.72,
+            "h": 0.73
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals",
+            "chinese_punct_in_code"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "title_guess": "什么是异常？程序运行中的“意外”",
+      "notes": "接下来我们谈谈异常。异常就是程序运行时发生的意外情况，比如文件找不到、除以零等。如果不处理这些异常，程序就会直接崩溃。\n左侧我们列出了几个最常见的异常类型：\n1. FileNotFoundError：当你试图打开一个不存在的文件时发生。\n2. ZeroDivisionError：数学上的除以零错误。\n3. ValueError：当你给函数传入了正确类型但不合适的值时，比如试图把字符串转成数字。\n右侧的图片形象地展示了异常处理的作用——它就像一张安全网，在错误发生时能接住它，防止程序直接摔落崩溃。",
+      "blocks": [
+        {
+          "text": "什么是异常？程序运行中的“意外”",
+          "lines": [
+            "什么是异常？程序运行中的“意外”"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.52,
+            "w": 6.68,
+            "h": 0.62
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "定义：程序的“崩溃预警”\n执行时检测到错误引发异常，未处理则程序终止并报错。",
+          "lines": [
+            "定义：程序的“崩溃预警”",
+            "执行时检测到错误引发异常，未处理则程序终止并报错。"
+          ],
+          "pos": {
+            "x": 1.81,
+            "y": 1.84,
+            "w": 5.14,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "FileNotFoundError - 文件缺失\nopen('non_existent_file.txt', 'r')",
+          "lines": [
+            "FileNotFoundError - 文件缺失",
+            "open('non_existent_file.txt', 'r')"
+          ],
+          "pos": {
+            "x": 1.81,
+            "y": 3.37,
+            "w": 5.14,
+            "h": 0.56
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "ZeroDivisionError - 除零错误\nresult = 10 / 0",
+          "lines": [
+            "ZeroDivisionError - 除零错误",
+            "result = 10 / 0"
+          ],
+          "pos": {
+            "x": 1.81,
+            "y": 4.69,
+            "w": 5.14,
+            "h": 0.56
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "异常处理的意义\n像安全网一样接住“意外”，让程序在错误发生时也能优雅地运行或退出。",
+          "lines": [
+            "异常处理的意义",
+            "像安全网一样接住“意外”，让程序在错误发生时也能优雅地运行或退出。"
+          ],
+          "pos": {
+            "x": 8.61,
+            "y": 4.87,
+            "w": 3.75,
+            "h": 0.94
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "ValueError - 参数无效\nnum = int(\"abc\")",
+          "lines": [
+            "ValueError - 参数无效",
+            "num = int(\"abc\")"
+          ],
+          "pos": {
+            "x": 1.81,
+            "y": 6.01,
+            "w": 5.14,
+            "h": 0.56
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 8,
+      "title_guess": "为什么需要异常处理？",
+      "notes": "那么为什么需要异常处理呢？它主要有三个作用：防止程序崩溃，让程序更健壮，以及给用户提供友好的错误提示，而不是一堆难懂的代码错误。",
+      "blocks": [
+        {
+          "text": "为什么需要异常处理？",
+          "lines": [
+            "为什么需要异常处理？"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.59,
+            "w": 4.46,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "防止程序崩溃",
+          "lines": [
+            "防止程序崩溃"
+          ],
+          "pos": {
+            "x": 1.04,
+            "y": 3.92,
+            "w": 3.19,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "分离正常和错误流程",
+          "lines": [
+            "分离正常和错误流程"
+          ],
+          "pos": {
+            "x": 5.07,
+            "y": 3.92,
+            "w": 3.19,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "提供友好的用户提示",
+          "lines": [
+            "提供友好的用户提示"
+          ],
+          "pos": {
+            "x": 9.1,
+            "y": 3.92,
+            "w": 3.19,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "捕获异常可避免程序因错误直接终止，让系统在遇到问题时能优雅降级并继续运行。",
+          "lines": [
+            "捕获异常可避免程序因错误直接终止，让系统在遇到问题时能优雅降级并继续运行。"
+          ],
+          "pos": {
+            "x": 1.04,
+            "y": 4.68,
+            "w": 3.19,
+            "h": 0.93
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "将开发者视角的技术错误信息，转化为普通用户能理解的通俗语言，提升交互体验与易用性。",
+          "lines": [
+            "将开发者视角的技术错误信息，转化为普通用户能理解的通俗语言，提升交互体验与易用性。"
+          ],
+          "pos": {
+            "x": 9.1,
+            "y": 4.68,
+            "w": 3.19,
+            "h": 0.93
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "我们希望错误流程的兜底操作不要混入主要操作流程中",
+          "lines": [
+            "我们希望错误流程的兜底操作不要混入主要操作流程中"
+          ],
+          "pos": {
+            "x": 5.07,
+            "y": 4.84,
+            "w": 3.19,
+            "h": 0.6
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 9,
+      "title_guess": "实战：文件不存在异常处理",
+      "notes": "我们使用`try...except`语句来捕获异常。把可能出错的代码放在`try`块里，然后在`except`块里处理特定类型的异常。这样，当异常发生时，程序就会执行`except`里的代码，而不是直接崩溃。",
+      "blocks": [
+        {
+          "text": "如何捕获并处理异常？try...except 机制解析",
+          "lines": [
+            "如何捕获并处理异常？try...except 机制解析"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.59,
+            "w": 8.67,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "filename = input(\"请输入文件名：\")\ntry:\nwith open(filename, 'r') as file:\ncontent = file.read()\nexcept FileNotFoundError:\nprint(f\"错误：文件 '{filename}' 不存在\")\n# 程序会优雅报错而不是崩溃",
+          "lines": [
+            "filename = input(\"请输入文件名：\")",
+            "try:",
+            "with open(filename, 'r') as file:",
+            "content = file.read()",
+            "except FileNotFoundError:",
+            "print(f\"错误：文件 '{filename}' 不存在\")",
+            "# 程序会优雅报错而不是崩溃"
+          ],
+          "pos": {
+            "x": 0.03,
+            "y": 0.94,
+            "w": 5.08,
+            "h": 2.16
+          },
+          "depth": 1,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals",
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "实战：文件不存在异常处理",
+          "lines": [
+            "实战：文件不存在异常处理"
+          ],
+          "pos": {
+            "x": 7.57,
+            "y": 1.72,
+            "w": 4.58,
+            "h": 0.31
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "语法结构核心",
+          "lines": [
+            "语法结构核心"
+          ],
+          "pos": {
+            "x": 1.88,
+            "y": 2.0,
+            "w": 4.31,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "将可能引发错误的代码放入try块。\n针对特定错误类型，在except块中定义处理逻辑。",
+          "lines": [
+            "将可能引发错误的代码放入try块。",
+            "针对特定错误类型，在except块中定义处理逻辑。"
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 2.89,
+            "w": 4.86,
+            "h": 0.6
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "3498DB"
+          ]
+        },
+        {
+          "text": "执行逻辑三步走",
+          "lines": [
+            "执行逻辑三步走"
+          ],
+          "pos": {
+            "x": 1.88,
+            "y": 4.36,
+            "w": 4.31,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "执行 try 子句代码\n若无异常，忽略所有 except 子句\n若有异常，匹配并执行首个对应 except",
+          "lines": [
+            "执行 try 子句代码",
+            "若无异常，忽略所有 except 子句",
+            "若有异常，匹配并执行首个对应 except"
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 5.23,
+            "w": 4.86,
+            "h": 0.93
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "chinese_punct_in_code"
+          ]
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "如何捕获并处理异常？try...except 机制解析",
+          "lines": [
+            "如何捕获并处理异常？try...except 机制解析"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.59,
+            "w": 8.67,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "filename = input(\"请输入文件名：\")\ntry:\nwith open(filename, 'r') as file:\ncontent = file.read()\nexcept FileNotFoundError:\nprint(f\"错误：文件 '{filename}' 不存在\")\n# 程序会优雅报错而不是崩溃",
+          "lines": [
+            "filename = input(\"请输入文件名：\")",
+            "try:",
+            "with open(filename, 'r') as file:",
+            "content = file.read()",
+            "except FileNotFoundError:",
+            "print(f\"错误：文件 '{filename}' 不存在\")",
+            "# 程序会优雅报错而不是崩溃"
+          ],
+          "pos": {
+            "x": 0.03,
+            "y": 0.94,
+            "w": 5.08,
+            "h": 2.16
+          },
+          "depth": 1,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals",
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "执行 try 子句代码\n若无异常，忽略所有 except 子句\n若有异常，匹配并执行首个对应 except",
+          "lines": [
+            "执行 try 子句代码",
+            "若无异常，忽略所有 except 子句",
+            "若有异常，匹配并执行首个对应 except"
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 5.23,
+            "w": 4.86,
+            "h": 0.93
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "chinese_punct_in_code"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "title_guess": "更精细的异常控制流：else 和 finally",
+      "notes": "除了 try 和 except，我们还可以使用 else 和 finally 来完善异常处理逻辑。\n首先看左边的 else 子句。它的逻辑很简单：只有当 try 块中的代码完全正常运行，没有触发任何异常时，程序才会执行 else 块里的代码。在示例中，如果用户输入的是有效数字，我们就会在 else 里打印出这个数字。\n再看右边的 finally 子句。它的特点是“强制性”：无论 try 块中是否发生异常，也不管是否匹配到了 except，finally 块里的代码**始终**会被执行。这在编程中非常重要，特别是当你需要释放外部资源（比如关闭打开的文件、释放网络连接）时，把这些清理代码放在 finally 里可以确保资源总是能被正确释放，避免资源泄漏。",
+      "blocks": [
+        {
+          "text": "更精细的异常控制流：else 和 finally",
+          "lines": [
+            "更精细的异常控制流：else 和 finally"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.61,
+            "w": 6.84,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "else 子句：无异常执行",
+          "lines": [
+            "else 子句：无异常执行"
+          ],
+          "pos": {
+            "x": 2.29,
+            "y": 2.19,
+            "w": 3.14,
+            "h": 0.42
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "finally 子句：始终执行",
+          "lines": [
+            "finally 子句：始终执行"
+          ],
+          "pos": {
+            "x": 8.26,
+            "y": 2.19,
+            "w": 3.12,
+            "h": 0.42
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "当 try 代码块中没有抛出任何异常时，程序会跳过 except 块，直接执行 else 块中的代码。",
+          "lines": [
+            "当 try 代码块中没有抛出任何异常时，程序会跳过 except 块，直接执行 else 块中的代码。"
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 3.16,
+            "w": 4.86,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "无论 try 代码块是否发生异常，finally 块中的代码始终会被执行，常用于资源释放（如关闭文件）。",
+          "lines": [
+            "无论 try 代码块是否发生异常，finally 块中的代码始终会被执行，常用于资源释放（如关闭文件）。"
+          ],
+          "pos": {
+            "x": 7.22,
+            "y": 3.16,
+            "w": 4.86,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "E74C3C"
+          ]
+        },
+        {
+          "text": "file = None\ntry:\nfile = open('test.txt', 'r')\nexcept FileNotFoundError:\nprint(\"文件未找到\")\nfinally:\nif file: file.close()",
+          "lines": [
+            "file = None",
+            "try:",
+            "file = open('test.txt', 'r')",
+            "except FileNotFoundError:",
+            "print(\"文件未找到\")",
+            "finally:",
+            "if file: file.close()"
+          ],
+          "pos": {
+            "x": 7.43,
+            "y": 4.46,
+            "w": 4.44,
+            "h": 1.5
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "ECF0F1"
+          ],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "try:\nnum = int(input(\"请输入数字：\"))\nexcept ValueError:\nprint(\"输入无效！\")\nelse:\nprint(f\"你输入的数字是 {num}\")",
+          "lines": [
+            "try:",
+            "num = int(input(\"请输入数字：\"))",
+            "except ValueError:",
+            "print(\"输入无效！\")",
+            "else:",
+            "print(f\"你输入的数字是 {num}\")"
+          ],
+          "pos": {
+            "x": 1.46,
+            "y": 4.52,
+            "w": 4.44,
+            "h": 1.38
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "ECF0F1"
+          ],
+          "defects": [
+            "tight_equals",
+            "chinese_punct_in_code"
+          ]
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "当 try 代码块中没有抛出任何异常时，程序会跳过 except 块，直接执行 else 块中的代码。",
+          "lines": [
+            "当 try 代码块中没有抛出任何异常时，程序会跳过 except 块，直接执行 else 块中的代码。"
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 3.16,
+            "w": 4.86,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "file = None\ntry:\nfile = open('test.txt', 'r')\nexcept FileNotFoundError:\nprint(\"文件未找到\")\nfinally:\nif file: file.close()",
+          "lines": [
+            "file = None",
+            "try:",
+            "file = open('test.txt', 'r')",
+            "except FileNotFoundError:",
+            "print(\"文件未找到\")",
+            "finally:",
+            "if file: file.close()"
+          ],
+          "pos": {
+            "x": 7.43,
+            "y": 4.46,
+            "w": 4.44,
+            "h": 1.5
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "ECF0F1"
+          ],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "try:\nnum = int(input(\"请输入数字：\"))\nexcept ValueError:\nprint(\"输入无效！\")\nelse:\nprint(f\"你输入的数字是 {num}\")",
+          "lines": [
+            "try:",
+            "num = int(input(\"请输入数字：\"))",
+            "except ValueError:",
+            "print(\"输入无效！\")",
+            "else:",
+            "print(f\"你输入的数字是 {num}\")"
+          ],
+          "pos": {
+            "x": 1.46,
+            "y": 4.52,
+            "w": 4.44,
+            "h": 1.38
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "ECF0F1"
+          ],
+          "defects": [
+            "tight_equals",
+            "chinese_punct_in_code"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "title_guess": "实战演练：一个安全的文件复制程序",
+      "notes": "让我们来看一个综合示例：一个安全的文件复制程序。这个程序结合了文件操作和异常处理，能够处理文件不存在、权限不足等多种错误情况，非常健壮。\n左侧的代码展示了完整的实现逻辑，重点关注try-except代码块的结构。右侧列出了三个关键设计亮点：首先是利用with语句保证了文件资源的安全释放；其次是针对特定错误类型的防御性编程；最后是支持用户输入路径的交互设计。这是一个非常典型的“生产级”小程序模板。",
+      "blocks": [
+        {
+          "text": "实战演练：一个安全的文件复制程序",
+          "lines": [
+            "实战演练：一个安全的文件复制程序"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.59,
+            "w": 7.12,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "资源安全管理\nwith语句自动关闭文件，避免因异常导致的资源泄漏，代码更简洁。",
+          "lines": [
+            "资源安全管理",
+            "with语句自动关闭文件，避免因异常导致的资源泄漏，代码更简洁。"
+          ],
+          "pos": {
+            "x": 9.44,
+            "y": 1.92,
+            "w": 2.92,
+            "h": 0.94
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "def copy_file(source, destination):\ntry:\nwith open(source, 'r') as src_file: // 将source路径的文件以只读方式作为 src_file打开\ncontent = src_file.read()\nwith open(destination, 'w') as dest_file:\ndest_file.write(content)\nprint(\"文件复制成功。\")\nexcept FileNotFoundError:\nprint(f\"错误：源文件不存在\")\nexcept PermissionError:\nprint(f\"错误：权限不足\")\nexcept Exception as e:\nprint(f\"未知错误：{e}\")",
+          "lines": [
+            "def copy_file(source, destination):",
+            "try:",
+            "with open(source, 'r') as src_file: // 将source路径的文件以只读方式作为 src_file打开",
+            "content = src_file.read()",
+            "with open(destination, 'w') as dest_file:",
+            "dest_file.write(content)",
+            "print(\"文件复制成功。\")",
+            "except FileNotFoundError:",
+            "print(f\"错误：源文件不存在\")",
+            "except PermissionError:",
+            "print(f\"错误：权限不足\")",
+            "except Exception as e:",
+            "print(f\"未知错误：{e}\")"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 1.94,
+            "w": 6.67,
+            "h": 4.17
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "ECF0F1"
+          ],
+          "defects": [
+            "slash_comment",
+            "tight_equals",
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "异常防御体系\n针对文件操作中最常见的“文件不存在”和“权限不足”进行精准捕获。",
+          "lines": [
+            "异常防御体系",
+            "针对文件操作中最常见的“文件不存在”和“权限不足”进行精准捕获。"
+          ],
+          "pos": {
+            "x": 9.44,
+            "y": 3.51,
+            "w": 2.92,
+            "h": 0.94
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "用户交互体验\n通过控制台输入动态获取路径，适应不同场景，提升程序的灵活性。",
+          "lines": [
+            "用户交互体验",
+            "通过控制台输入动态获取路径，适应不同场景，提升程序的灵活性。"
+          ],
+          "pos": {
+            "x": 9.44,
+            "y": 5.11,
+            "w": 2.92,
+            "h": 0.94
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "核心思想：将异常操作与主流程分离",
+          "lines": [
+            "核心思想：将异常操作与主流程分离"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 6.67,
+            "w": 11.67,
+            "h": 0.28
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "def copy_file(source, destination):\ntry:\nwith open(source, 'r') as src_file: // 将source路径的文件以只读方式作为 src_file打开\ncontent = src_file.read()\nwith open(destination, 'w') as dest_file:\ndest_file.write(content)\nprint(\"文件复制成功。\")\nexcept FileNotFoundError:\nprint(f\"错误：源文件不存在\")\nexcept PermissionError:\nprint(f\"错误：权限不足\")\nexcept Exception as e:\nprint(f\"未知错误：{e}\")",
+          "lines": [
+            "def copy_file(source, destination):",
+            "try:",
+            "with open(source, 'r') as src_file: // 将source路径的文件以只读方式作为 src_file打开",
+            "content = src_file.read()",
+            "with open(destination, 'w') as dest_file:",
+            "dest_file.write(content)",
+            "print(\"文件复制成功。\")",
+            "except FileNotFoundError:",
+            "print(f\"错误：源文件不存在\")",
+            "except PermissionError:",
+            "print(f\"错误：权限不足\")",
+            "except Exception as e:",
+            "print(f\"未知错误：{e}\")"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 1.94,
+            "w": 6.67,
+            "h": 4.17
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "ECF0F1"
+          ],
+          "defects": [
+            "slash_comment",
+            "tight_equals",
+            "chinese_punct_in_code"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "title_guess": "💡 核心总结：规范操作资源（with） + 精准捕获异常（try） = 高质量代码",
+      "notes": "让我们来回顾一下本章的核心知识点。文件操作的核心是实现数据持久化，最佳实践是使用with语句。异常处理的核心是提高程序健壮性，语法是try...except。",
+      "blocks": [
+        {
+          "text": "💡 核心总结：规范操作资源（with） + 精准捕获异常（try） = 高质量代码",
+          "lines": [
+            "💡 核心总结：规范操作资源（with） + 精准捕获异常（try） = 高质量代码"
+          ],
+          "pos": {
+            "x": 0.04,
+            "y": 0.12,
+            "w": 11.59,
+            "h": 0.36
+          },
+          "depth": 1,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "本节课核心知识点回顾",
+          "lines": [
+            "本节课核心知识点回顾"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.56,
+            "w": 4.46,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "文件操作核心要点",
+          "lines": [
+            "文件操作核心要点"
+          ],
+          "pos": {
+            "x": 2.22,
+            "y": 2.26,
+            "w": 2.46,
+            "h": 0.42
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "异常处理核心要点",
+          "lines": [
+            "异常处理核心要点"
+          ],
+          "pos": {
+            "x": 8.33,
+            "y": 2.26,
+            "w": 2.46,
+            "h": 0.42
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "• 核心目的：数据持久化、交换与配置存储\n• 标准流程：打开 → 读写 → 关闭\n• 常用模式：r (读)、w (写)、a (追加)\n• 最佳实践：with 语句自动管理资源释放",
+          "lines": [
+            "• 核心目的：数据持久化、交换与配置存储",
+            "• 标准流程：打开 → 读写 → 关闭",
+            "• 常用模式：r (读)、w (写)、a (追加)",
+            "• 最佳实践：with 语句自动管理资源释放"
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 3.92,
+            "w": 4.72,
+            "h": 1.46
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "505A64",
+            "F39C12"
+          ]
+        },
+        {
+          "text": "• 定义识别：程序运行时的意外或错误\n• 主要目的：防止崩溃，提升健壮性与体验\n• 关键语法：try...except...finally\n• 避坑指南：精准捕获已知异常，严禁空except",
+          "lines": [
+            "• 定义识别：程序运行时的意外或错误",
+            "• 主要目的：防止崩溃，提升健壮性与体验",
+            "• 关键语法：try...except...finally",
+            "• 避坑指南：精准捕获已知异常，严禁空except"
+          ],
+          "pos": {
+            "x": 7.36,
+            "y": 3.92,
+            "w": 4.72,
+            "h": 1.46
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "505A64",
+            "F39C12"
+          ]
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 13,
+      "title_guess": "动手练习，巩固所学",
+      "notes": "理论学习之后，实践是最好的巩固方式。这里有一些练习题，从基础的文件读写到进阶的通讯录程序，希望大家能动手尝试，真正掌握本章的内容。",
+      "blocks": [
+        {
+          "text": "动手练习，巩固所学",
+          "lines": [
+            "动手练习，巩固所学"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.56,
+            "w": 4.51,
+            "h": 0.69
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "基础：文件读写",
+          "lines": [
+            "基础：文件读写"
+          ],
+          "pos": {
+            "x": 0.97,
+            "y": 2.93,
+            "w": 3.33,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "进阶：实战与异常",
+          "lines": [
+            "进阶：实战与异常"
+          ],
+          "pos": {
+            "x": 4.86,
+            "y": 2.93,
+            "w": 3.33,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "思考：拓展知识",
+          "lines": [
+            "思考：拓展知识"
+          ],
+          "pos": {
+            "x": 8.75,
+            "y": 2.93,
+            "w": 3.33,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "编写程序统计文本文件的行数与单词数\n将多行文本输入保存到 notes.txt 文件中",
+          "lines": [
+            "编写程序统计文本文件的行数与单词数",
+            "将多行文本输入保存到 notes.txt 文件中"
+          ],
+          "pos": {
+            "x": 1.04,
+            "y": 4.24,
+            "w": 3.19,
+            "h": 1.25
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "实现通讯录程序，将信息存入 contacts.txt\n读取数字文件计算平均值，处理IO与数值异常",
+          "lines": [
+            "实现通讯录程序，将信息存入 contacts.txt",
+            "读取数字文件计算平均值，处理IO与数值异常"
+          ],
+          "pos": {
+            "x": 4.93,
+            "y": 4.26,
+            "w": 3.19,
+            "h": 1.2
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "探索：Python 还能处理哪些格式？(CSV/JSON)\n挑战：如何继承 Exception 类创建自定义异常？",
+          "lines": [
+            "探索：Python 还能处理哪些格式？(CSV/JSON)",
+            "挑战：如何继承 Exception 类创建自定义异常？"
+          ],
+          "pos": {
+            "x": 8.82,
+            "y": 4.26,
+            "w": 3.19,
+            "h": 1.2
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "💡 实践出真知，动手敲代码吧！",
+          "lines": [
+            "💡 实践出真知，动手敲代码吧！"
+          ],
+          "pos": {
+            "x": 0.0,
+            "y": 7.01,
+            "w": 13.33,
+            "h": 0.36
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 14,
+      "title_guess": "Q & A",
+      "notes": "本章的内容就到这里。感谢大家的聆听！现在是提问环节，欢迎大家就本章内容提出任何疑问，我们一起交流探讨。",
+      "blocks": [
+        {
+          "text": "Q & A",
+          "lines": [
+            "Q & A"
+          ],
+          "pos": {
+            "x": 5.44,
+            "y": 2.66,
+            "w": 2.45,
+            "h": 1.07
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "—— 提问与交流 ——",
+          "lines": [
+            "—— 提问与交流 ——"
+          ],
+          "pos": {
+            "x": 4.63,
+            "y": 3.98,
+            "w": 4.08,
+            "h": 0.51
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "感谢大家的聆听与参与，欢迎提出宝贵意见",
+          "lines": [
+            "感谢大家的聆听与参与，欢迎提出宝贵意见"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 5.45,
+            "w": 11.11,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    }
+  ]
+}

@@ -1,0 +1,1659 @@
+{
+  "chapter": 3,
+  "name": "组合数据容器",
+  "subtitle": "列表、元组、字典、集合",
+  "source": "第三章：Python组合数据容器.pptx",
+  "slide_count": 13,
+  "slides": [
+    {
+      "n": 1,
+      "title_guess": "Python组合数据容器教程",
+      "notes": "大家好，欢迎来到本次Python教程的第三章——组合数据容器。在这一章中，我们将系统学习Python中四种最常用的数据容器：列表、元组、字典和集合。这些容器是组织和管理数据的核心工具，掌握它们的特性和用法对于编写高效、清晰的Python代码至关重要。本PPT同样采用卡片式设计，方便大家快速查阅各个数据容器的方法和技巧。",
+      "blocks": [
+        {
+          "text": "Python组合数据容器教程",
+          "lines": [
+            "Python组合数据容器教程"
+          ],
+          "pos": {
+            "x": 3.81,
+            "y": 3.33,
+            "w": 5.71,
+            "h": 0.69
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "第三章 · 组合数据容器 — 点击卡片查看方法速查",
+          "lines": [
+            "第三章 · 组合数据容器 — 点击卡片查看方法速查"
+          ],
+          "pos": {
+            "x": 3.69,
+            "y": 4.39,
+            "w": 5.96,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 2,
+      "title_guess": "目录",
+      "notes": "本次教程将分为两个主要部分。首先，我们会逐一介绍列表、元组、字典和集合这四种核心数据容器，了解它们各自的特性、常用方法和适用场景。接着，我们将学习一些进阶技巧，包括如何利用推导式快速创建数据容器、如何使用zip和enumerate函数进行高效遍历，以及如何理解和处理浅拷贝与深拷贝的问题。",
+      "blocks": [
+        {
+          "text": "目录",
+          "lines": [
+            "目录"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.49,
+            "w": 1.01,
+            "h": 0.69
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "01 四大数据容器",
+          "lines": [
+            "01 四大数据容器"
+          ],
+          "pos": {
+            "x": 1.67,
+            "y": 2.06,
+            "w": 4.17,
+            "h": 0.42
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "02 进阶技巧",
+          "lines": [
+            "02 进阶技巧"
+          ],
+          "pos": {
+            "x": 7.78,
+            "y": 2.06,
+            "w": 4.17,
+            "h": 0.42
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "列表 (List)：有序可变的元素集合\n元组 (Tuple)：有序不可变的元素集合\n字典 (Dictionary)：键值对映射关系\n集合 (Set)：无序不重复的元素集合",
+          "lines": [
+            "列表 (List)：有序可变的元素集合",
+            "元组 (Tuple)：有序不可变的元素集合",
+            "字典 (Dictionary)：键值对映射关系",
+            "集合 (Set)：无序不重复的元素集合"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 3.16,
+            "w": 5.0,
+            "h": 1.45
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "推导式与星号解包：高效创建与展开数据\nzip与enumerate函数：并行迭代与索引遍历\n浅拷贝与深拷贝：数据引用与内存管理",
+          "lines": [
+            "推导式与星号解包：高效创建与展开数据",
+            "zip与enumerate函数：并行迭代与索引遍历",
+            "浅拷贝与深拷贝：数据引用与内存管理"
+          ],
+          "pos": {
+            "x": 7.22,
+            "y": 3.35,
+            "w": 5.0,
+            "h": 1.07
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "PYTHON DATA STRUCTURES & ADVANCED SKILLS",
+          "lines": [
+            "PYTHON DATA STRUCTURES & ADVANCED SKILLS"
+          ],
+          "pos": {
+            "x": 0.0,
+            "y": 7.12,
+            "w": 13.33,
+            "h": 0.19
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 3,
+      "title_guess": "CHAPTER 01",
+      "notes": "现在，让我们进入第一部分：四大数据容器。这四种容器是Python编程的基石，它们各自有着独特的特点和用途，适用于不同的数据处理场景。掌握它们是成为Python高手的必经之路。",
+      "blocks": [
+        {
+          "text": "CHAPTER 01",
+          "lines": [
+            "CHAPTER 01"
+          ],
+          "pos": {
+            "x": 0.0,
+            "y": 2.58,
+            "w": 13.33,
+            "h": 0.26
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "四大数据容器",
+          "lines": [
+            "四大数据容器"
+          ],
+          "pos": {
+            "x": 4.66,
+            "y": 2.94,
+            "w": 4.01,
+            "h": 0.93
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "Core Data Containers",
+          "lines": [
+            "Core Data Containers"
+          ],
+          "pos": {
+            "x": 4.77,
+            "y": 4.38,
+            "w": 3.79,
+            "h": 0.4
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 4,
+      "title_guess": "列表 (List)",
+      "notes": "首先是列表（List），它是Python中最灵活、最常用的数据结构。列表是有序的，我们可以通过索引访问其中的元素；它也是可变的，意味着我们可以随时添加、删除或修改其中的元素。这使得列表非常适合用于存储需要动态变化的数据集合，比如一个待办事项列表或者一系列用户输入。",
+      "blocks": [
+        {
+          "text": "列表 (List)",
+          "lines": [
+            "列表 (List)"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.56,
+            "w": 2.37,
+            "h": 0.69
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "Python 列表操作示例 (list_operations.py)",
+          "lines": [
+            "Python 列表操作示例 (list_operations.py)"
+          ],
+          "pos": {
+            "x": 7.36,
+            "y": 1.62,
+            "w": 4.17,
+            "h": 0.24
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "核心特性",
+          "lines": [
+            "核心特性"
+          ],
+          "pos": {
+            "x": 1.53,
+            "y": 1.76,
+            "w": 4.72,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "有序排列、可变类型、允许存储重复元素",
+          "lines": [
+            "有序排列、可变类型、允许存储重复元素"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 2.29,
+            "w": 4.72,
+            "h": 0.28
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "# 创建列表\nfruits= [\"apple\",\"banana\",\"cherry\"]\n# 增加元素\nfruits.append(\"orange\")# 末尾添加\n# 删除元素\nfruits.remove(\"banana\")# 删除指定值\n# 切片操作\nprint(fruits[1:3])# 获取子列表\n# 排序\nfruits.sort()# 按字母顺序排序",
+          "lines": [
+            "# 创建列表",
+            "fruits= [\"apple\",\"banana\",\"cherry\"]",
+            "# 增加元素",
+            "fruits.append(\"orange\")# 末尾添加",
+            "# 删除元素",
+            "fruits.remove(\"banana\")# 删除指定值",
+            "# 切片操作",
+            "print(fruits[1:3])# 获取子列表",
+            "# 排序",
+            "fruits.sort()# 按字母顺序排序"
+          ],
+          "pos": {
+            "x": 7.08,
+            "y": 2.56,
+            "w": 5.28,
+            "h": 2.66
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "6A9955",
+            "9CDCFE",
+            "B5CEA8",
+            "CE9178",
+            "D4D4D4",
+            "DCDCAA"
+          ],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "核心用途",
+          "lines": [
+            "核心用途"
+          ],
+          "pos": {
+            "x": 1.53,
+            "y": 2.74,
+            "w": 4.72,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "存储和操作一系列需要频繁增删改查的动态数据集合",
+          "lines": [
+            "存储和操作一系列需要频繁增删改查的动态数据集合"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 3.26,
+            "w": 4.72,
+            "h": 0.28
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "常用操作方法",
+          "lines": [
+            "常用操作方法"
+          ],
+          "pos": {
+            "x": 1.53,
+            "y": 3.71,
+            "w": 4.72,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "append(x): 末尾添加元素\nremove(x): 删除指定元素\npop(i): 删除并返回索引i的元素\nsort(): 对列表进行排序",
+          "lines": [
+            "append(x): 末尾添加元素",
+            "remove(x): 删除指定元素",
+            "pop(i): 删除并返回索引i的元素",
+            "sort(): 对列表进行排序"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 4.2,
+            "w": 5.0,
+            "h": 1.32
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "CCCCCC"
+          ]
+        },
+        {
+          "text": "Python 列表是处理有序、可变数据的首选工具，支持高效的插入、删除和访问操作。",
+          "lines": [
+            "Python 列表是处理有序、可变数据的首选工具，支持高效的插入、删除和访问操作。"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 6.46,
+            "w": 11.67,
+            "h": 0.28
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "# 创建列表\nfruits= [\"apple\",\"banana\",\"cherry\"]\n# 增加元素\nfruits.append(\"orange\")# 末尾添加\n# 删除元素\nfruits.remove(\"banana\")# 删除指定值\n# 切片操作\nprint(fruits[1:3])# 获取子列表\n# 排序\nfruits.sort()# 按字母顺序排序",
+          "lines": [
+            "# 创建列表",
+            "fruits= [\"apple\",\"banana\",\"cherry\"]",
+            "# 增加元素",
+            "fruits.append(\"orange\")# 末尾添加",
+            "# 删除元素",
+            "fruits.remove(\"banana\")# 删除指定值",
+            "# 切片操作",
+            "print(fruits[1:3])# 获取子列表",
+            "# 排序",
+            "fruits.sort()# 按字母顺序排序"
+          ],
+          "pos": {
+            "x": 7.08,
+            "y": 2.56,
+            "w": 5.28,
+            "h": 2.66
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "6A9955",
+            "9CDCFE",
+            "B5CEA8",
+            "CE9178",
+            "D4D4D4",
+            "DCDCAA"
+          ],
+          "defects": [
+            "tight_equals"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "title_guess": "元组 (Tuple)",
+      "notes": "接下来是元组（Tuple）。元组与列表非常相似，也是有序的，并且允许重复元素。但它的关键特性是不可变，一旦创建就无法修改。这种不可变性带来了数据安全性，确保数据在程序运行过程中不会被意外篡改。元组常用于表示一组相关联但不应被修改的数据，比如一个坐标点，或者作为函数返回多个值的便捷方式。",
+      "blocks": [
+        {
+          "text": "元组 (Tuple)",
+          "lines": [
+            "元组 (Tuple)"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.56,
+            "w": 2.78,
+            "h": 0.69
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "特性与用途",
+          "lines": [
+            "特性与用途"
+          ],
+          "pos": {
+            "x": 1.53,
+            "y": 1.76,
+            "w": 2.78,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "常用操作",
+          "lines": [
+            "常用操作"
+          ],
+          "pos": {
+            "x": 5.56,
+            "y": 1.76,
+            "w": 2.78,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "代码示例",
+          "lines": [
+            "代码示例"
+          ],
+          "pos": {
+            "x": 9.58,
+            "y": 1.76,
+            "w": 2.78,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "核心特性：\n有序：元素位置固定\n不可变：创建后不可修改\n允许重复元素\n典型场景：\n存储不可变配置数据\n函数多返回值传递",
+          "lines": [
+            "核心特性：",
+            "有序：元素位置固定",
+            "不可变：创建后不可修改",
+            "允许重复元素",
+            "典型场景：",
+            "存储不可变配置数据",
+            "函数多返回值传递"
+          ],
+          "pos": {
+            "x": 1.04,
+            "y": 2.48,
+            "w": 3.19,
+            "h": 2.27
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "1. 解包 (Unpacking)\n将元组元素一次性赋值给多个变量，简化数据提取。\n2. 具名元组 (Named Tuple)\n通过 collections.namedtuple 创建，兼具元组的性能和字典的可读性。",
+          "lines": [
+            "1. 解包 (Unpacking)",
+            "将元组元素一次性赋值给多个变量，简化数据提取。",
+            "2. 具名元组 (Named Tuple)",
+            "通过 collections.namedtuple 创建，兼具元组的性能和字典的可读性。"
+          ],
+          "pos": {
+            "x": 5.07,
+            "y": 2.58,
+            "w": 3.19,
+            "h": 2.07
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "point= (10,20)# 创建元组\nx,y=point# 解包操作\n# 函数返回多个值(元组)\ndefget_size():\nreturn100,200\nw,h=get_size()",
+          "lines": [
+            "point= (10,20)# 创建元组",
+            "x,y=point# 解包操作",
+            "# 函数返回多个值(元组)",
+            "defget_size():",
+            "return100,200",
+            "w,h=get_size()"
+          ],
+          "pos": {
+            "x": 9.03,
+            "y": 2.79,
+            "w": 3.33,
+            "h": 1.65
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "5C6370",
+            "61AFEF",
+            "CCCCCC",
+            "D19A66"
+          ]
+        },
+        {
+          "text": "核心价值：不可变性带来的数据安全与哈希能力（可作为字典键）",
+          "lines": [
+            "核心价值：不可变性带来的数据安全与哈希能力（可作为字典键）"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 5.96,
+            "w": 11.67,
+            "h": 0.31
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 6,
+      "title_guess": "字典 (Dictionary)",
+      "notes": "第三种数据容器是字典（Dictionary）。字典是一种非常强大的数据结构，它不像列表或元组那样通过位置索引来访问元素，而是通过键（key）来查找对应的值（value）。\n这种键值对的结构非常适合表示对象的属性，比如一个人的姓名、年龄、地址等信息。字典的查找速度非常快，是处理大量数据映射关系的首选。\n在 Python 3.7 及以上版本中，字典还保留了插入顺序。我们可以通过简单的赋值操作添加或修改数据，使用 del 语句删除数据，并通过 items() 方法方便地遍历所有键值对。",
+      "blocks": [
+        {
+          "text": "字典 (Dictionary)",
+          "lines": [
+            "字典 (Dictionary)"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.56,
+            "w": 3.93,
+            "h": 0.69
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "核心特性",
+          "lines": [
+            "核心特性"
+          ],
+          "pos": {
+            "x": 1.53,
+            "y": 1.73,
+            "w": 4.17,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "常用操作",
+          "lines": [
+            "常用操作"
+          ],
+          "pos": {
+            "x": 7.64,
+            "y": 1.73,
+            "w": 4.17,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "由键值对 (Key-Value) 组成，键唯一且不可变；Python 3.7+ 中有序。",
+          "lines": [
+            "由键值对 (Key-Value) 组成，键唯一且不可变；Python 3.7+ 中有序。"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 2.12,
+            "w": 5.0,
+            "h": 0.62
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "访问：dict[key]\n增/改：dict[key] = value\n删除：del dict[key]\n遍历：for k, v in dict.items()",
+          "lines": [
+            "访问：dict[key]",
+            "增/改：dict[key] = value",
+            "删除：del dict[key]",
+            "遍历：for k, v in dict.items()"
+          ],
+          "pos": {
+            "x": 7.22,
+            "y": 2.12,
+            "w": 5.0,
+            "h": 1.32
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "00FFFF"
+          ]
+        },
+        {
+          "text": "核心用途",
+          "lines": [
+            "核心用途"
+          ],
+          "pos": {
+            "x": 1.53,
+            "y": 2.7,
+            "w": 4.17,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "存储映射关系数据（如配置、用户信息），通过键实现快速查找。",
+          "lines": [
+            "存储映射关系数据（如配置、用户信息），通过键实现快速查找。"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 3.02,
+            "w": 5.0,
+            "h": 0.62
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "代码示例",
+          "lines": [
+            "代码示例"
+          ],
+          "pos": {
+            "x": 1.53,
+            "y": 4.09,
+            "w": 4.17,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "person = { \"name\": \"Alice\", \"age\": 30, \"city\": \"NY\" } # 创建字典\nprint(person[\"name\"]) # 访问值: Alice\nperson[\"age\"] = 31 # 修改值| del person[\"city\"] # 删除键值对\nfor k, v in person.items(): print(f\"{k}: {v}\") # 遍历",
+          "lines": [
+            "person = { \"name\": \"Alice\", \"age\": 30, \"city\": \"NY\" } # 创建字典",
+            "print(person[\"name\"]) # 访问值: Alice",
+            "person[\"age\"] = 31 # 修改值| del person[\"city\"] # 删除键值对",
+            "for k, v in person.items(): print(f\"{k}: {v}\") # 遍历"
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 4.61,
+            "w": 10.83,
+            "h": 1.19
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "person = { \"name\": \"Alice\", \"age\": 30, \"city\": \"NY\" } # 创建字典\nprint(person[\"name\"]) # 访问值: Alice\nperson[\"age\"] = 31 # 修改值| del person[\"city\"] # 删除键值对\nfor k, v in person.items(): print(f\"{k}: {v}\") # 遍历",
+          "lines": [
+            "person = { \"name\": \"Alice\", \"age\": 30, \"city\": \"NY\" } # 创建字典",
+            "print(person[\"name\"]) # 访问值: Alice",
+            "person[\"age\"] = 31 # 修改值| del person[\"city\"] # 删除键值对",
+            "for k, v in person.items(): print(f\"{k}: {v}\") # 遍历"
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 4.61,
+            "w": 10.83,
+            "h": 1.19
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "title_guess": "集合 (Set)",
+      "notes": "最后一种核心数据容器是集合（Set）。集合最大的特点是无序和元素唯一。它会自动剔除重复的元素，这使得它非常适合用于去重操作。\n此外，集合还支持一系列数学运算，比如求两个集合的交集、并集和差集，这在处理数据关系时非常有用。\n在代码实战部分，大家可以看到，将列表转换为集合是Python中最高效的去重方式之一。同时，使用 &、|、- 这些符号可以非常直观地完成集合运算。",
+      "blocks": [
+        {
+          "text": "集合 (Set)",
+          "lines": [
+            "集合 (Set)"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.49,
+            "w": 2.26,
+            "h": 0.69
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "特性与核心用途",
+          "lines": [
+            "特性与核心用途"
+          ],
+          "pos": {
+            "x": 1.04,
+            "y": 1.77,
+            "w": 3.47,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "常用操作",
+          "lines": [
+            "常用操作"
+          ],
+          "pos": {
+            "x": 5.21,
+            "y": 1.77,
+            "w": 3.47,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "去重：列表转集合自动剔除重复项",
+          "lines": [
+            "去重：列表转集合自动剔除重复项"
+          ],
+          "pos": {
+            "x": 5.56,
+            "y": 2.22,
+            "w": 3.19,
+            "h": 0.28
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "特性：无序、可变、元素唯一（自动去重）。\n用途：数据去重、快速成员关系测试、执行数学集合运算（交集/并集/差集）。",
+          "lines": [
+            "特性：无序、可变、元素唯一（自动去重）。",
+            "用途：数据去重、快速成员关系测试、执行数学集合运算（交集/并集/差集）。"
+          ],
+          "pos": {
+            "x": 1.04,
+            "y": 2.4,
+            "w": 3.47,
+            "h": 1.18
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "CCCCCC"
+          ]
+        },
+        {
+          "text": "交集 (&)：获取两个集合的共同元素",
+          "lines": [
+            "交集 (&)：获取两个集合的共同元素"
+          ],
+          "pos": {
+            "x": 5.56,
+            "y": 2.64,
+            "w": 3.19,
+            "h": 0.28
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "并集 (|)：合并两个集合的所有元素",
+          "lines": [
+            "并集 (|)：合并两个集合的所有元素"
+          ],
+          "pos": {
+            "x": 5.56,
+            "y": 3.06,
+            "w": 3.19,
+            "h": 0.28
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "差集 (-)：获取集合A独有的元素",
+          "lines": [
+            "差集 (-)：获取集合A独有的元素"
+          ],
+          "pos": {
+            "x": 5.56,
+            "y": 3.47,
+            "w": 3.19,
+            "h": 0.28
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "代码实战",
+          "lines": [
+            "代码实战"
+          ],
+          "pos": {
+            "x": 1.04,
+            "y": 4.48,
+            "w": 11.11,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "# 1. 去重操作\nnumbers = [1, 2, 2, 3, 3]; unique =set(numbers);# 输出 {1, 2, 3}\n# 2. 集合运算 (s1={1,2,3,4,5}, s2={4,5,6,7,8})\nintersection = s1 & s2;# 交集 {4, 5}union = s1 | s2;# 并集 {1,2,3,4,5,6,7,8}diff = s1 - s2;# 差集 {1, 2, 3}",
+          "lines": [
+            "# 1. 去重操作",
+            "numbers = [1, 2, 2, 3, 3]; unique =set(numbers);# 输出 {1, 2, 3}",
+            "# 2. 集合运算 (s1={1,2,3,4,5}, s2={4,5,6,7,8})",
+            "intersection = s1 & s2;# 交集 {4, 5}union = s1 | s2;# 并集 {1,2,3,4,5,6,7,8}diff = s1 - s2;# 差集 {1, 2, 3}"
+          ],
+          "pos": {
+            "x": 1.04,
+            "y": 4.94,
+            "w": 11.25,
+            "h": 1.22
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "6A9955",
+            "D19A66"
+          ],
+          "defects": [
+            "tight_equals"
+          ]
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "# 1. 去重操作\nnumbers = [1, 2, 2, 3, 3]; unique =set(numbers);# 输出 {1, 2, 3}\n# 2. 集合运算 (s1={1,2,3,4,5}, s2={4,5,6,7,8})\nintersection = s1 & s2;# 交集 {4, 5}union = s1 | s2;# 并集 {1,2,3,4,5,6,7,8}diff = s1 - s2;# 差集 {1, 2, 3}",
+          "lines": [
+            "# 1. 去重操作",
+            "numbers = [1, 2, 2, 3, 3]; unique =set(numbers);# 输出 {1, 2, 3}",
+            "# 2. 集合运算 (s1={1,2,3,4,5}, s2={4,5,6,7,8})",
+            "intersection = s1 & s2;# 交集 {4, 5}union = s1 | s2;# 并集 {1,2,3,4,5,6,7,8}diff = s1 - s2;# 差集 {1, 2, 3}"
+          ],
+          "pos": {
+            "x": 1.04,
+            "y": 4.94,
+            "w": 11.25,
+            "h": 1.22
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "6A9955",
+            "D19A66"
+          ],
+          "defects": [
+            "tight_equals"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "title_guess": "02 进阶技巧",
+      "notes": "掌握了四大数据容器的基础用法后，我们来学习一些进阶技巧。这些技巧能帮助你写出更简洁、更高效的Python代码，让你的编程水平更上一层楼。",
+      "blocks": [
+        {
+          "text": "02 进阶技巧",
+          "lines": [
+            "02 进阶技巧"
+          ],
+          "pos": {
+            "x": 5.09,
+            "y": 2.65,
+            "w": 3.16,
+            "h": 0.82
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "Advanced Techniques",
+          "lines": [
+            "Advanced Techniques"
+          ],
+          "pos": {
+            "x": 5.04,
+            "y": 4.0,
+            "w": 3.25,
+            "h": 0.33
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 9,
+      "title_guess": "推导式与星号解包",
+      "notes": "推导式是Python的一大亮点，它能让你用一行代码完成原本需要多行循环才能实现的创建操作，大大简化了代码。而星号解包操作则提供了极大的灵活性，无论是合并多个列表，还是将列表中的元素作为参数传递给函数，都非常方便。这两个技巧是提升代码简洁度的利器。",
+      "blocks": [
+        {
+          "text": "推导式与星号解包",
+          "lines": [
+            "推导式与星号解包"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.56,
+            "w": 4.01,
+            "h": 0.69
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "推导式 (Comprehensions)",
+          "lines": [
+            "推导式 (Comprehensions)"
+          ],
+          "pos": {
+            "x": 1.6,
+            "y": 1.93,
+            "w": 4.17,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "星号解包 (Unpacking)",
+          "lines": [
+            "星号解包 (Unpacking)"
+          ],
+          "pos": {
+            "x": 7.71,
+            "y": 1.93,
+            "w": 4.17,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "将循环和条件判断结合在一行代码中，简洁高效地创建列表或字典。",
+          "lines": [
+            "将循环和条件判断结合在一行代码中，简洁高效地创建列表或字典。"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 2.49,
+            "w": 5.0,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "使用 * 拆解可迭代对象（列表、元组等），常用于合并数据或传递参数。",
+          "lines": [
+            "使用 * 拆解可迭代对象（列表、元组等），常用于合并数据或传递参数。"
+          ],
+          "pos": {
+            "x": 7.22,
+            "y": 2.49,
+            "w": 5.0,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "# 合并两个列表\ncombined = [*[1,2,3], *[4,5,6]] # [1,2,3,4,5,6]\n# 传递函数参数\nadd(*[10, 20, 30]) # 等同于 add(10, 20, 30)",
+          "lines": [
+            "# 合并两个列表",
+            "combined = [*[1,2,3], *[4,5,6]] # [1,2,3,4,5,6]",
+            "# 传递函数参数",
+            "add(*[10, 20, 30]) # 等同于 add(10, 20, 30)"
+          ],
+          "pos": {
+            "x": 7.36,
+            "y": 3.72,
+            "w": 4.72,
+            "h": 0.9
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "# 列表推导式：生成0-4的平方\nsquares = [x**2 for x in range(5)]\n# 字典推导式：数字到平方的映射\nsquare_dict = {x: x**2 for x in range(5)}",
+          "lines": [
+            "# 列表推导式：生成0-4的平方",
+            "squares = [x**2 for x in range(5)]",
+            "# 字典推导式：数字到平方的映射",
+            "square_dict = {x: x**2 for x in range(5)}"
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 3.74,
+            "w": 4.72,
+            "h": 0.86
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals",
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "核心价值：提升代码简洁度与可读性，是 Python 进阶的必备技巧",
+          "lines": [
+            "核心价值：提升代码简洁度与可读性，是 Python 进阶的必备技巧"
+          ],
+          "pos": {
+            "x": 0.97,
+            "y": 6.53,
+            "w": 11.39,
+            "h": 0.28
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "# 合并两个列表\ncombined = [*[1,2,3], *[4,5,6]] # [1,2,3,4,5,6]\n# 传递函数参数\nadd(*[10, 20, 30]) # 等同于 add(10, 20, 30)",
+          "lines": [
+            "# 合并两个列表",
+            "combined = [*[1,2,3], *[4,5,6]] # [1,2,3,4,5,6]",
+            "# 传递函数参数",
+            "add(*[10, 20, 30]) # 等同于 add(10, 20, 30)"
+          ],
+          "pos": {
+            "x": 7.36,
+            "y": 3.72,
+            "w": 4.72,
+            "h": 0.9
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "# 列表推导式：生成0-4的平方\nsquares = [x**2 for x in range(5)]\n# 字典推导式：数字到平方的映射\nsquare_dict = {x: x**2 for x in range(5)}",
+          "lines": [
+            "# 列表推导式：生成0-4的平方",
+            "squares = [x**2 for x in range(5)]",
+            "# 字典推导式：数字到平方的映射",
+            "square_dict = {x: x**2 for x in range(5)}"
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 3.74,
+            "w": 4.72,
+            "h": 0.86
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals",
+            "chinese_punct_in_code"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "title_guess": "zip与enumerate函数",
+      "notes": "zip和enumerate是两个非常实用的内置函数。当你需要同时处理多个列表时，zip函数可以帮你轻松地将它们配对。而当你在遍历列表时需要知道元素的位置（索引）时，enumerate函数就显得尤为方便。掌握这两个函数，可以让你的循环代码更加清晰和高效。",
+      "blocks": [
+        {
+          "text": "zip与enumerate函数",
+          "lines": [
+            "zip与enumerate函数"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.56,
+            "w": 4.74,
+            "h": 0.69
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "zip() 并行遍历",
+          "lines": [
+            "zip() 并行遍历"
+          ],
+          "pos": {
+            "x": 1.67,
+            "y": 1.83,
+            "w": 4.44,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "enumerate() 索引遍历",
+          "lines": [
+            "enumerate() 索引遍历"
+          ],
+          "pos": {
+            "x": 7.78,
+            "y": 1.83,
+            "w": 4.44,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "将多个可迭代对象打包成一个元组的迭代器，用于并行遍历多个序列，一一对应。",
+          "lines": [
+            "将多个可迭代对象打包成一个元组的迭代器，用于并行遍历多个序列，一一对应。"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 2.49,
+            "w": 5.0,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "在遍历可迭代对象时，同时获取元素的索引（位置）和对应的值，默认索引从0开始。",
+          "lines": [
+            "在遍历可迭代对象时，同时获取元素的索引（位置）和对应的值，默认索引从0开始。"
+          ],
+          "pos": {
+            "x": 7.22,
+            "y": 2.49,
+            "w": 5.0,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "# 并行遍历两个列表\nnames = [\"Alice\", \"Bob\", \"Charlie\"]\nscores = [85, 90, 78]\nfor name, score in zip(names, scores):\nprint(f\"Student: {name}, Score: {score}\")",
+          "lines": [
+            "# 并行遍历两个列表",
+            "names = [\"Alice\", \"Bob\", \"Charlie\"]",
+            "scores = [85, 90, 78]",
+            "for name, score in zip(names, scores):",
+            "print(f\"Student: {name}, Score: {score}\")"
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 3.98,
+            "w": 4.72,
+            "h": 1.21
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "# 遍历列表并获取索引\nfruits = [\"apple\", \"banana\", \"cherry\"]\nfor idx, fruit in enumerate(fruits):\nprint(f\"Index: {idx}, Fruit: {fruit}\")",
+          "lines": [
+            "# 遍历列表并获取索引",
+            "fruits = [\"apple\", \"banana\", \"cherry\"]",
+            "for idx, fruit in enumerate(fruits):",
+            "print(f\"Index: {idx}, Fruit: {fruit}\")"
+          ],
+          "pos": {
+            "x": 7.36,
+            "y": 4.08,
+            "w": 4.72,
+            "h": 1.01
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "# 并行遍历两个列表\nnames = [\"Alice\", \"Bob\", \"Charlie\"]\nscores = [85, 90, 78]\nfor name, score in zip(names, scores):\nprint(f\"Student: {name}, Score: {score}\")",
+          "lines": [
+            "# 并行遍历两个列表",
+            "names = [\"Alice\", \"Bob\", \"Charlie\"]",
+            "scores = [85, 90, 78]",
+            "for name, score in zip(names, scores):",
+            "print(f\"Student: {name}, Score: {score}\")"
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 3.98,
+            "w": 4.72,
+            "h": 1.21
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "# 遍历列表并获取索引\nfruits = [\"apple\", \"banana\", \"cherry\"]\nfor idx, fruit in enumerate(fruits):\nprint(f\"Index: {idx}, Fruit: {fruit}\")",
+          "lines": [
+            "# 遍历列表并获取索引",
+            "fruits = [\"apple\", \"banana\", \"cherry\"]",
+            "for idx, fruit in enumerate(fruits):",
+            "print(f\"Index: {idx}, Fruit: {fruit}\")"
+          ],
+          "pos": {
+            "x": 7.36,
+            "y": 4.08,
+            "w": 4.72,
+            "h": 1.01
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "title_guess": "浅拷贝与深拷贝",
+      "notes": "在处理复杂的数据结构（如嵌套列表）时，拷贝操作需要特别注意。浅拷贝只复制了最外层的容器，内部的元素仍然是引用，这可能导致意外的副作用。而深拷贝则会递归地复制所有层级的元素，创建一个完全独立的副本。理解浅拷贝和深拷贝的区别，是避免程序中出现难以调试的bug的关键。",
+      "blocks": [
+        {
+          "text": "浅拷贝与深拷贝",
+          "lines": [
+            "浅拷贝与深拷贝"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.53,
+            "w": 3.51,
+            "h": 0.69
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "浅拷贝 (Shallow Copy)",
+          "lines": [
+            "浅拷贝 (Shallow Copy)"
+          ],
+          "pos": {
+            "x": 1.53,
+            "y": 1.76,
+            "w": 4.17,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "深拷贝 (Deep Copy)",
+          "lines": [
+            "深拷贝 (Deep Copy)"
+          ],
+          "pos": {
+            "x": 7.64,
+            "y": 1.76,
+            "w": 4.17,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "仅复制容器对象，内部元素仍为引用。修改嵌套子对象会影响原对象。",
+          "lines": [
+            "仅复制容器对象，内部元素仍为引用。修改嵌套子对象会影响原对象。"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 2.35,
+            "w": 5.0,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "FFA500"
+          ]
+        },
+        {
+          "text": "递归复制所有层级元素，创建完全独立的副本。修改拷贝不影响原对象。",
+          "lines": [
+            "递归复制所有层级元素，创建完全独立的副本。修改拷贝不影响原对象。"
+          ],
+          "pos": {
+            "x": 7.22,
+            "y": 2.35,
+            "w": 5.0,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "00FFFF"
+          ]
+        },
+        {
+          "text": "# 浅拷贝示例\norigin = [[59,27],27]\nshallow = origin.copy(original)\nshallow[0][0] = 99# 原对象也被修改！\nprint(origin[0][0]) # 输出 99,59被改成了99",
+          "lines": [
+            "# 浅拷贝示例",
+            "origin = [[59,27],27]",
+            "shallow = origin.copy(original)",
+            "shallow[0][0] = 99# 原对象也被修改！",
+            "print(origin[0][0]) # 输出 99,59被改成了99"
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 3.13,
+            "w": 4.72,
+            "h": 1.1
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "FFA500"
+          ],
+          "defects": [
+            "tight_equals",
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "# 深拷贝示例\norigin = [[59,27],27]\ndeep = origin.deepcopy(original)\ndeep[0][0] = 100# 原对象不受影响\nprint(origin[0][0]) # 输出59,与复制后的deep无关",
+          "lines": [
+            "# 深拷贝示例",
+            "origin = [[59,27],27]",
+            "deep = origin.deepcopy(original)",
+            "deep[0][0] = 100# 原对象不受影响",
+            "print(origin[0][0]) # 输出59,与复制后的deep无关"
+          ],
+          "pos": {
+            "x": 7.36,
+            "y": 3.13,
+            "w": 4.72,
+            "h": 1.1
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "00FFFF"
+          ],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "Python 实现：需导入copy模块，使用copy.copy()(浅拷贝) 和copy.deepcopy()(深拷贝) 函数。",
+          "lines": [
+            "Python 实现：需导入copy模块，使用copy.copy()(浅拷贝) 和copy.deepcopy()(深拷贝) 函数。"
+          ],
+          "pos": {
+            "x": 1.67,
+            "y": 5.68,
+            "w": 10.56,
+            "h": 0.31
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "00FFFF",
+            "D1D5DB",
+            "FFA500"
+          ]
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "# 浅拷贝示例\norigin = [[59,27],27]\nshallow = origin.copy(original)\nshallow[0][0] = 99# 原对象也被修改！\nprint(origin[0][0]) # 输出 99,59被改成了99",
+          "lines": [
+            "# 浅拷贝示例",
+            "origin = [[59,27],27]",
+            "shallow = origin.copy(original)",
+            "shallow[0][0] = 99# 原对象也被修改！",
+            "print(origin[0][0]) # 输出 99,59被改成了99"
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 3.13,
+            "w": 4.72,
+            "h": 1.1
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "FFA500"
+          ],
+          "defects": [
+            "tight_equals",
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "# 深拷贝示例\norigin = [[59,27],27]\ndeep = origin.deepcopy(original)\ndeep[0][0] = 100# 原对象不受影响\nprint(origin[0][0]) # 输出59,与复制后的deep无关",
+          "lines": [
+            "# 深拷贝示例",
+            "origin = [[59,27],27]",
+            "deep = origin.deepcopy(original)",
+            "deep[0][0] = 100# 原对象不受影响",
+            "print(origin[0][0]) # 输出59,与复制后的deep无关"
+          ],
+          "pos": {
+            "x": 7.36,
+            "y": 3.13,
+            "w": 4.72,
+            "h": 1.1
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "00FFFF"
+          ],
+          "defects": [
+            "tight_equals"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "title_guess": "总结与对比",
+      "notes": "最后，我们通过一个表格来总结和对比这四种数据容器的核心特性。列表适合存储有序且需要修改的数据；元组适合存储不可变的数据；字典适合存储键值对映射关系；集合则适合去重和集合运算。理解它们各自的特点和适用场景，能帮助我们在编程时做出最合适的选择。",
+      "blocks": [
+        {
+          "text": "总结与对比",
+          "lines": [
+            "总结与对比"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.56,
+            "w": 2.51,
+            "h": 0.69
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 13,
+      "title_guess": "感谢观看",
+      "notes": "本章的内容就到这里。我们学习了Python中最核心的四种数据容器及其进阶用法，这些知识是构建复杂Python应用的基础。希望通过这次学习，大家能熟练掌握并灵活运用这些数据结构，编写出更高效、更优雅的代码。感谢大家的观看！",
+      "blocks": [
+        {
+          "text": "感谢观看",
+          "lines": [
+            "感谢观看"
+          ],
+          "pos": {
+            "x": 5.49,
+            "y": 0.7,
+            "w": 2.35,
+            "h": 0.82
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "核心数据容器",
+          "lines": [
+            "核心数据容器"
+          ],
+          "pos": {
+            "x": 1.53,
+            "y": 2.86,
+            "w": 4.72,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "进阶操作技巧",
+          "lines": [
+            "进阶操作技巧"
+          ],
+          "pos": {
+            "x": 7.08,
+            "y": 2.86,
+            "w": 4.72,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "列表 (List) · 元组 (Tuple)\n字典 (Dict) · 集合 (Set)",
+          "lines": [
+            "列表 (List) · 元组 (Tuple)",
+            "字典 (Dict) · 集合 (Set)"
+          ],
+          "pos": {
+            "x": 1.53,
+            "y": 3.43,
+            "w": 4.72,
+            "h": 0.64
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "推导式 · 星号解包 · Zip / Enumerate\n深浅拷贝机制",
+          "lines": [
+            "推导式 · 星号解包 · Zip / Enumerate",
+            "深浅拷贝机制"
+          ],
+          "pos": {
+            "x": 7.08,
+            "y": 3.43,
+            "w": 4.72,
+            "h": 0.64
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "掌握基础容器与进阶技巧，是编写高效、优雅 Python 代码的关键基石。",
+          "lines": [
+            "掌握基础容器与进阶技巧，是编写高效、优雅 Python 代码的关键基石。"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 5.12,
+            "w": 11.11,
+            "h": 0.31
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    }
+  ]
+}

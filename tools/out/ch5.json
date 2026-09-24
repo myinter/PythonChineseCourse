@@ -1,0 +1,2576 @@
+{
+  "chapter": 5,
+  "name": "标准库与第三方库",
+  "subtitle": "站在前人的肩膀上",
+  "source": "第五章：标准库与第三方库.pptx",
+  "slide_count": 15,
+  "slides": [
+    {
+      "n": 1,
+      "title_guess": "第五章：标准库与第三方库",
+      "notes": "大家好，欢迎来到第六章的学习。本章我们将探索Python的两大核心支柱：标准库和第三方库。它们是Python之所以如此强大和受欢迎的关键所在，掌握它们，将帮助我们解锁Python的无限可能。",
+      "blocks": [
+        {
+          "text": "第五章：标准库与第三方库",
+          "lines": [
+            "第五章：标准库与第三方库"
+          ],
+          "pos": {
+            "x": 3.99,
+            "y": 1.01,
+            "w": 5.35,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "站在前人的肩膀上----解锁 Python 的无限可能",
+          "lines": [
+            "站在前人的肩膀上----解锁 Python 的无限可能"
+          ],
+          "pos": {
+            "x": 3.51,
+            "y": 1.85,
+            "w": 6.32,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "标准库：内置工具箱",
+          "lines": [
+            "标准库：内置工具箱"
+          ],
+          "pos": {
+            "x": 0.97,
+            "y": 5.1,
+            "w": 3.33,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "第三方库：生态扩展",
+          "lines": [
+            "第三方库：生态扩展"
+          ],
+          "pos": {
+            "x": 5.0,
+            "y": 5.1,
+            "w": 3.33,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "无限潜能：高效开发",
+          "lines": [
+            "无限潜能：高效开发"
+          ],
+          "pos": {
+            "x": 9.03,
+            "y": 5.1,
+            "w": 3.33,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "开箱即用的核心功能，涵盖文件I/O、网络通信、数据处理等基础能力。",
+          "lines": [
+            "开箱即用的核心功能，涵盖文件I/O、网络通信、数据处理等基础能力。"
+          ],
+          "pos": {
+            "x": 1.04,
+            "y": 5.58,
+            "w": 3.19,
+            "h": 0.5
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "全球开发者贡献的海量资源，覆盖Web开发、人工智能、数据分析等领域。",
+          "lines": [
+            "全球开发者贡献的海量资源，覆盖Web开发、人工智能、数据分析等领域。"
+          ],
+          "pos": {
+            "x": 5.07,
+            "y": 5.58,
+            "w": 3.19,
+            "h": 0.5
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "站在巨人的肩膀上，利用全世界的代码实现最复杂的功能。",
+          "lines": [
+            "站在巨人的肩膀上，利用全世界的代码实现最复杂的功能。"
+          ],
+          "pos": {
+            "x": 9.1,
+            "y": 5.58,
+            "w": 3.19,
+            "h": 0.5
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "高效开发 · 丰富生态 · 无限扩展 —— 掌握库，掌握 Python 的灵魂",
+          "lines": [
+            "高效开发 · 丰富生态 · 无限扩展 —— 掌握库，掌握 Python 的灵魂"
+          ],
+          "pos": {
+            "x": 0.0,
+            "y": 7.01,
+            "w": 13.33,
+            "h": 0.28
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 2,
+      "title_guess": "本章，你将学会什么？",
+      "notes": "在本章结束时，大家将能够理解标准库、第三方库和Pip的核心概念，并掌握它们的实用技能。更重要的是，我们将培养利用这些强大工具解决实际问题的能力。",
+      "blocks": [
+        {
+          "text": "本章，你将学会什么？",
+          "lines": [
+            "本章，你将学会什么？"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.59,
+            "w": 4.46,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "理解核心概念",
+          "lines": [
+            "理解核心概念"
+          ],
+          "pos": {
+            "x": 1.04,
+            "y": 3.62,
+            "w": 3.28,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "掌握实用技能",
+          "lines": [
+            "掌握实用技能"
+          ],
+          "pos": {
+            "x": 5.01,
+            "y": 3.62,
+            "w": 3.28,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "培养实践能力",
+          "lines": [
+            "培养实践能力"
+          ],
+          "pos": {
+            "x": 8.99,
+            "y": 3.62,
+            "w": 3.28,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "• 什么是Python标准库及其核心优势\n• 什么是第三方库及扩展能力\n• Pip包管理工具的重要性",
+          "lines": [
+            "• 什么是Python标准库及其核心优势",
+            "• 什么是第三方库及扩展能力",
+            "• Pip包管理工具的重要性"
+          ],
+          "pos": {
+            "x": 1.04,
+            "y": 4.17,
+            "w": 3.28,
+            "h": 0.93
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "• 熟练使用os, sys, math等常用库\n• 掌握Pip的安装、升级与卸载\n• 管理requirements.txt与第三方库",
+          "lines": [
+            "• 熟练使用os, sys, math等常用库",
+            "• 掌握Pip的安装、升级与卸载",
+            "• 管理requirements.txt与第三方库"
+          ],
+          "pos": {
+            "x": 5.01,
+            "y": 4.17,
+            "w": 3.28,
+            "h": 0.93
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "• 通过代码示例将理论转化为实操\n• 建立利用库解决复杂问题的思维\n• 积累常用的开发工具经验",
+          "lines": [
+            "• 通过代码示例将理论转化为实操",
+            "• 建立利用库解决复杂问题的思维",
+            "• 积累常用的开发工具经验"
+          ],
+          "pos": {
+            "x": 8.99,
+            "y": 4.17,
+            "w": 3.28,
+            "h": 0.93
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 3,
+      "title_guess": "Python标准库：Python的“内置军火库”",
+      "notes": "首先我们来认识Python标准库。你可以把它想象成Python自带的“内置军火库”。\n左侧我们定义了什么是标准库：它是语言的核心，随安装即拥有，开箱即用。它的核心价值体现在四个方面：一是“自带电池”的设计哲学，让我们省去重复造轮子的时间；二是由官方团队维护，质量极高；三是完美的跨平台特性；四是功能极其丰富，覆盖了从文件操作到网络编程的方方面面。\n右侧的图片直观地展示了标准库（工具箱）与庞大的第三方生态（树木）的关系，标准库是我们编程时最坚实的基础工具。",
+      "blocks": [
+        {
+          "text": "Python标准库：Python的“内置军火库”",
+          "lines": [
+            "Python标准库：Python的“内置军火库”"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.59,
+            "w": 7.91,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "什么是标准库？\nPython语言的核心组件，包含大量预编写的模块与包。随Python安装自动附带，只需通过import即可直接使用，无需额外下载。",
+          "lines": [
+            "什么是标准库？",
+            "Python语言的核心组件，包含大量预编写的模块与包。随Python安装自动附带，只需通过import即可直接使用，无需额外下载。"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 1.88,
+            "w": 5.56,
+            "h": 0.82
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "2ECC71"
+          ]
+        },
+        {
+          "text": "核心价值：为什么它是Python的核心优势？",
+          "lines": [
+            "核心价值：为什么它是Python的核心优势？"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 3.37,
+            "w": 6.11,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "开箱即用 (Batteries Included)\n遵循“自带电池”哲学，常见任务有成熟方案",
+          "lines": [
+            "开箱即用 (Batteries Included)",
+            "遵循“自带电池”哲学，常见任务有成熟方案"
+          ],
+          "pos": {
+            "x": 1.67,
+            "y": 3.99,
+            "w": 5.0,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "高质量与稳定性\n核心团队维护，经过严格测试，性能可靠",
+          "lines": [
+            "高质量与稳定性",
+            "核心团队维护，经过严格测试，性能可靠"
+          ],
+          "pos": {
+            "x": 1.67,
+            "y": 4.9,
+            "w": 5.0,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "图示：左侧工具箱代表标准库（内置），右侧代表第三方生态",
+          "lines": [
+            "图示：左侧工具箱代表标准库（内置），右侧代表第三方生态"
+          ],
+          "pos": {
+            "x": 7.5,
+            "y": 5.5,
+            "w": 5.0,
+            "h": 0.25
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "跨平台兼容性\n统一接口屏蔽系统差异，代码一次编写多处运行",
+          "lines": [
+            "跨平台兼容性",
+            "统一接口屏蔽系统差异，代码一次编写多处运行"
+          ],
+          "pos": {
+            "x": 1.67,
+            "y": 5.8,
+            "w": 5.0,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "关键提示：随安装包附带，无需pip install",
+          "lines": [
+            "关键提示：随安装包附带，无需pip install"
+          ],
+          "pos": {
+            "x": 8.33,
+            "y": 6.24,
+            "w": 3.89,
+            "h": 0.28
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 4,
+      "title_guess": "常用标准库概览 (1)：与操作系统交互",
+      "notes": "我们来看两个最常用的标准库。`os`库用于和操作系统打交道，比如创建文件夹、获取当前路径。`sys`库则用于和Python解释器交互，比如获取命令行参数和Python版本信息。",
+      "blocks": [
+        {
+          "text": "常用标准库概览 (1)：与操作系统交互",
+          "lines": [
+            "常用标准库概览 (1)：与操作系统交互"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.56,
+            "w": 7.35,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "os 库：系统交互核心",
+          "lines": [
+            "os 库：系统交互核心"
+          ],
+          "pos": {
+            "x": 2.36,
+            "y": 2.32,
+            "w": 3.61,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "sys 库：解释器接口",
+          "lines": [
+            "sys 库：解释器接口"
+          ],
+          "pos": {
+            "x": 8.47,
+            "y": 2.32,
+            "w": 3.61,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "提供文件目录操作、路径管理及进程控制等底层功能，是Python与操作系统沟通的桥梁。",
+          "lines": [
+            "提供文件目录操作、路径管理及进程控制等底层功能，是Python与操作系统沟通的桥梁。"
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 3.38,
+            "w": 4.72,
+            "h": 0.6
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "访问Python解释器的内部变量和函数，常用于获取运行参数、版本信息及程序退出控制。",
+          "lines": [
+            "访问Python解释器的内部变量和函数，常用于获取运行参数、版本信息及程序退出控制。"
+          ],
+          "pos": {
+            "x": 7.36,
+            "y": 3.38,
+            "w": 4.72,
+            "h": 0.6
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "import os # 导入库\nprint(os.getcwd()) # 获取当前路径\nos.makedirs(\"new_dir\", exist_ok=True)  # 创建目录",
+          "lines": [
+            "import os # 导入库",
+            "print(os.getcwd()) # 获取当前路径",
+            "os.makedirs(\"new_dir\", exist_ok=True)  # 创建目录"
+          ],
+          "pos": {
+            "x": 1.46,
+            "y": 4.5,
+            "w": 4.31,
+            "h": 1.0
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "5C6370",
+            "98C379",
+            "D19A66",
+            "DCDFE4"
+          ],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "import sys # 导入库\nprint(sys.argv) # 获取程序执行时输入命令行参数列表\nprint(sys.version) # Python版本信息",
+          "lines": [
+            "import sys # 导入库",
+            "print(sys.argv) # 获取程序执行时输入命令行参数列表",
+            "print(sys.version) # Python版本信息"
+          ],
+          "pos": {
+            "x": 7.57,
+            "y": 4.5,
+            "w": 4.31,
+            "h": 1.0
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "5C6370",
+            "DCDFE4"
+          ],
+          "defects": []
+        },
+        {
+          "text": "✦ 核心：路径获取 / 文件夹创建 / 环境变量",
+          "lines": [
+            "✦ 核心：路径获取 / 文件夹创建 / 环境变量"
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 5.99,
+            "w": 4.72,
+            "h": 0.25
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "✦ 核心：命令行参数 / 版本查询 / 异常退出",
+          "lines": [
+            "✦ 核心：命令行参数 / 版本查询 / 异常退出"
+          ],
+          "pos": {
+            "x": 7.36,
+            "y": 5.99,
+            "w": 4.72,
+            "h": 0.25
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "import os # 导入库\nprint(os.getcwd()) # 获取当前路径\nos.makedirs(\"new_dir\", exist_ok=True)  # 创建目录",
+          "lines": [
+            "import os # 导入库",
+            "print(os.getcwd()) # 获取当前路径",
+            "os.makedirs(\"new_dir\", exist_ok=True)  # 创建目录"
+          ],
+          "pos": {
+            "x": 1.46,
+            "y": 4.5,
+            "w": 4.31,
+            "h": 1.0
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "5C6370",
+            "98C379",
+            "D19A66",
+            "DCDFE4"
+          ],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "import sys # 导入库\nprint(sys.argv) # 获取程序执行时输入命令行参数列表\nprint(sys.version) # Python版本信息",
+          "lines": [
+            "import sys # 导入库",
+            "print(sys.argv) # 获取程序执行时输入命令行参数列表",
+            "print(sys.version) # Python版本信息"
+          ],
+          "pos": {
+            "x": 7.57,
+            "y": 4.5,
+            "w": 4.31,
+            "h": 1.0
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "5C6370",
+            "DCDFE4"
+          ],
+          "defects": []
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "title_guess": "常用标准库概览 (2)：数学计算与随机数",
+      "notes": "接下来是`math`和`random`库。`math`库提供了各种数学函数和常量，如平方根和圆周率。`random`库则用于生成随机数，非常适合用于游戏、模拟等场景。",
+      "blocks": [
+        {
+          "text": "常用标准库概览 (2)：数学计算与随机数",
+          "lines": [
+            "常用标准库概览 (2)：数学计算与随机数"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.61,
+            "w": 7.31,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "math 库：数学函数",
+          "lines": [
+            "math 库：数学函数"
+          ],
+          "pos": {
+            "x": 2.08,
+            "y": 2.33,
+            "w": 3.89,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "random 库：随机数",
+          "lines": [
+            "random 库：随机数"
+          ],
+          "pos": {
+            "x": 8.19,
+            "y": 2.33,
+            "w": 3.89,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "提供比内置运算更全面的数学功能，包含三角函数、指数对数、常量（如π）等。",
+          "lines": [
+            "提供比内置运算更全面的数学功能，包含三角函数、指数对数、常量（如π）等。"
+          ],
+          "pos": {
+            "x": 1.17,
+            "y": 3.24,
+            "w": 4.89,
+            "h": 0.6
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "用于生成各种分布的伪随机数，广泛应用于游戏、模拟、随机抽样等场景。",
+          "lines": [
+            "用于生成各种分布的伪随机数，广泛应用于游戏、模拟、随机抽样等场景。"
+          ],
+          "pos": {
+            "x": 7.28,
+            "y": 3.24,
+            "w": 4.89,
+            "h": 0.6
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "import math\n# 计算平方根 √16\nprint(f\"√16 = {math.sqrt(16)}\")\n# 圆周率 π\nprint(f\"π ≈ {math.pi}\")",
+          "lines": [
+            "import math",
+            "# 计算平方根 √16",
+            "print(f\"√16 = {math.sqrt(16)}\")",
+            "# 圆周率 π",
+            "print(f\"π ≈ {math.pi}\")"
+          ],
+          "pos": {
+            "x": 1.33,
+            "y": 4.64,
+            "w": 4.56,
+            "h": 1.13
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "import random\n# 1-100 随机整数\nprint(random.randint(1, 100))\n# 从列表随机选一个元素\nprint(random.choice(['A', 'B', 'C']))",
+          "lines": [
+            "import random",
+            "# 1-100 随机整数",
+            "print(random.randint(1, 100))",
+            "# 从列表随机选一个元素",
+            "print(random.choice(['A', 'B', 'C']))"
+          ],
+          "pos": {
+            "x": 7.44,
+            "y": 4.64,
+            "w": 4.56,
+            "h": 1.13
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "import math\n# 计算平方根 √16\nprint(f\"√16 = {math.sqrt(16)}\")\n# 圆周率 π\nprint(f\"π ≈ {math.pi}\")",
+          "lines": [
+            "import math",
+            "# 计算平方根 √16",
+            "print(f\"√16 = {math.sqrt(16)}\")",
+            "# 圆周率 π",
+            "print(f\"π ≈ {math.pi}\")"
+          ],
+          "pos": {
+            "x": 1.33,
+            "y": 4.64,
+            "w": 4.56,
+            "h": 1.13
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "import random\n# 1-100 随机整数\nprint(random.randint(1, 100))\n# 从列表随机选一个元素\nprint(random.choice(['A', 'B', 'C']))",
+          "lines": [
+            "import random",
+            "# 1-100 随机整数",
+            "print(random.randint(1, 100))",
+            "# 从列表随机选一个元素",
+            "print(random.choice(['A', 'B', 'C']))"
+          ],
+          "pos": {
+            "x": 7.44,
+            "y": 4.64,
+            "w": 4.56,
+            "h": 1.13
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "title_guess": "💡 核心优势：类型安全，功能全面，适合业务开发场景",
+      "notes": "处理日期和时间是编程中常见的需求，datetime库就是为此而生。它可以轻松地获取当前时间、进行日期运算，以及将日期格式化为我们需要的字符串形式。\n左侧展示了它的核心功能，包括获取时间、进行算术运算、格式化输出和解析字符串。右侧的代码示例展示了如何导入模块、获取当前时间并进行简单的日期加法运算。通过strftime方法，我们可以将时间对象转换为任意格式的字符串，这在日志记录或用户界面展示中非常实用。",
+      "blocks": [
+        {
+          "text": "💡 核心优势：类型安全，功能全面，适合业务开发场景",
+          "lines": [
+            "💡 核心优势：类型安全，功能全面，适合业务开发场景"
+          ],
+          "pos": {
+            "x": 0.04,
+            "y": 0.26,
+            "w": 5.75,
+            "h": 0.32
+          },
+          "depth": 1,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "常用标准库概览 (3)：处理日期与时间",
+          "lines": [
+            "常用标准库概览 (3)：处理日期与时间"
+          ],
+          "pos": {
+            "x": 0.89,
+            "y": 0.58,
+            "w": 6.89,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "Python 的datetime模块提供了处理日期和时间的高级接口，支持时间获取、算术运算及格式转换。",
+          "lines": [
+            "Python 的datetime模块提供了处理日期和时间的高级接口，支持时间获取、算术运算及格式转换。"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 1.61,
+            "w": 5.83,
+            "h": 0.66
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "3498DB"
+          ]
+        },
+        {
+          "text": "入门示例：时间获取与运算",
+          "lines": [
+            "入门示例：时间获取与运算"
+          ],
+          "pos": {
+            "x": 7.64,
+            "y": 1.67,
+            "w": 4.17,
+            "h": 0.28
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "# 导入模块\nfrom datetime import datetime, timedelta\n# 获取当前时间并格式化\nnow = datetime.now()\nfmt = now.strftime(\"%Y-%m-%d %H:%M:%S\")\nprint(\"格式化时间:\", fmt)\n# 计算3天后的日期\nlater = now + timedelta(days=3)\nprint(\"3天后:\", later.strftime(\"%Y-%m-%d\"))",
+          "lines": [
+            "# 导入模块",
+            "from datetime import datetime, timedelta",
+            "# 获取当前时间并格式化",
+            "now = datetime.now()",
+            "fmt = now.strftime(\"%Y-%m-%d %H:%M:%S\")",
+            "print(\"格式化时间:\", fmt)",
+            "# 计算3天后的日期",
+            "later = now + timedelta(days=3)",
+            "print(\"3天后:\", later.strftime(\"%Y-%m-%d\"))"
+          ],
+          "pos": {
+            "x": 7.15,
+            "y": 2.78,
+            "w": 5.28,
+            "h": 2.78
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "2ECC71",
+            "ECF0F1",
+            "F1C40F"
+          ],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "获取当前时间\nnow() / today() 方法快速获取",
+          "lines": [
+            "获取当前时间",
+            "now() / today() 方法快速获取"
+          ],
+          "pos": {
+            "x": 1.74,
+            "y": 2.82,
+            "w": 1.81,
+            "h": 0.9
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "日期算术运算\n支持 timedelta 进行加减计算",
+          "lines": [
+            "日期算术运算",
+            "支持 timedelta 进行加减计算"
+          ],
+          "pos": {
+            "x": 4.72,
+            "y": 2.82,
+            "w": 1.81,
+            "h": 0.9
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "格式化输出\nstrftime() 转为指定格式字符串",
+          "lines": [
+            "格式化输出",
+            "strftime() 转为指定格式字符串"
+          ],
+          "pos": {
+            "x": 1.74,
+            "y": 4.2,
+            "w": 1.81,
+            "h": 0.9
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "解析字符串\nstrptime() 将字符串转为时间对象",
+          "lines": [
+            "解析字符串",
+            "strptime() 将字符串转为时间对象"
+          ],
+          "pos": {
+            "x": 4.72,
+            "y": 4.2,
+            "w": 1.81,
+            "h": 0.9
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "# 导入模块\nfrom datetime import datetime, timedelta\n# 获取当前时间并格式化\nnow = datetime.now()\nfmt = now.strftime(\"%Y-%m-%d %H:%M:%S\")\nprint(\"格式化时间:\", fmt)\n# 计算3天后的日期\nlater = now + timedelta(days=3)\nprint(\"3天后:\", later.strftime(\"%Y-%m-%d\"))",
+          "lines": [
+            "# 导入模块",
+            "from datetime import datetime, timedelta",
+            "# 获取当前时间并格式化",
+            "now = datetime.now()",
+            "fmt = now.strftime(\"%Y-%m-%d %H:%M:%S\")",
+            "print(\"格式化时间:\", fmt)",
+            "# 计算3天后的日期",
+            "later = now + timedelta(days=3)",
+            "print(\"3天后:\", later.strftime(\"%Y-%m-%d\"))"
+          ],
+          "pos": {
+            "x": 7.15,
+            "y": 2.78,
+            "w": 5.28,
+            "h": 2.78
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "2ECC71",
+            "ECF0F1",
+            "F1C40F"
+          ],
+          "defects": [
+            "tight_equals"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "title_guess": "常用标准库概览 (4)：数据交换与文本处理",
+      "notes": "在数据交换和文本处理方面，`json`和`re`库非常有用。`json`库帮助我们在Python对象和JSON格式之间转换，这在API交互中非常常见。`re`库则提供了正则表达式支持，让我们可以高效地处理和分析文本。",
+      "blocks": [
+        {
+          "text": "常用标准库概览 (4)：数据交换与文本处理",
+          "lines": [
+            "常用标准库概览 (4)：数据交换与文本处理"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.59,
+            "w": 8.24,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "json 库：数据序列化与解析",
+          "lines": [
+            "json 库：数据序列化与解析"
+          ],
+          "pos": {
+            "x": 2.01,
+            "y": 2.14,
+            "w": 4.17,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "re 库：正则表达式引擎",
+          "lines": [
+            "re 库：正则表达式引擎"
+          ],
+          "pos": {
+            "x": 7.99,
+            "y": 2.14,
+            "w": 4.17,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "实现 Python 对象与 JSON 字符串的双向转换，是网络API数据交互和配置文件处理的核心工具。",
+          "lines": [
+            "实现 Python 对象与 JSON 字符串的双向转换，是网络API数据交互和配置文件处理的核心工具。"
+          ],
+          "pos": {
+            "x": 1.18,
+            "y": 2.96,
+            "w": 5.0,
+            "h": 0.6
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "提供强大的字符串模式匹配能力，可用于快速查找、替换、分割复杂格式的文本（如邮箱、URL提取）。",
+          "lines": [
+            "提供强大的字符串模式匹配能力，可用于快速查找、替换、分割复杂格式的文本（如邮箱、URL提取）。"
+          ],
+          "pos": {
+            "x": 7.15,
+            "y": 2.96,
+            "w": 5.0,
+            "h": 0.6
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "import re\ntext = \"Contact: support@example.com\"\n# 匹配邮箱的正则模式\npat = r'\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b'\n# 查找所有匹配项\nresult = re.findall(pat, text)",
+          "lines": [
+            "import re",
+            "text = \"Contact: support@example.com\"",
+            "# 匹配邮箱的正则模式",
+            "pat = r'\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b'",
+            "# 查找所有匹配项",
+            "result = re.findall(pat, text)"
+          ],
+          "pos": {
+            "x": 7.29,
+            "y": 4.24,
+            "w": 4.72,
+            "h": 1.73
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "import json\nperson = {\"name\": \"Alice\", \"age\": 30}\n# 转JSON字符串(带缩进)\nj_str = json.dumps(person, indent=4)\n# 解析JSON字符串\np_load = json.loads(j_str)",
+          "lines": [
+            "import json",
+            "person = {\"name\": \"Alice\", \"age\": 30}",
+            "# 转JSON字符串(带缩进)",
+            "j_str = json.dumps(person, indent=4)",
+            "# 解析JSON字符串",
+            "p_load = json.loads(j_str)"
+          ],
+          "pos": {
+            "x": 1.32,
+            "y": 4.36,
+            "w": 4.72,
+            "h": 1.49
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "import re\ntext = \"Contact: support@example.com\"\n# 匹配邮箱的正则模式\npat = r'\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b'\n# 查找所有匹配项\nresult = re.findall(pat, text)",
+          "lines": [
+            "import re",
+            "text = \"Contact: support@example.com\"",
+            "# 匹配邮箱的正则模式",
+            "pat = r'\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b'",
+            "# 查找所有匹配项",
+            "result = re.findall(pat, text)"
+          ],
+          "pos": {
+            "x": 7.29,
+            "y": 4.24,
+            "w": 4.72,
+            "h": 1.73
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "import json\nperson = {\"name\": \"Alice\", \"age\": 30}\n# 转JSON字符串(带缩进)\nj_str = json.dumps(person, indent=4)\n# 解析JSON字符串\np_load = json.loads(j_str)",
+          "lines": [
+            "import json",
+            "person = {\"name\": \"Alice\", \"age\": 30}",
+            "# 转JSON字符串(带缩进)",
+            "j_str = json.dumps(person, indent=4)",
+            "# 解析JSON字符串",
+            "p_load = json.loads(j_str)"
+          ],
+          "pos": {
+            "x": 1.32,
+            "y": 4.36,
+            "w": 4.72,
+            "h": 1.49
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "title_guess": "Pip：Python的包管理工具 Python Installs Packages",
+      "notes": "学完了标准库，我们来看看如何扩展Python的能力。这就需要用到Pip，Python的包管理工具。\n它是我们安装和管理第三方库的入口，是连接我们与庞大Python生态的桥梁。通过Pip，我们可以非常方便地安装如Requests、Django等优秀的第三方库，极大地提高开发效率。\n大家注意底部的提示，在较新的Python版本中，Pip已经默认安装好了，大家课后可以尝试在终端输入命令来验证一下。",
+      "blocks": [
+        {
+          "text": "Pip：Python的包管理工具 Python Installs Packages",
+          "lines": [
+            "Pip：Python的包管理工具 Python Installs Packages"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.56,
+            "w": 10.78,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "Pip是Python官方的包管理工具，用于查找、下载、安装、升级和卸载第三方库。它是连接开发者与庞大Python生态的核心桥梁。",
+          "lines": [
+            "Pip是Python官方的包管理工具，用于查找、下载、安装、升级和卸载第三方库。它是连接开发者与庞大Python生态的核心桥梁。"
+          ],
+          "pos": {
+            "x": 1.04,
+            "y": 1.86,
+            "w": 6.67,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "连接生态\n打通开源社区资源",
+          "lines": [
+            "连接生态",
+            "打通开源社区资源"
+          ],
+          "pos": {
+            "x": 1.74,
+            "y": 3.35,
+            "w": 2.36,
+            "h": 0.6
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "简化安装\n自动处理依赖关系",
+          "lines": [
+            "简化安装",
+            "自动处理依赖关系"
+          ],
+          "pos": {
+            "x": 5.28,
+            "y": 3.35,
+            "w": 2.36,
+            "h": 0.6
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "依赖管理\n统一环境配置标准，把安装一个包需要前置的包一起帮你装好",
+          "lines": [
+            "依赖管理",
+            "统一环境配置标准，把安装一个包需要前置的包一起帮你装好"
+          ],
+          "pos": {
+            "x": 1.74,
+            "y": 4.59,
+            "w": 2.36,
+            "h": 0.9
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "$ pip install requests",
+          "lines": [
+            "$ pip install requests"
+          ],
+          "pos": {
+            "x": 8.33,
+            "y": 4.59,
+            "w": 4.31,
+            "h": 0.26
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        },
+        {
+          "text": "版本控制\n灵活升降级库版本",
+          "lines": [
+            "版本控制",
+            "灵活升降级库版本"
+          ],
+          "pos": {
+            "x": 5.28,
+            "y": 4.73,
+            "w": 2.36,
+            "h": 0.6
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "掌握Pip，开启Python高效编程之旅，轻松扩展功能边界。",
+          "lines": [
+            "掌握Pip，开启Python高效编程之旅，轻松扩展功能边界。"
+          ],
+          "pos": {
+            "x": 8.47,
+            "y": 5.65,
+            "w": 4.03,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "提示：Python 3.4+已默认集成Pip。在终端输入pip --version检查安装情况。",
+          "lines": [
+            "提示：Python 3.4+已默认集成Pip。在终端输入pip --version检查安装情况。"
+          ],
+          "pos": {
+            "x": 1.6,
+            "y": 6.19,
+            "w": 6.11,
+            "h": 0.25
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "$ pip install requests",
+          "lines": [
+            "$ pip install requests"
+          ],
+          "pos": {
+            "x": 8.33,
+            "y": 4.59,
+            "w": 4.31,
+            "h": 0.26
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "title_guess": "掌握 Pip 的核心命令：从入门到熟练",
+      "notes": "Pip的使用非常简单，主要通过几个核心命令。我们可以使用pip install来安装包，pip install -U来升级包，pip uninstall来卸载包，以及pip list来查看已安装的包。",
+      "blocks": [
+        {
+          "text": "掌握 Pip 的核心命令：从入门到熟练",
+          "lines": [
+            "掌握 Pip 的核心命令：从入门到熟练"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.59,
+            "w": 7.17,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "01 安装包 Install",
+          "lines": [
+            "01 安装包 Install"
+          ],
+          "pos": {
+            "x": 1.81,
+            "y": 2.19,
+            "w": 2.36,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "02 升级包 Upgrade",
+          "lines": [
+            "02 升级包 Upgrade"
+          ],
+          "pos": {
+            "x": 5.69,
+            "y": 2.19,
+            "w": 2.36,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "03 卸载包 Uninstall",
+          "lines": [
+            "03 卸载包 Uninstall"
+          ],
+          "pos": {
+            "x": 9.58,
+            "y": 2.19,
+            "w": 2.36,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "pip install -U requests\n# 等同于 --upgrade",
+          "lines": [
+            "pip install -U requests",
+            "# 等同于 --upgrade"
+          ],
+          "pos": {
+            "x": 5.0,
+            "y": 3.14,
+            "w": 3.06,
+            "h": 0.53
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        },
+        {
+          "text": "pip install requests\npip install reqs==2.31.0",
+          "lines": [
+            "pip install requests",
+            "pip install reqs==2.31.0"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 3.15,
+            "w": 3.06,
+            "h": 0.5
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        },
+        {
+          "text": "pip uninstall requests",
+          "lines": [
+            "pip uninstall requests"
+          ],
+          "pos": {
+            "x": 8.89,
+            "y": 3.28,
+            "w": 3.06,
+            "h": 0.24
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        },
+        {
+          "text": "04 列出包 List",
+          "lines": [
+            "04 列出包 List"
+          ],
+          "pos": {
+            "x": 3.47,
+            "y": 4.9,
+            "w": 2.78,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "05 查看信息 Show",
+          "lines": [
+            "05 查看信息 Show"
+          ],
+          "pos": {
+            "x": 7.92,
+            "y": 4.9,
+            "w": 2.78,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "pip list",
+          "lines": [
+            "pip list"
+          ],
+          "pos": {
+            "x": 2.78,
+            "y": 5.78,
+            "w": 3.33,
+            "h": 0.24
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        },
+        {
+          "text": "pip show requests",
+          "lines": [
+            "pip show requests"
+          ],
+          "pos": {
+            "x": 7.22,
+            "y": 5.78,
+            "w": 3.33,
+            "h": 0.24
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        },
+        {
+          "text": "💡 提示：使用 pip --help 查看完整命令列表，或使用 pip [command] --help 查看子命令帮助",
+          "lines": [
+            "💡 提示：使用 pip --help 查看完整命令列表，或使用 pip [command] --help 查看子命令帮助"
+          ],
+          "pos": {
+            "x": 0.0,
+            "y": 6.99,
+            "w": 13.33,
+            "h": 0.32
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "pip install -U requests\n# 等同于 --upgrade",
+          "lines": [
+            "pip install -U requests",
+            "# 等同于 --upgrade"
+          ],
+          "pos": {
+            "x": 5.0,
+            "y": 3.14,
+            "w": 3.06,
+            "h": 0.53
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        },
+        {
+          "text": "pip install requests\npip install reqs==2.31.0",
+          "lines": [
+            "pip install requests",
+            "pip install reqs==2.31.0"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 3.15,
+            "w": 3.06,
+            "h": 0.5
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        },
+        {
+          "text": "pip uninstall requests",
+          "lines": [
+            "pip uninstall requests"
+          ],
+          "pos": {
+            "x": 8.89,
+            "y": 3.28,
+            "w": 3.06,
+            "h": 0.24
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        },
+        {
+          "text": "pip list",
+          "lines": [
+            "pip list"
+          ],
+          "pos": {
+            "x": 2.78,
+            "y": 5.78,
+            "w": 3.33,
+            "h": 0.24
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        },
+        {
+          "text": "pip show requests",
+          "lines": [
+            "pip show requests"
+          ],
+          "pos": {
+            "x": 7.22,
+            "y": 5.78,
+            "w": 3.33,
+            "h": 0.24
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "title_guess": "Python 开发必备技巧 | 依赖管理规范指南",
+      "notes": "在团队协作或项目部署时，确保所有人使用相同版本的库非常重要。`requirements.txt`文件就是为此而生。我们可以用`pip freeze`命令生成它，然后用`pip install -r`命令在新环境中一键安装所有依赖。",
+      "blocks": [
+        {
+          "text": "Python 开发必备技巧 | 依赖管理规范指南",
+          "lines": [
+            "Python 开发必备技巧 | 依赖管理规范指南"
+          ],
+          "pos": {
+            "x": 0.0,
+            "y": 0.09,
+            "w": 13.33,
+            "h": 0.24
+          },
+          "depth": 1,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "这是一个记录项目所有第三方库及其精确版本号的文本文件，是Python项目协作与部署的标准规范。",
+          "lines": [
+            "这是一个记录项目所有第三方库及其精确版本号的文本文件，是Python项目协作与部署的标准规范。"
+          ],
+          "pos": {
+            "x": 0.03,
+            "y": 0.1,
+            "w": 4.8,
+            "h": 0.9
+          },
+          "depth": 1,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "💡 最佳实践：建议在虚拟环境(venv)中操作，避免污染全局Python环境。",
+          "lines": [
+            "💡 最佳实践：建议在虚拟环境(venv)中操作，避免污染全局Python环境。"
+          ],
+          "pos": {
+            "x": 0.18,
+            "y": 0.11,
+            "w": 4.5,
+            "h": 0.61
+          },
+          "depth": 1,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "pip freeze > requirements.txt",
+          "lines": [
+            "pip freeze > requirements.txt"
+          ],
+          "pos": {
+            "x": 0.16,
+            "y": 0.13,
+            "w": 4.4,
+            "h": 0.24
+          },
+          "depth": 1,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        },
+        {
+          "text": "pip install -r requirements.txt",
+          "lines": [
+            "pip install -r requirements.txt"
+          ],
+          "pos": {
+            "x": 0.16,
+            "y": 0.13,
+            "w": 4.4,
+            "h": 0.24
+          },
+          "depth": 1,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        },
+        {
+          "text": "1. 生成依赖清单 (Freeze)",
+          "lines": [
+            "1. 生成依赖清单 (Freeze)"
+          ],
+          "pos": {
+            "x": 0.17,
+            "y": 0.51,
+            "w": 4.66,
+            "h": 0.28
+          },
+          "depth": 1,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "2. 安装项目依赖 (Install)",
+          "lines": [
+            "2. 安装项目依赖 (Install)"
+          ],
+          "pos": {
+            "x": 0.17,
+            "y": 0.51,
+            "w": 4.66,
+            "h": 0.28
+          },
+          "depth": 1,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "使用 requirements.txt 管理 Python 项目依赖",
+          "lines": [
+            "使用 requirements.txt 管理 Python 项目依赖"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.59,
+            "w": 9.05,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "核心概念与价值",
+          "lines": [
+            "核心概念与价值"
+          ],
+          "pos": {
+            "x": 1.74,
+            "y": 1.92,
+            "w": 4.31,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "实战命令操作",
+          "lines": [
+            "实战命令操作"
+          ],
+          "pos": {
+            "x": 7.85,
+            "y": 1.92,
+            "w": 4.31,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "方便团队协作\n无需手动沟通，成员快速同步开发环境",
+          "lines": [
+            "方便团队协作\n无需手动沟通，成员快速同步开发环境"
+          ],
+          "pos": {
+            "x": 1.67,
+            "y": 3.97,
+            "w": 4.38,
+            "h": 0.61
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "7F8C8D"
+          ]
+        },
+        {
+          "text": "简化部署流程\n服务器上线时，一条命令搞定所有安装",
+          "lines": [
+            "简化部署流程\n服务器上线时，一条命令搞定所有安装"
+          ],
+          "pos": {
+            "x": 1.67,
+            "y": 4.8,
+            "w": 4.38,
+            "h": 0.61
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "7F8C8D"
+          ]
+        },
+        {
+          "text": "版本锁定安全\n防止库自动更新引发的代码兼容性Bug",
+          "lines": [
+            "版本锁定安全\n防止库自动更新引发的代码兼容性Bug"
+          ],
+          "pos": {
+            "x": 1.67,
+            "y": 5.64,
+            "w": 4.38,
+            "h": 0.61
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "7F8C8D"
+          ]
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "pip freeze > requirements.txt",
+          "lines": [
+            "pip freeze > requirements.txt"
+          ],
+          "pos": {
+            "x": 0.16,
+            "y": 0.13,
+            "w": 4.4,
+            "h": 0.24
+          },
+          "depth": 1,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        },
+        {
+          "text": "pip install -r requirements.txt",
+          "lines": [
+            "pip install -r requirements.txt"
+          ],
+          "pos": {
+            "x": 0.16,
+            "y": 0.13,
+            "w": 4.4,
+            "h": 0.24
+          },
+          "depth": 1,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "title_guess": "第三方库：众人拾柴火焰高",
+      "notes": "如果说标准库是Python的基础，那么第三方库就是它的“超级插件”。这些由社区贡献的库极大地扩展了Python的能力，让它在数据分析、人工智能等专业领域大放异彩。",
+      "blocks": [
+        {
+          "text": "第三方库：众人拾柴火焰高",
+          "lines": [
+            "第三方库：众人拾柴火焰高"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.59,
+            "w": 5.35,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "01 什么是第三方库？",
+          "lines": [
+            "01 什么是第三方库？"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 2.05,
+            "w": 6.11,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "由Python社区开发者编写的软件包，非标准库。需通过Pip等工具手动安装，是Python生态强大的关键。",
+          "lines": [
+            "由Python社区开发者编写的软件包，非标准库。需通过Pip等工具手动安装，是Python生态强大的关键。"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 2.63,
+            "w": 6.11,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "02 核心价值：扩展能力边界",
+          "lines": [
+            "02 核心价值：扩展能力边界"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 3.78,
+            "w": 6.67,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "专业领域全覆盖\n专注解决特定问题，如数据分析(pandas)、AI(scikit-learn)、Web(Django)。",
+          "lines": [
+            "专业领域全覆盖",
+            "专注解决特定问题，如数据分析(pandas)、AI(scikit-learn)、Web(Django)。"
+          ],
+          "pos": {
+            "x": 1.53,
+            "y": 4.18,
+            "w": 5.97,
+            "h": 0.93
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "拒绝重复造轮子\n直接复用成熟高效的代码，将精力集中在业务逻辑，节省大量开发时间。",
+          "lines": [
+            "拒绝重复造轮子",
+            "直接复用成熟高效的代码，将精力集中在业务逻辑，节省大量开发时间。"
+          ],
+          "pos": {
+            "x": 1.53,
+            "y": 5.17,
+            "w": 5.97,
+            "h": 0.61
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "🌳 生态示意\n第三方库如繁茂大树般不断生长，支撑Python在数据、AI等各领域的无限可能。",
+          "lines": [
+            "🌳 生态示意",
+            "第三方库如繁茂大树般不断生长，支撑Python在数据、AI等各领域的无限可能。"
+          ],
+          "pos": {
+            "x": 7.99,
+            "y": 5.18,
+            "w": 4.31,
+            "h": 0.89
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "推动技术创新\n活跃的开源社区持续贡献新库，让Python始终站在技术发展的前沿。",
+          "lines": [
+            "推动技术创新",
+            "活跃的开源社区持续贡献新库，让Python始终站在技术发展的前沿。"
+          ],
+          "pos": {
+            "x": 1.53,
+            "y": 6.01,
+            "w": 5.97,
+            "h": 0.61
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 12,
+      "title_guess": "入门示例 (Python)",
+      "notes": "我们来看几个最流行的第三方库。首先是requests，它让发送HTTP请求变得异常简单，是进行网络爬虫和API交互的必备工具。\n在左侧，大家可以看到它的生态定位，作为一个第三方库，它极大地丰富了Python的工具箱。安装非常方便，只需一条pip命令。\n右侧是一个极简的入门示例，展示了如何发送一个GET请求并检查状态码。通过requests.get()方法，几行代码就能完成复杂的网络请求操作。",
+      "blocks": [
+        {
+          "text": "pip install requests",
+          "lines": [
+            "pip install requests"
+          ],
+          "pos": {
+            "x": 0.07,
+            "y": 0.13,
+            "w": 4.85,
+            "h": 0.24
+          },
+          "depth": 1,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        },
+        {
+          "text": "入门示例 (Python)",
+          "lines": [
+            "入门示例 (Python)"
+          ],
+          "pos": {
+            "x": 0.21,
+            "y": 0.14,
+            "w": 5.49,
+            "h": 0.28
+          },
+          "depth": 1,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "常用第三方库概览 (1)：requests",
+          "lines": [
+            "常用第三方库概览 (1)：requests"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.52,
+            "w": 6.53,
+            "h": 0.62
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "import requests\n# 发送 GET 请求到 GitHub API\nurl ='https://api.github.com'\nres = requests.get(url)\nif res.status_code ==200:\nprint(\"请求成功！状态码: 200\")",
+          "lines": [
+            "import requests",
+            "# 发送 GET 请求到 GitHub API",
+            "url ='https://api.github.com'",
+            "res = requests.get(url)",
+            "if res.status_code ==200:",
+            "print(\"请求成功！状态码: 200\")"
+          ],
+          "pos": {
+            "x": 7.08,
+            "y": 3.14,
+            "w": 5.14,
+            "h": 2.05
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "F1C40F",
+            "FFFFFF"
+          ],
+          "defects": [
+            "slash_comment",
+            "tight_equals",
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "优雅而简单的 HTTP 库，比 Python 标准库 urllib 更易用，是爬虫与 API 交互的首选工具。",
+          "lines": [
+            "优雅而简单的 HTTP 库，比 Python 标准库 urllib 更易用，是爬虫与 API 交互的首选工具。"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 5.27,
+            "w": 5.0,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "核心亮点：自动编码解码、会话保持、连接池",
+          "lines": [
+            "核心亮点：自动编码解码、会话保持、连接池"
+          ],
+          "pos": {
+            "x": 7.43,
+            "y": 6.27,
+            "w": 4.79,
+            "h": 0.24
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "pip install requests",
+          "lines": [
+            "pip install requests"
+          ],
+          "pos": {
+            "x": 0.07,
+            "y": 0.13,
+            "w": 4.85,
+            "h": 0.24
+          },
+          "depth": 1,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        },
+        {
+          "text": "import requests\n# 发送 GET 请求到 GitHub API\nurl ='https://api.github.com'\nres = requests.get(url)\nif res.status_code ==200:\nprint(\"请求成功！状态码: 200\")",
+          "lines": [
+            "import requests",
+            "# 发送 GET 请求到 GitHub API",
+            "url ='https://api.github.com'",
+            "res = requests.get(url)",
+            "if res.status_code ==200:",
+            "print(\"请求成功！状态码: 200\")"
+          ],
+          "pos": {
+            "x": 7.08,
+            "y": 3.14,
+            "w": 5.14,
+            "h": 2.05
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "F1C40F",
+            "FFFFFF"
+          ],
+          "defects": [
+            "slash_comment",
+            "tight_equals",
+            "chinese_punct_in_code"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "title_guess": "常用第三方库概览 (2)：NumPy 科学计算基石",
+      "notes": "接下来是numpy，它是Python科学计算的基石。它提供了强大的数组对象和高效的数学运算功能，是后续学习pandas和matplotlib的基础。\n左侧展示了它在Python生态中的地位，它就像工具箱里最基础的扳手，或者生态树的根基。安装非常简单，使用pip即可。\n右侧的代码展示了numpy最基础的用法：创建数组、进行向量化运算（比如整体乘以2）以及计算统计值（如平均值）。请注意，numpy的向量化运算避免了Python层面的循环，这是它速度快的关键原因。",
+      "blocks": [
+        {
+          "text": "常用第三方库概览 (2)：NumPy 科学计算基石",
+          "lines": [
+            "常用第三方库概览 (2)：NumPy 科学计算基石"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.59,
+            "w": 9.0,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "入门示例：数组创建与运算",
+          "lines": [
+            "入门示例：数组创建与运算"
+          ],
+          "pos": {
+            "x": 7.57,
+            "y": 1.67,
+            "w": 4.17,
+            "h": 0.28
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "import numpy as np # 以np的别名引入numpy\n# 1. 创建二维数组（矩阵）\narr2= np.array([[1, 2, 3], [4, 5, 6]])\nprint(f\"二维数组:\\\\n{arr2}\")\n# 2. 向量化运算 (无需循环)\narr3= arr2 * 2\n# 3. 聚合计算\nprint(f\"平均值: {np.mean(arr2)}\")",
+          "lines": [
+            "import numpy as np # 以np的别名引入numpy",
+            "# 1. 创建二维数组（矩阵）",
+            "arr2= np.array([[1, 2, 3], [4, 5, 6]])",
+            "print(f\"二维数组:\\\\n{arr2}\")",
+            "# 2. 向量化运算 (无需循环)",
+            "arr3= arr2 * 2",
+            "# 3. 聚合计算",
+            "print(f\"平均值: {np.mean(arr2)}\")"
+          ],
+          "pos": {
+            "x": 7.15,
+            "y": 3.19,
+            "w": 5.14,
+            "h": 2.09
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "2ECC71",
+            "ABB2BF",
+            "E5C07B"
+          ],
+          "defects": [
+            "tight_equals",
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "NumPy（Numerical Python）是 Python 科学计算的核心基础。它提供了高性能的多维数组对象（ndarray）和丰富的数学函数，是 Pandas、Matplotlib 等数据分析库的底层依赖。",
+          "lines": [
+            "NumPy（Numerical Python）是 Python 科学计算的核心基础。它提供了高性能的多维数组对象（ndarray）和丰富的数学函数，是 Pandas、Matplotlib 等数据分析库的底层依赖。"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 4.26,
+            "w": 5.56,
+            "h": 0.93
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "一键安装命令",
+          "lines": [
+            "一键安装命令"
+          ],
+          "pos": {
+            "x": 1.46,
+            "y": 5.54,
+            "w": 4.72,
+            "h": 0.31
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "pip install numpy",
+          "lines": [
+            "pip install numpy"
+          ],
+          "pos": {
+            "x": 1.04,
+            "y": 6.06,
+            "w": 5.14,
+            "h": 0.24
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "import numpy as np # 以np的别名引入numpy\n# 1. 创建二维数组（矩阵）\narr2= np.array([[1, 2, 3], [4, 5, 6]])\nprint(f\"二维数组:\\\\n{arr2}\")\n# 2. 向量化运算 (无需循环)\narr3= arr2 * 2\n# 3. 聚合计算\nprint(f\"平均值: {np.mean(arr2)}\")",
+          "lines": [
+            "import numpy as np # 以np的别名引入numpy",
+            "# 1. 创建二维数组（矩阵）",
+            "arr2= np.array([[1, 2, 3], [4, 5, 6]])",
+            "print(f\"二维数组:\\\\n{arr2}\")",
+            "# 2. 向量化运算 (无需循环)",
+            "arr3= arr2 * 2",
+            "# 3. 聚合计算",
+            "print(f\"平均值: {np.mean(arr2)}\")"
+          ],
+          "pos": {
+            "x": 7.15,
+            "y": 3.19,
+            "w": 5.14,
+            "h": 2.09
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "2ECC71",
+            "ABB2BF",
+            "E5C07B"
+          ],
+          "defects": [
+            "tight_equals",
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "pip install numpy",
+          "lines": [
+            "pip install numpy"
+          ],
+          "pos": {
+            "x": 1.04,
+            "y": 6.06,
+            "w": 5.14,
+            "h": 0.24
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "title_guess": "💡 核心洞察：pandas清洗数据 + matplotlib展示结果 = 高效数据分析闭环",
+      "notes": "最后介绍pandas和matplotlib。pandas是处理表格数据的利器，而matplotlib则可以将数据以图表的形式可视化出来。这两个库结合使用，构成了Python数据分析的黄金组合。",
+      "blocks": [
+        {
+          "text": "💡 核心洞察：pandas清洗数据 + matplotlib展示结果 = 高效数据分析闭环",
+          "lines": [
+            "💡 核心洞察：pandas清洗数据 + matplotlib展示结果 = 高效数据分析闭环"
+          ],
+          "pos": {
+            "x": 0.08,
+            "y": 0.12,
+            "w": 7.41,
+            "h": 0.32
+          },
+          "depth": 1,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "Python 数据科学生态\n从数据处理到结果可视化的完整链路",
+          "lines": [
+            "Python 数据科学生态\n从数据处理到结果可视化的完整链路"
+          ],
+          "pos": {
+            "x": 0.26,
+            "y": 0.23,
+            "w": 3.38,
+            "h": 0.51
+          },
+          "depth": 1,
+          "is_code": false,
+          "colors": [
+            "5D6D7E"
+          ]
+        },
+        {
+          "text": "常用第三方库概览 (3)：pandas & matplotlib",
+          "lines": [
+            "常用第三方库概览 (3)：pandas & matplotlib"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.61,
+            "w": 8.37,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "pandas · 数据分析",
+          "lines": [
+            "pandas · 数据分析"
+          ],
+          "pos": {
+            "x": 6.04,
+            "y": 2.09,
+            "w": 2.5,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "matplotlib · 可视化",
+          "lines": [
+            "matplotlib · 可视化"
+          ],
+          "pos": {
+            "x": 9.93,
+            "y": 2.09,
+            "w": 2.5,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "构建在NumPy之上，提供DataFrame等结构，极大简化表格数据处理流程。",
+          "lines": [
+            "构建在NumPy之上，提供DataFrame等结构，极大简化表格数据处理流程。"
+          ],
+          "pos": {
+            "x": 5.42,
+            "y": 2.71,
+            "w": 3.12,
+            "h": 0.52
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "Python最常用绘图库，支持线图、柱状图等多种高质量图表的生成。",
+          "lines": [
+            "Python最常用绘图库，支持线图、柱状图等多种高质量图表的生成。"
+          ],
+          "pos": {
+            "x": 9.31,
+            "y": 2.71,
+            "w": 3.12,
+            "h": 0.52
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "import pandas as pd\ndata = {'Name': ['Alice', 'Bob'], 'Age': [25, 30]}\ndf = pd.DataFrame(data)\nprint(df)",
+          "lines": [
+            "import pandas as pd\ndata = {'Name': ['Alice', 'Bob'], 'Age': [25, 30]}\ndf = pd.DataFrame(data)\nprint(df)"
+          ],
+          "pos": {
+            "x": 5.56,
+            "y": 3.75,
+            "w": 2.85,
+            "h": 0.96
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "import matplotlib.pyplot as plt\nx = [1,2,3]; y = [2,4,3]\nplt.plot(x, y)\nplt.title(\"Demo\")\nplt.show()",
+          "lines": [
+            "import matplotlib.pyplot as plt\nx = [1,2,3]; y = [2,4,3]\nplt.plot(x, y)\nplt.title(\"Demo\")\nplt.show()"
+          ],
+          "pos": {
+            "x": 9.44,
+            "y": 3.75,
+            "w": 2.85,
+            "h": 0.96
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "import pandas as pd\ndata = {'Name': ['Alice', 'Bob'], 'Age': [25, 30]}\ndf = pd.DataFrame(data)\nprint(df)",
+          "lines": [
+            "import pandas as pd\ndata = {'Name': ['Alice', 'Bob'], 'Age': [25, 30]}\ndf = pd.DataFrame(data)\nprint(df)"
+          ],
+          "pos": {
+            "x": 5.56,
+            "y": 3.75,
+            "w": 2.85,
+            "h": 0.96
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "import matplotlib.pyplot as plt\nx = [1,2,3]; y = [2,4,3]\nplt.plot(x, y)\nplt.title(\"Demo\")\nplt.show()",
+          "lines": [
+            "import matplotlib.pyplot as plt\nx = [1,2,3]; y = [2,4,3]\nplt.plot(x, y)\nplt.title(\"Demo\")\nplt.show()"
+          ],
+          "pos": {
+            "x": 9.44,
+            "y": 3.75,
+            "w": 2.85,
+            "h": 0.96
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 15,
+      "title_guess": "总结与下一步：Python 核心技能回顾",
+      "notes": "本章我们学习了标准库、Pip和第三方库。标准库是基础，Pip是工具，第三方库是扩展。希望大家能动手实践，将这些知识应用到实际项目中。编程之路，始于足下，不断学习和实践，才能真正解锁Python的全部潜力。感谢大家！",
+      "blocks": [
+        {
+          "text": "总结与下一步：Python 核心技能回顾",
+          "lines": [
+            "总结与下一步：Python 核心技能回顾"
+          ],
+          "pos": {
+            "x": 2.96,
+            "y": 0.87,
+            "w": 7.42,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "编程之路，始于足下。不断学习，不断实践，你将解锁 Python 的全部潜力！",
+          "lines": [
+            "编程之路，始于足下。不断学习，不断实践，你将解锁 Python 的全部潜力！"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 3.18,
+            "w": 11.11,
+            "h": 0.31
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "标准库 · 基石\n内置功能丰富，无需安装即用",
+          "lines": [
+            "标准库 · 基石",
+            "内置功能丰富，无需安装即用"
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 5.11,
+            "w": 3.06,
+            "h": 0.62
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "Pip · 引擎\n第三方包的安装与管理神器",
+          "lines": [
+            "Pip · 引擎",
+            "第三方包的安装与管理神器"
+          ],
+          "pos": {
+            "x": 4.86,
+            "y": 5.11,
+            "w": 3.06,
+            "h": 0.62
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "第三方库 · 扩展\n海量资源，助力项目快速落地",
+          "lines": [
+            "第三方库 · 扩展",
+            "海量资源，助力项目快速落地"
+          ],
+          "pos": {
+            "x": 8.47,
+            "y": 5.11,
+            "w": 3.06,
+            "h": 0.62
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "感谢聆听 · 期待您的代码改变世界",
+          "lines": [
+            "感谢聆听 · 期待您的代码改变世界"
+          ],
+          "pos": {
+            "x": 4.81,
+            "y": 6.42,
+            "w": 3.72,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    }
+  ]
+}

@@ -1,0 +1,2385 @@
+{
+  "chapter": 4,
+  "name": "代码复用",
+  "subtitle": "函数与模块",
+  "source": "第四章：代码复用-函数与模块.pptx",
+  "slide_count": 15,
+  "slides": [
+    {
+      "n": 1,
+      "title_guess": "第四章：复用 - 函数与模块",
+      "notes": "大家好，欢迎来到第五章的学习。本章的主题是“复用”，我们将学习如何使用函数和模块，写出更优雅、高效且易于维护的代码。这是从初级程序员迈向中级程序员的关键一步。",
+      "blocks": [
+        {
+          "text": "第四章：复用 - 函数与模块",
+          "lines": [
+            "第四章：复用 - 函数与模块"
+          ],
+          "pos": {
+            "x": 3.69,
+            "y": 2.71,
+            "w": 5.96,
+            "h": 0.69
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "搭积木一样写出优雅、高效、可复用的代码",
+          "lines": [
+            "搭积木一样写出优雅、高效、可复用的代码"
+          ],
+          "pos": {
+            "x": 3.49,
+            "y": 4.1,
+            "w": 6.35,
+            "h": 0.42
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "代码复用 • 逻辑解耦 • 高效开发 • 易于维护",
+          "lines": [
+            "代码复用 • 逻辑解耦 • 高效开发 • 易于维护"
+          ],
+          "pos": {
+            "x": 4.58,
+            "y": 5.61,
+            "w": 4.17,
+            "h": 0.31
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 2,
+      "title_guess": "从“重复造轮子”到“乐高式编程”",
+      "notes": "在编程中，我们常常会遇到重复编写相同代码的情况，这就像每天重复造轮子一样低效。本章的目标就是学习如何通过函数和模块，实现代码的复用，让我们的编程过程像搭乐高积木一样，高效、有趣且富有创造性。",
+      "blocks": [
+        {
+          "text": "从“重复造轮子”到“乐高式编程”",
+          "lines": [
+            "从“重复造轮子”到“乐高式编程”"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.59,
+            "w": 6.24,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "💡 思维实验：番茄炒蛋的启示\n将“切番茄”“炒鸡蛋”封装为标准流程（函数），每次做菜只需“调用”，而非重复操作。这就是核心——代码复用",
+          "lines": [
+            "💡 思维实验：番茄炒蛋的启示",
+            "将“切番茄”“炒鸡蛋”封装为标准流程（函数），每次做菜只需“调用”，而非重复操作。这就是核心——代码复用"
+          ],
+          "pos": {
+            "x": 1.88,
+            "y": 1.98,
+            "w": 4.86,
+            "h": 0.9
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "F39C12"
+          ]
+        },
+        {
+          "text": "⚠️ 编程中的“低效”痛点\n• 代码冗余：重复造轮子，维护需改几十处\n• 逻辑混乱：代码杂乱，调试如同“大海捞针”",
+          "lines": [
+            "⚠️ 编程中的“低效”痛点",
+            "• 代码冗余：重复造轮子，维护需改几十处",
+            "• 逻辑混乱：代码杂乱，调试如同“大海捞针”"
+          ],
+          "pos": {
+            "x": 1.88,
+            "y": 3.93,
+            "w": 4.86,
+            "h": 0.9
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "模块化思维\n把复杂问题拆解为小模块，像搭积木一样组装你的程序。",
+          "lines": [
+            "模块化思维",
+            "把复杂问题拆解为小模块，像搭积木一样组装你的程序。"
+          ],
+          "pos": {
+            "x": 8.47,
+            "y": 5.33,
+            "w": 3.89,
+            "h": 1.01
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "🎯 本章核心目标\n掌握函数与模块，实现代码结构化，让编程像搭乐高一样高效有趣。",
+          "lines": [
+            "🎯 本章核心目标",
+            "掌握函数与模块，实现代码结构化，让编程像搭乐高一样高效有趣。"
+          ],
+          "pos": {
+            "x": 1.88,
+            "y": 5.59,
+            "w": 4.86,
+            "h": 0.9
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 3,
+      "title_guess": "什么是函数？—— 代码的“积木块”",
+      "notes": "那么，什么是函数呢？简单来说，函数就是代码的“积木块”。它是一段组织好的、可以重复使用的代码，负责实现一个特定的功能。\n大家可以把函数想象成一个“加工厂”。我们给它一些原材料，也就是“参数”；它在内部进行一系列的加工操作；最后，产出我们需要的产品，也就是“返回值”。\n通过使用函数，我们可以实现代码复用、模块化、提高可维护性和可读性。比如计算圆的面积，定义一次函数，之后每次计算只需调用函数名即可，既高效又不易出错。",
+      "blocks": [
+        {
+          "text": "什么是函数？—— 代码的“积木块”",
+          "lines": [
+            "什么是函数？—— 代码的“积木块”"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.61,
+            "w": 6.38,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "01 核心定义：代码实现的“加工厂”\n一段可复用的代码段，负责实现单一功能。就像把原材料(输入)放入工厂，经过处理，产出成品(输出)。",
+          "lines": [
+            "01 核心定义：代码实现的“加工厂”",
+            "一段可复用的代码段，负责实现单一功能。就像把原材料(输入)放入工厂，经过处理，产出成品(输出)。"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 1.84,
+            "w": 5.83,
+            "h": 0.91
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "02 核心价值：为什么要用函数？",
+          "lines": [
+            "02 核心价值：为什么要用函数？"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 3.32,
+            "w": 6.39,
+            "h": 0.31
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "代码复用\n封装重复逻辑，一次编写多次调用",
+          "lines": [
+            "代码复用\n封装重复逻辑，一次编写多次调用"
+          ],
+          "pos": {
+            "x": 1.6,
+            "y": 3.8,
+            "w": 2.22,
+            "h": 0.88
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "7F8C8D"
+          ]
+        },
+        {
+          "text": "结构模块化\n化繁为简，让复杂程序结构清晰",
+          "lines": [
+            "结构模块化\n化繁为简，让复杂程序结构清晰"
+          ],
+          "pos": {
+            "x": 4.86,
+            "y": 3.8,
+            "w": 2.22,
+            "h": 0.88
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "7F8C8D"
+          ]
+        },
+        {
+          "text": "函数如同积木与工具：标准化、可组合、高效能",
+          "lines": [
+            "函数如同积木与工具：标准化、可组合、高效能"
+          ],
+          "pos": {
+            "x": 7.64,
+            "y": 4.53,
+            "w": 4.72,
+            "h": 0.25
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "易维护性\n一处修改，所有调用处同步生效",
+          "lines": [
+            "易维护性\n一处修改，所有调用处同步生效"
+          ],
+          "pos": {
+            "x": 1.6,
+            "y": 4.91,
+            "w": 2.22,
+            "h": 0.88
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "7F8C8D"
+          ]
+        },
+        {
+          "text": "高可读性\n语义化命名，逻辑一目了然",
+          "lines": [
+            "高可读性\n语义化命名，逻辑一目了然"
+          ],
+          "pos": {
+            "x": 4.86,
+            "y": 5.06,
+            "w": 2.22,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "7F8C8D"
+          ]
+        },
+        {
+          "text": "关键记忆公式\n函数 = 输入(参数) + 处理(逻辑) + 输出(返回值)",
+          "lines": [
+            "关键记忆公式",
+            "函数 = 输入(参数) + 处理(逻辑) + 输出(返回值)"
+          ],
+          "pos": {
+            "x": 8.61,
+            "y": 5.33,
+            "w": 3.47,
+            "h": 1.01
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "示例：计算圆面积时，用函数 calculate_area(r) 替代重复的公式计算。",
+          "lines": [
+            "示例：计算圆面积时，用函数 calculate_area(r) 替代重复的公式计算。"
+          ],
+          "pos": {
+            "x": 0.97,
+            "y": 6.23,
+            "w": 6.11,
+            "h": 0.25
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 4,
+      "title_guess": "如何定义和使用函数？",
+      "notes": "在Python中，我们使用`def`关键字来定义函数。定义好函数后，就可以通过函数名加括号的方式来调用它。这里展示了两个简单的例子：一个打招呼的函数和一个计算加法的函数，大家可以看到定义和调用的基本语法。",
+      "blocks": [
+        {
+          "text": "如何定义和使用函数？",
+          "lines": [
+            "如何定义和使用函数？"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.59,
+            "w": 4.46,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "定义示例：打招呼与加法",
+          "lines": [
+            "定义示例：打招呼与加法"
+          ],
+          "pos": {
+            "x": 6.94,
+            "y": 1.89,
+            "w": 5.42,
+            "h": 0.28
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "1. 定义函数：def 关键字",
+          "lines": [
+            "1. 定义函数：def 关键字"
+          ],
+          "pos": {
+            "x": 1.94,
+            "y": 2.17,
+            "w": 4.03,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "def greet(name): // 问候函数向指定的人打招呼\nprint(f\\\"Hello, {name}!\\”)\ndef add(a, b): // 累加函数，将a和b累加，并将结果输出\nreturn a + b",
+          "lines": [
+            "def greet(name): // 问候函数向指定的人打招呼",
+            "print(f\\\"Hello, {name}!\\”)",
+            "def add(a, b): // 累加函数，将a和b累加，并将结果输出",
+            "return a + b"
+          ],
+          "pos": {
+            "x": 6.94,
+            "y": 2.57,
+            "w": 5.42,
+            "h": 1.25
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "smart_quote",
+            "slash_comment",
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "使用 def 关键字声明函数。核心包含函数名、参数列表和函数体。文档字符串用于说明功能，return 用于返回计算结果。",
+          "lines": [
+            "使用 def 关键字声明函数。核心包含函数名、参数列表和函数体。文档字符串用于说明功能，return 用于返回计算结果。"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 3.11,
+            "w": 5.0,
+            "h": 0.93
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "调用示例：执行与输出",
+          "lines": [
+            "调用示例：执行与输出"
+          ],
+          "pos": {
+            "x": 6.94,
+            "y": 4.53,
+            "w": 5.42,
+            "h": 0.28
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "2. 调用函数：执行逻辑",
+          "lines": [
+            "2. 调用函数：执行逻辑"
+          ],
+          "pos": {
+            "x": 1.94,
+            "y": 4.74,
+            "w": 4.03,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "# 执行函数\nprint(greet(\\\"Alice\\\")) \n# 输出 Hello, Alice!\nsum_val = add(5, 3)\nprint(sum_val) # 输出 8",
+          "lines": [
+            "# 执行函数",
+            "print(greet(\\\"Alice\\\")) ",
+            "# 输出 Hello, Alice!",
+            "sum_val = add(5, 3)",
+            "print(sum_val) # 输出 8"
+          ],
+          "pos": {
+            "x": 6.94,
+            "y": 5.2,
+            "w": 5.42,
+            "h": 1.27
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "通过“函数名(参数)”的格式执行函数。传入的参数数量需与定义匹配，调用后可直接输出或接收返回值进行后续处理。",
+          "lines": [
+            "通过“函数名(参数)”的格式执行函数。传入的参数数量需与定义匹配，调用后可直接输出或接收返回值进行后续处理。"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 5.58,
+            "w": 5.0,
+            "h": 0.93
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "1. 定义函数：def 关键字",
+          "lines": [
+            "1. 定义函数：def 关键字"
+          ],
+          "pos": {
+            "x": 1.94,
+            "y": 2.17,
+            "w": 4.03,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "def greet(name): // 问候函数向指定的人打招呼\nprint(f\\\"Hello, {name}!\\”)\ndef add(a, b): // 累加函数，将a和b累加，并将结果输出\nreturn a + b",
+          "lines": [
+            "def greet(name): // 问候函数向指定的人打招呼",
+            "print(f\\\"Hello, {name}!\\”)",
+            "def add(a, b): // 累加函数，将a和b累加，并将结果输出",
+            "return a + b"
+          ],
+          "pos": {
+            "x": 6.94,
+            "y": 2.57,
+            "w": 5.42,
+            "h": 1.25
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "smart_quote",
+            "slash_comment",
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "使用 def 关键字声明函数。核心包含函数名、参数列表和函数体。文档字符串用于说明功能，return 用于返回计算结果。",
+          "lines": [
+            "使用 def 关键字声明函数。核心包含函数名、参数列表和函数体。文档字符串用于说明功能，return 用于返回计算结果。"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 3.11,
+            "w": 5.0,
+            "h": 0.93
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "# 执行函数\nprint(greet(\\\"Alice\\\")) \n# 输出 Hello, Alice!\nsum_val = add(5, 3)\nprint(sum_val) # 输出 8",
+          "lines": [
+            "# 执行函数",
+            "print(greet(\\\"Alice\\\")) ",
+            "# 输出 Hello, Alice!",
+            "sum_val = add(5, 3)",
+            "print(sum_val) # 输出 8"
+          ],
+          "pos": {
+            "x": 6.94,
+            "y": 5.2,
+            "w": 5.42,
+            "h": 1.27
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "title_guess": "💡 核心区别：位置参数看顺序，关键字参数看名字（键值对）",
+      "notes": "函数的参数传递方式非常灵活。最基础的是位置参数，要求实参和形参的顺序严格对应。\n为了避免顺序错误，我们可以使用关键字参数，通过“键-值”对的形式传递，这样参数的顺序就无关紧要了，代码也更清晰。",
+      "blocks": [
+        {
+          "text": "💡 核心区别：位置参数看顺序，关键字参数看名字（键值对）",
+          "lines": [
+            "💡 核心区别：位置参数看顺序，关键字参数看名字（键值对）"
+          ],
+          "pos": {
+            "x": 0.08,
+            "y": 0.12,
+            "w": 11.5,
+            "h": 0.32
+          },
+          "depth": 1,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "灵活的输入：位置参数与关键字参数",
+          "lines": [
+            "灵活的输入：位置参数与关键字参数"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.61,
+            "w": 6.68,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "位置参数 (Positional)",
+          "lines": [
+            "位置参数 (Positional)"
+          ],
+          "pos": {
+            "x": 2.01,
+            "y": 2.01,
+            "w": 2.71,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "关键字参数 (Keyword)",
+          "lines": [
+            "关键字参数 (Keyword)"
+          ],
+          "pos": {
+            "x": 7.99,
+            "y": 2.01,
+            "w": 2.84,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "调用时实参顺序必须与形参完全一致。顺序错误会直接导致逻辑错误。",
+          "lines": [
+            "调用时实参顺序必须与形参完全一致。顺序错误会直接导致逻辑错误。"
+          ],
+          "pos": {
+            "x": 1.18,
+            "y": 3.04,
+            "w": 5.0,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "通过“键=值”形式传递，参数顺序无关紧要。代码可读性极强，推荐使用。",
+          "lines": [
+            "通过“键=值”形式传递，参数顺序无关紧要。代码可读性极强，推荐使用。"
+          ],
+          "pos": {
+            "x": 7.15,
+            "y": 3.04,
+            "w": 5.0,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "# 正确顺序: 动物类型 -> 名字\ndescribe_pet('hamster', 'Harry')\n# 错误示例: 顺序颠倒会导致滑稽结果\n# describe_pet('Harry', 'hamster')",
+          "lines": [
+            "# 正确顺序: 动物类型 -> 名字",
+            "describe_pet('hamster', 'Harry')",
+            "# 错误示例: 顺序颠倒会导致滑稽结果",
+            "# describe_pet('Harry', 'hamster')"
+          ],
+          "pos": {
+            "x": 1.32,
+            "y": 4.36,
+            "w": 4.72,
+            "h": 0.86
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        },
+        {
+          "text": "# 显式指定参数名，顺序随意\ndescribe_pet(animal_type='dog', name='Willie')\n# 交换顺序依然正确\ndescribe_pet(name='Willie', animal_type='dog')",
+          "lines": [
+            "# 显式指定参数名，顺序随意",
+            "describe_pet(animal_type='dog', name='Willie')",
+            "# 交换顺序依然正确",
+            "describe_pet(name='Willie', animal_type='dog')"
+          ],
+          "pos": {
+            "x": 7.29,
+            "y": 4.36,
+            "w": 4.72,
+            "h": 0.86
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals",
+            "chinese_punct_in_code"
+          ]
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "# 正确顺序: 动物类型 -> 名字\ndescribe_pet('hamster', 'Harry')\n# 错误示例: 顺序颠倒会导致滑稽结果\n# describe_pet('Harry', 'hamster')",
+          "lines": [
+            "# 正确顺序: 动物类型 -> 名字",
+            "describe_pet('hamster', 'Harry')",
+            "# 错误示例: 顺序颠倒会导致滑稽结果",
+            "# describe_pet('Harry', 'hamster')"
+          ],
+          "pos": {
+            "x": 1.32,
+            "y": 4.36,
+            "w": 4.72,
+            "h": 0.86
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        },
+        {
+          "text": "# 显式指定参数名，顺序随意\ndescribe_pet(animal_type='dog', name='Willie')\n# 交换顺序依然正确\ndescribe_pet(name='Willie', animal_type='dog')",
+          "lines": [
+            "# 显式指定参数名，顺序随意",
+            "describe_pet(animal_type='dog', name='Willie')",
+            "# 交换顺序依然正确",
+            "describe_pet(name='Willie', animal_type='dog')"
+          ],
+          "pos": {
+            "x": 7.29,
+            "y": 4.36,
+            "w": 4.72,
+            "h": 0.86
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals",
+            "chinese_punct_in_code"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "title_guess": "更智能的输入：默认参数与可变参数",
+      "notes": "除了位置和关键字参数，Python还提供了更智能的参数类型。默认参数允许我们为参数设置默认值，使函数调用更灵活。而可变参数*args和**kwargs则允许函数接收任意数量的参数，极大地增强了函数的通用性。",
+      "blocks": [
+        {
+          "text": "更智能的输入：默认参数与可变参数",
+          "lines": [
+            "更智能的输入：默认参数与可变参数"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.61,
+            "w": 6.68,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "3. 默认参数 (Default Arguments)",
+          "lines": [
+            "3. 默认参数 (Default Arguments)"
+          ],
+          "pos": {
+            "x": 1.74,
+            "y": 2.11,
+            "w": 4.31,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "4. 可变参数 (Variable-Length)",
+          "lines": [
+            "4. 可变参数 (Variable-Length)"
+          ],
+          "pos": {
+            "x": 7.85,
+            "y": 2.11,
+            "w": 4.31,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "定义：定义函数时为参数指定默认值。调用时若未传入实参，则自动使用默认值，提升调用灵活性。",
+          "lines": [
+            "定义：定义函数时为参数指定默认值。调用时若未传入实参，则自动使用默认值，提升调用灵活性。"
+          ],
+          "pos": {
+            "x": 1.18,
+            "y": 2.82,
+            "w": 4.86,
+            "h": 0.6
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "•args：接收任意数量位置参数，打包为元组。\n•kwargs：接收任意数量关键字参数，打包为字典。",
+          "lines": [
+            "•args：接收任意数量位置参数，打包为元组。",
+            "•kwargs：接收任意数量关键字参数，打包为字典。"
+          ],
+          "pos": {
+            "x": 7.29,
+            "y": 2.82,
+            "w": 4.86,
+            "h": 0.6
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "def describe_pet(pet_name, animal='dog'):\nprint(f\"I have a {animal}.\")\nprint(f\"My {animal}'s name is {pet_name}.\")\ndescribe_pet('Willie') # 使用默认值'dog'\ndescribe_pet('Harry', 'hamster') # 覆盖默认值",
+          "lines": [
+            "def describe_pet(pet_name, animal='dog'):",
+            "print(f\"I have a {animal}.\")",
+            "print(f\"My {animal}'s name is {pet_name}.\")",
+            "describe_pet('Willie') # 使用默认值'dog'",
+            "describe_pet('Harry', 'hamster') # 覆盖默认值"
+          ],
+          "pos": {
+            "x": 1.32,
+            "y": 4.33,
+            "w": 4.58,
+            "h": 1.33
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "def make_pizza(*toppings): # 任意配料\nfor t in toppings: print(f\"- {t}\")\ndef build_profile(f, l, **info): # 任意个人信息\ninfo['first'], info['last'] = f, l\nreturn info",
+          "lines": [
+            "def make_pizza(*toppings): # 任意配料",
+            "for t in toppings: print(f\"- {t}\")",
+            "def build_profile(f, l, **info): # 任意个人信息",
+            "info['first'], info['last'] = f, l",
+            "return info"
+          ],
+          "pos": {
+            "x": 7.43,
+            "y": 4.35,
+            "w": 4.58,
+            "h": 1.29
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "def describe_pet(pet_name, animal='dog'):\nprint(f\"I have a {animal}.\")\nprint(f\"My {animal}'s name is {pet_name}.\")\ndescribe_pet('Willie') # 使用默认值'dog'\ndescribe_pet('Harry', 'hamster') # 覆盖默认值",
+          "lines": [
+            "def describe_pet(pet_name, animal='dog'):",
+            "print(f\"I have a {animal}.\")",
+            "print(f\"My {animal}'s name is {pet_name}.\")",
+            "describe_pet('Willie') # 使用默认值'dog'",
+            "describe_pet('Harry', 'hamster') # 覆盖默认值"
+          ],
+          "pos": {
+            "x": 1.32,
+            "y": 4.33,
+            "w": 4.58,
+            "h": 1.33
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "def make_pizza(*toppings): # 任意配料\nfor t in toppings: print(f\"- {t}\")\ndef build_profile(f, l, **info): # 任意个人信息\ninfo['first'], info['last'] = f, l\nreturn info",
+          "lines": [
+            "def make_pizza(*toppings): # 任意配料",
+            "for t in toppings: print(f\"- {t}\")",
+            "def build_profile(f, l, **info): # 任意个人信息",
+            "info['first'], info['last'] = f, l",
+            "return info"
+          ],
+          "pos": {
+            "x": 7.43,
+            "y": 4.35,
+            "w": 4.58,
+            "h": 1.29
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "title_guess": "函数的“产出”：return 语句",
+      "notes": "函数执行完毕后，可以通过return语句向调用者返回结果。我们可以返回单个值，也可以返回多个值。当返回多个值时，Python会自动将它们打包成一个元组，调用者可以方便地用多个变量来接收。",
+      "blocks": [
+        {
+          "text": "函数的“产出”：return 语句",
+          "lines": [
+            "函数的“产出”：return 语句"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.59,
+            "w": 5.42,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "smart_quote",
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "01. 返回单个值",
+          "lines": [
+            "01. 返回单个值"
+          ],
+          "pos": {
+            "x": 2.08,
+            "y": 2.28,
+            "w": 4.03,
+            "h": 0.42
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "02. 返回多个值",
+          "lines": [
+            "02. 返回多个值"
+          ],
+          "pos": {
+            "x": 8.06,
+            "y": 2.28,
+            "w": 4.03,
+            "h": 0.42
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "函数执行到 return 时立即结束，并将后面跟的单个数值返回给调用者。",
+          "lines": [
+            "函数执行到 return 时立即结束，并将后面跟的单个数值返回给调用者。"
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 2.99,
+            "w": 4.86,
+            "h": 0.6
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "Python 会自动将多个值打包成**元组(tuple)**返回，调用时可直接用多个变量接收。",
+          "lines": [
+            "Python 会自动将多个值打包成**元组(tuple)**返回，调用时可直接用多个变量接收。"
+          ],
+          "pos": {
+            "x": 7.22,
+            "y": 2.99,
+            "w": 4.86,
+            "h": 0.6
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "def square(x):\n return x * x\n# 调用函数\nresult = square(5)\nprint(result) # 输出: 25",
+          "lines": [
+            "def square(x):",
+            " return x * x",
+            "# 调用函数",
+            "result = square(5)",
+            "print(result) # 输出: 25"
+          ],
+          "pos": {
+            "x": 1.46,
+            "y": 4.17,
+            "w": 4.44,
+            "h": 1.2
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "def calculate(a, b):\nreturn a+b, a*b\n# 解包接收\nadd, mul = calculate(3, 4)\nprint(f\"和: {add}, 积: {mul}\") ",
+          "lines": [
+            "def calculate(a, b):",
+            "return a+b, a*b",
+            "# 解包接收",
+            "add, mul = calculate(3, 4)",
+            "print(f\"和: {add}, 积: {mul}\") "
+          ],
+          "pos": {
+            "x": 7.43,
+            "y": 4.17,
+            "w": 4.44,
+            "h": 1.2
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "函数的“产出”：return 语句",
+          "lines": [
+            "函数的“产出”：return 语句"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.59,
+            "w": 5.42,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "smart_quote",
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "函数执行到 return 时立即结束，并将后面跟的单个数值返回给调用者。",
+          "lines": [
+            "函数执行到 return 时立即结束，并将后面跟的单个数值返回给调用者。"
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 2.99,
+            "w": 4.86,
+            "h": 0.6
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "def square(x):\n return x * x\n# 调用函数\nresult = square(5)\nprint(result) # 输出: 25",
+          "lines": [
+            "def square(x):",
+            " return x * x",
+            "# 调用函数",
+            "result = square(5)",
+            "print(result) # 输出: 25"
+          ],
+          "pos": {
+            "x": 1.46,
+            "y": 4.17,
+            "w": 4.44,
+            "h": 1.2
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "def calculate(a, b):\nreturn a+b, a*b\n# 解包接收\nadd, mul = calculate(3, 4)\nprint(f\"和: {add}, 积: {mul}\") ",
+          "lines": [
+            "def calculate(a, b):",
+            "return a+b, a*b",
+            "# 解包接收",
+            "add, mul = calculate(3, 4)",
+            "print(f\"和: {add}, 积: {mul}\") "
+          ],
+          "pos": {
+            "x": 7.43,
+            "y": 4.17,
+            "w": 4.44,
+            "h": 1.2
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "title_guess": "变量的“活动范围”：全局与局部",
+      "notes": "变量并不是在任何地方都能访问的，它们有自己的“活动范围”，也就是作用域。\n在函数内部定义的是局部变量，只能在函数内部使用，外部无法访问，就像左卡片展示的 x 变量。\n在函数外部定义的是全局变量，可以在整个程序中访问，包括函数内部，如中间卡片的 y 变量。\n如果需要在函数内部修改全局变量，就需要使用 global 关键字进行声明，否则 Python 会将其视为局部变量，如右侧卡片所示。",
+      "blocks": [
+        {
+          "text": "变量的“活动范围”：全局与局部",
+          "lines": [
+            "变量的“活动范围”：全局与局部"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.56,
+            "w": 6.24,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "局部变量 (Local)",
+          "lines": [
+            "局部变量 (Local)"
+          ],
+          "pos": {
+            "x": 1.81,
+            "y": 2.08,
+            "w": 2.5,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "全局变量 (Global)",
+          "lines": [
+            "全局变量 (Global)"
+          ],
+          "pos": {
+            "x": 5.78,
+            "y": 2.08,
+            "w": 2.5,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "关键字: global",
+          "lines": [
+            "关键字: global"
+          ],
+          "pos": {
+            "x": 9.75,
+            "y": 2.08,
+            "w": 2.5,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "作用：允许在函数内部修改全局变量。\n用法：在函数内首行声明变量为global。",
+          "lines": [
+            "作用：允许在函数内部修改全局变量。",
+            "用法：在函数内首行声明变量为global。"
+          ],
+          "pos": {
+            "x": 9.06,
+            "y": 2.99,
+            "w": 3.14,
+            "h": 1.25
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "505A64"
+          ]
+        },
+        {
+          "text": "定义：函数内部定义的变量。\n作用域：仅限定义它的函数内部访问。",
+          "lines": [
+            "定义：函数内部定义的变量。",
+            "作用域：仅限定义它的函数内部访问。"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 3.15,
+            "w": 3.14,
+            "h": 0.93
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "505A64"
+          ]
+        },
+        {
+          "text": "定义：函数外部定义的变量。\n作用域：在整个程序范围内均可访问。",
+          "lines": [
+            "定义：函数外部定义的变量。",
+            "作用域：在整个程序范围内均可访问。"
+          ],
+          "pos": {
+            "x": 5.08,
+            "y": 3.15,
+            "w": 3.14,
+            "h": 0.93
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "505A64"
+          ]
+        },
+        {
+          "text": "count = 0\ndef inc():\nglobal count\ncount += 1\ninc()\nprint(count) # 输出 1",
+          "lines": [
+            "count = 0\ndef inc():\nglobal count\ncount += 1\ninc()\nprint(count) # 输出 1"
+          ],
+          "pos": {
+            "x": 9.12,
+            "y": 4.85,
+            "w": 3.0,
+            "h": 1.13
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "def func():\nx = 10 # 局部变量\nprint(x)\n# print(x) # 错误！局部变量不可以在函数外访问",
+          "lines": [
+            "def func():\nx = 10 # 局部变量\nprint(x)\n# print(x) # 错误！局部变量不可以在函数外访问"
+          ],
+          "pos": {
+            "x": 1.18,
+            "y": 4.9,
+            "w": 3.0,
+            "h": 1.03
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals",
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "y = 20 # 全局变量\ndef func():\nprint(y) # 可以访问\nfunc()\nprint(y) # 也可以访问",
+          "lines": [
+            "y = 20 # 全局变量\ndef func():\nprint(y) # 可以访问\nfunc()\nprint(y) # 也可以访问"
+          ],
+          "pos": {
+            "x": 5.15,
+            "y": 4.9,
+            "w": 3.0,
+            "h": 1.03
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "核心记忆：局部仅限内部，全局处处可见，修改全局用 global",
+          "lines": [
+            "核心记忆：局部仅限内部，全局处处可见，修改全局用 global"
+          ],
+          "pos": {
+            "x": 0.0,
+            "y": 7.17,
+            "w": 13.33,
+            "h": 0.24
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "count = 0\ndef inc():\nglobal count\ncount += 1\ninc()\nprint(count) # 输出 1",
+          "lines": [
+            "count = 0\ndef inc():\nglobal count\ncount += 1\ninc()\nprint(count) # 输出 1"
+          ],
+          "pos": {
+            "x": 9.12,
+            "y": 4.85,
+            "w": 3.0,
+            "h": 1.13
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "def func():\nx = 10 # 局部变量\nprint(x)\n# print(x) # 错误！局部变量不可以在函数外访问",
+          "lines": [
+            "def func():\nx = 10 # 局部变量\nprint(x)\n# print(x) # 错误！局部变量不可以在函数外访问"
+          ],
+          "pos": {
+            "x": 1.18,
+            "y": 4.9,
+            "w": 3.0,
+            "h": 1.03
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals",
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "y = 20 # 全局变量\ndef func():\nprint(y) # 可以访问\nfunc()\nprint(y) # 也可以访问",
+          "lines": [
+            "y = 20 # 全局变量\ndef func():\nprint(y) # 可以访问\nfunc()\nprint(y) # 也可以访问"
+          ],
+          "pos": {
+            "x": 5.15,
+            "y": 4.9,
+            "w": 3.0,
+            "h": 1.03
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "title_guess": "带有数据的函数：Lambda 表达式",
+      "notes": "对于一些简单的函数，Python提供了一种更简洁的定义方式——Lambda表达式，也叫匿名函数。它非常适合创建那些只使用一次的短小函数，尤其是在作为map、filter等高阶函数的参数时，能让代码更加简洁优雅。",
+      "blocks": [
+        {
+          "text": "带有数据的函数：Lambda 表达式",
+          "lines": [
+            "带有数据的函数：Lambda 表达式"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.59,
+            "w": 6.73,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "01 核心定义：匿名函数",
+          "lines": [
+            "01 核心定义：匿名函数"
+          ],
+          "pos": {
+            "x": 1.6,
+            "y": 1.73,
+            "w": 5.28,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "无需定义函数名，用于创建小型、一次性的函数对象，语法极简。并且内部可以直接访问变量，把当时变量的内容一起打包带走。",
+          "lines": [
+            "无需定义函数名，用于创建小型、一次性的函数对象，语法极简。并且内部可以直接访问变量，把当时变量的内容一起打包带走。"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 2.19,
+            "w": 5.83,
+            "h": 0.62
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "02 语法与对比示例",
+          "lines": [
+            "02 语法与对比示例"
+          ],
+          "pos": {
+            "x": 1.6,
+            "y": 3.33,
+            "w": 5.28,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "# 普通函数 vs Lambda\nadd = lambda a, b: a + b # 替代了 def add(a,b): return a+b",
+          "lines": [
+            "# 普通函数 vs Lambda",
+            "add = lambda a, b: a + b # 替代了 def add(a,b): return a+b"
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 3.98,
+            "w": 5.56,
+            "h": 0.78
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "核心价值总结",
+          "lines": [
+            "核心价值总结"
+          ],
+          "pos": {
+            "x": 8.68,
+            "y": 5.17,
+            "w": 3.47,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "03 高频使用场景",
+          "lines": [
+            "03 高频使用场景"
+          ],
+          "pos": {
+            "x": 1.6,
+            "y": 5.41,
+            "w": 5.28,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "让代码更简洁、逻辑更紧凑，特别适合作为高阶函数的参数使用。",
+          "lines": [
+            "让代码更简洁、逻辑更紧凑，特别适合作为高阶函数的参数使用。"
+          ],
+          "pos": {
+            "x": 8.12,
+            "y": 5.94,
+            "w": 4.17,
+            "h": 0.62
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "map() 映射\n批量处理序列元素",
+          "lines": [
+            "map() 映射\n批量处理序列元素"
+          ],
+          "pos": {
+            "x": 1.53,
+            "y": 5.98,
+            "w": 2.36,
+            "h": 0.55
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "7F8C8D"
+          ]
+        },
+        {
+          "text": "filter() 过滤\n筛选符合条件数据",
+          "lines": [
+            "filter() 过滤\n筛选符合条件数据"
+          ],
+          "pos": {
+            "x": 4.44,
+            "y": 5.98,
+            "w": 2.36,
+            "h": 0.55
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "7F8C8D"
+          ]
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "# 普通函数 vs Lambda\nadd = lambda a, b: a + b # 替代了 def add(a,b): return a+b",
+          "lines": [
+            "# 普通函数 vs Lambda",
+            "add = lambda a, b: a + b # 替代了 def add(a,b): return a+b"
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 3.98,
+            "w": 5.56,
+            "h": 0.78
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "title_guess": "从函数到模块：代码的“工具箱”",
+      "notes": "学完了函数，我们来看看更高层次的代码组织方式——模块。简单来说，一个.py文件就是一个模块。它就像一个工具箱，里面可以装着各种函数、变量和类。使用模块可以实现文件级别的代码复用，避免命名冲突，并让大型项目的结构更加清晰。",
+      "blocks": [
+        {
+          "text": "从函数到模块：代码的“工具箱”",
+          "lines": [
+            "从函数到模块：代码的“工具箱”"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.59,
+            "w": 6.24,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "01 核心定义：什么是模块？\n一个 .py 文件就是一个模块，可包含函数、类、变量及可执行代码。",
+          "lines": [
+            "01 核心定义：什么是模块？",
+            "一个 .py 文件就是一个模块，可包含函数、类、变量及可执行代码。"
+          ],
+          "pos": {
+            "x": 1.94,
+            "y": 1.9,
+            "w": 5.0,
+            "h": 1.06
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "02 核心价值：为什么用模块？\n• 更高复用：实现文件级代码复用\n• 避免冲突：隔离命名空间\n• 结构清晰：利于大型项目协作维护",
+          "lines": [
+            "02 核心价值：为什么用模块？",
+            "• 更高复用：实现文件级代码复用",
+            "• 避免冲突：隔离命名空间",
+            "• 结构清晰：利于大型项目协作维护"
+          ],
+          "pos": {
+            "x": 1.94,
+            "y": 3.57,
+            "w": 5.0,
+            "h": 1.41
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "💡 核心洞察\n模块是组织代码的更高层级，让你的编程工作从“零散零件”升级为“标准化组件”。",
+          "lines": [
+            "💡 核心洞察",
+            "模块是组织代码的更高层级，让你的编程工作从“零散零件”升级为“标准化组件”。"
+          ],
+          "pos": {
+            "x": 7.85,
+            "y": 5.3,
+            "w": 4.44,
+            "h": 1.08
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "03 形象类比\n函数是单个工具（螺丝刀），模块是装满工具的工具箱。",
+          "lines": [
+            "03 形象类比",
+            "函数是单个工具（螺丝刀），模块是装满工具的工具箱。"
+          ],
+          "pos": {
+            "x": 1.94,
+            "y": 5.62,
+            "w": 5.0,
+            "h": 0.71
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 11,
+      "title_guess": "如何制作和使用自己的工具盒？",
+      "notes": "创建模块非常简单，把代码保存成.py文件就行。使用模块则需要用到import语句。我们可以导入整个模块，也可以只导入模块中的特定函数或变量，还可以给模块起一个别名，让代码更简洁。",
+      "blocks": [
+        {
+          "text": "如何制作和使用自己的工具盒？",
+          "lines": [
+            "如何制作和使用自己的工具盒？"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.58,
+            "w": 5.85,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "01 创建模块：保存为 .py 文件",
+          "lines": [
+            "01 创建模块：保存为 .py 文件"
+          ],
+          "pos": {
+            "x": 1.46,
+            "y": 2.09,
+            "w": 4.58,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "02 使用模块：Import 语句三法",
+          "lines": [
+            "02 使用模块：Import 语句三法"
+          ],
+          "pos": {
+            "x": 7.85,
+            "y": 2.09,
+            "w": 4.58,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "将功能代码封装并保存为 .py 后缀文件，即可创建自定义模块。以创建数学工具盒为例：",
+          "lines": [
+            "将功能代码封装并保存为 .py 后缀文件，即可创建自定义模块。以创建数学工具盒为例："
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 2.66,
+            "w": 5.28,
+            "h": 0.52
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "方法一：导入整个模块 (最通用)",
+          "lines": [
+            "方法一：导入整个模块 (最通用)"
+          ],
+          "pos": {
+            "x": 7.22,
+            "y": 2.67,
+            "w": 5.28,
+            "h": 0.28
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "import math_operations\nprint(math_operations.PI) # 3.14159",
+          "lines": [
+            "import math_operations",
+            "print(math_operations.PI) # 3.14159"
+          ],
+          "pos": {
+            "x": 7.36,
+            "y": 3.28,
+            "w": 5.0,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        },
+        {
+          "text": "方法二：导入并指定别名 (更简洁)",
+          "lines": [
+            "方法二：导入并指定别名 (更简洁)"
+          ],
+          "pos": {
+            "x": 7.22,
+            "y": 4.06,
+            "w": 5.28,
+            "h": 0.28
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "# math_operations.py (文件名即模块名)\nPI = 3.14159 # 定义常量\ndef add(a, b): return a + b\ndef circle_area(r): return PI * r * r\nif __name__ == \"__main__\":\nprint(\"This is the math module.\")",
+          "lines": [
+            "# math_operations.py (文件名即模块名)",
+            "PI = 3.14159 # 定义常量",
+            "def add(a, b): return a + b",
+            "def circle_area(r): return PI * r * r",
+            "if __name__ == \"__main__\":",
+            "print(\"This is the math module.\")"
+          ],
+          "pos": {
+            "x": 0.97,
+            "y": 4.16,
+            "w": 5.0,
+            "h": 1.55
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "import math_operations as mo\nprint(mo.add(2, 3)) # 5",
+          "lines": [
+            "import math_operations as mo",
+            "print(mo.add(2, 3)) # 5"
+          ],
+          "pos": {
+            "x": 7.36,
+            "y": 4.67,
+            "w": 5.0,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        },
+        {
+          "text": "方法三：导入特定成员 (最灵活)",
+          "lines": [
+            "方法三：导入特定成员 (最灵活)"
+          ],
+          "pos": {
+            "x": 7.22,
+            "y": 5.44,
+            "w": 5.28,
+            "h": 0.28
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "from math_operations import PI\nprint(PI) # 3.14159",
+          "lines": [
+            "from math_operations import PI",
+            "print(PI) # 3.14159"
+          ],
+          "pos": {
+            "x": 7.36,
+            "y": 6.06,
+            "w": 5.0,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "import math_operations\nprint(math_operations.PI) # 3.14159",
+          "lines": [
+            "import math_operations",
+            "print(math_operations.PI) # 3.14159"
+          ],
+          "pos": {
+            "x": 7.36,
+            "y": 3.28,
+            "w": 5.0,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        },
+        {
+          "text": "# math_operations.py (文件名即模块名)\nPI = 3.14159 # 定义常量\ndef add(a, b): return a + b\ndef circle_area(r): return PI * r * r\nif __name__ == \"__main__\":\nprint(\"This is the math module.\")",
+          "lines": [
+            "# math_operations.py (文件名即模块名)",
+            "PI = 3.14159 # 定义常量",
+            "def add(a, b): return a + b",
+            "def circle_area(r): return PI * r * r",
+            "if __name__ == \"__main__\":",
+            "print(\"This is the math module.\")"
+          ],
+          "pos": {
+            "x": 0.97,
+            "y": 4.16,
+            "w": 5.0,
+            "h": 1.55
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "import math_operations as mo\nprint(mo.add(2, 3)) # 5",
+          "lines": [
+            "import math_operations as mo",
+            "print(mo.add(2, 3)) # 5"
+          ],
+          "pos": {
+            "x": 7.36,
+            "y": 4.67,
+            "w": 5.0,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        },
+        {
+          "text": "from math_operations import PI\nprint(PI) # 3.14159",
+          "lines": [
+            "from math_operations import PI",
+            "print(PI) # 3.14159"
+          ],
+          "pos": {
+            "x": 7.36,
+            "y": 6.06,
+            "w": 5.0,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "title_guess": "Python生态的核心力量",
+      "notes": "Python的强大之处在于其丰富的库生态。标准库是Python自带的工具集，开箱即用。而海量的第三方库则极大地扩展了Python的能力，覆盖了数据分析、Web开发等各个领域。学会使用这些库，就是站在巨人的肩膀上编程。",
+      "blocks": [
+        {
+          "text": "import random # 导入随机数模块\nprint(random.choice(['A', 'B', 'C']))",
+          "lines": [
+            "import random # 导入随机数模块",
+            "print(random.choice(['A', 'B', 'C']))"
+          ],
+          "pos": {
+            "x": 0.16,
+            "y": 0.17,
+            "w": 5.65,
+            "h": 0.49
+          },
+          "depth": 1,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        },
+        {
+          "text": "pip install requests # 安装库\nimport requests; requests.get('https://python.org')",
+          "lines": [
+            "pip install requests # 安装库",
+            "import requests; requests.get('https://python.org')"
+          ],
+          "pos": {
+            "x": 0.16,
+            "y": 0.17,
+            "w": 5.65,
+            "h": 0.49
+          },
+          "depth": 1,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "slash_comment"
+          ]
+        },
+        {
+          "text": "Python生态的核心力量\n开箱即用的标准工具 + 无限扩展的社区智慧",
+          "lines": [
+            "Python生态的核心力量",
+            "开箱即用的标准工具 + 无限扩展的社区智慧"
+          ],
+          "pos": {
+            "x": 0.04,
+            "y": 0.36,
+            "w": 4.64,
+            "h": 0.66
+          },
+          "depth": 1,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "站在巨人的肩膀上：标准库与第三方库",
+          "lines": [
+            "站在巨人的肩膀上：标准库与第三方库"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.58,
+            "w": 7.1,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "标准库 (Standard Library)",
+          "lines": [
+            "标准库 (Standard Library)"
+          ],
+          "pos": {
+            "x": 7.01,
+            "y": 2.1,
+            "w": 5.28,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "安装时自带的模块集合，无需额外安装，开箱即用。常用：math, random, json等。",
+          "lines": [
+            "安装时自带的模块集合，无需额外安装，开箱即用。常用：math, random, json等。"
+          ],
+          "pos": {
+            "x": 6.46,
+            "y": 2.6,
+            "w": 5.83,
+            "h": 0.62
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "第三方库 (Third-Party Libraries)",
+          "lines": [
+            "第三方库 (Third-Party Libraries)"
+          ],
+          "pos": {
+            "x": 7.01,
+            "y": 4.81,
+            "w": 5.28,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "社区贡献的扩展库，需pip安装。常用：pandas(数据), requests(网络), django(Web)。",
+          "lines": [
+            "社区贡献的扩展库，需pip安装。常用：pandas(数据), requests(网络), django(Web)。"
+          ],
+          "pos": {
+            "x": 6.46,
+            "y": 5.31,
+            "w": 5.83,
+            "h": 0.62
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "import random # 导入随机数模块\nprint(random.choice(['A', 'B', 'C']))",
+          "lines": [
+            "import random # 导入随机数模块",
+            "print(random.choice(['A', 'B', 'C']))"
+          ],
+          "pos": {
+            "x": 0.16,
+            "y": 0.17,
+            "w": 5.65,
+            "h": 0.49
+          },
+          "depth": 1,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        },
+        {
+          "text": "pip install requests # 安装库\nimport requests; requests.get('https://python.org')",
+          "lines": [
+            "pip install requests # 安装库",
+            "import requests; requests.get('https://python.org')"
+          ],
+          "pos": {
+            "x": 0.16,
+            "y": 0.17,
+            "w": 5.65,
+            "h": 0.49
+          },
+          "depth": 1,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "slash_comment"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "title_guess": "本章总结：回顾与要点",
+      "notes": "让我们来回顾一下本章的核心要点。我们学习了函数的定义、参数、返回值和作用域，以及lambda表达式。我们还了解了模块的概念，如何创建和使用模块，以及强大的标准库和第三方库。核心思想就是通过模块化和复用，编写出更高质量的代码。",
+      "blocks": [
+        {
+          "text": "本章总结：回顾与要点",
+          "lines": [
+            "本章总结：回顾与要点"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.59,
+            "w": 4.46,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "核心：函数 (Function)",
+          "lines": [
+            "核心：函数 (Function)"
+          ],
+          "pos": {
+            "x": 1.04,
+            "y": 3.07,
+            "w": 3.28,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "结构：模块 (Module)",
+          "lines": [
+            "结构：模块 (Module)"
+          ],
+          "pos": {
+            "x": 5.03,
+            "y": 3.07,
+            "w": 3.28,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "工具：库 (Library)",
+          "lines": [
+            "工具：库 (Library)"
+          ],
+          "pos": {
+            "x": 9.01,
+            "y": 3.07,
+            "w": 3.28,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "• 定义：使用 def 关键字\n• 参数：位置/关键字/默认/可变\n• 作用域：区分局部与全局变量\n• 特殊：Lambda 匿名函数",
+          "lines": [
+            "• 定义：使用 def 关键字",
+            "• 参数：位置/关键字/默认/可变",
+            "• 作用域：区分局部与全局变量",
+            "• 特殊：Lambda 匿名函数"
+          ],
+          "pos": {
+            "x": 1.04,
+            "y": 3.95,
+            "w": 3.28,
+            "h": 1.12
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "• 本质：一个 .py 文件即一个模块\n• 导入：使用 import 语句\n• 作用：组织代码、封装功能\n• 优势：避免命名冲突，便于维护",
+          "lines": [
+            "• 本质：一个 .py 文件即一个模块",
+            "• 导入：使用 import 语句",
+            "• 作用：组织代码、封装功能",
+            "• 优势：避免命名冲突，便于维护"
+          ],
+          "pos": {
+            "x": 5.03,
+            "y": 3.95,
+            "w": 3.28,
+            "h": 1.12
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "• 标准库：随Python安装，开箱即用\n• 第三方库：需 pip 安装扩展功能\n• 核心价值：避免重复造轮子\n• 场景：数据处理、Web开发等",
+          "lines": [
+            "• 标准库：随Python安装，开箱即用",
+            "• 第三方库：需 pip 安装扩展功能",
+            "• 核心价值：避免重复造轮子",
+            "• 场景：数据处理、Web开发等"
+          ],
+          "pos": {
+            "x": 9.01,
+            "y": 3.95,
+            "w": 3.28,
+            "h": 1.12
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "核心思想：将复杂问题拆解为小模块，通过函数和库实现代码复用，这是编写高质量代码的关键。",
+          "lines": [
+            "核心思想：将复杂问题拆解为小模块，通过函数和库实现代码复用，这是编写高质量代码的关键。"
+          ],
+          "pos": {
+            "x": 1.88,
+            "y": 6.31,
+            "w": 10.42,
+            "h": 0.29
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 14,
+      "title_guess": "💡 学习小贴士：动手敲代码是掌握编程的最佳捷径，记得边写边思考代码逻辑哦！",
+      "notes": "理论学习之后，实践是巩固知识的最好方式。这里有几个练习题，包括温度转换、创建模块以及使用标准库编写小游戏。希望大家能动手尝试，真正掌握本章的内容。",
+      "blocks": [
+        {
+          "text": "💡 学习小贴士：动手敲代码是掌握编程的最佳捷径，记得边写边思考代码逻辑哦！",
+          "lines": [
+            "💡 学习小贴士：动手敲代码是掌握编程的最佳捷径，记得边写边思考代码逻辑哦！"
+          ],
+          "pos": {
+            "x": 0.0,
+            "y": 0.12,
+            "w": 13.33,
+            "h": 0.32
+          },
+          "depth": 1,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "动手实践：练习与思考",
+          "lines": [
+            "动手实践：练习与思考"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.56,
+            "w": 4.46,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "01 温度转换\n编写两个函数：摄氏度转华氏度(C*9/5+32) 与 反向转换，实现温度的双向换算。",
+          "lines": [
+            "01 温度转换",
+            "编写两个函数：摄氏度转华氏度(C*9/5+32) 与 反向转换，实现温度的双向换算。"
+          ],
+          "pos": {
+            "x": 2.5,
+            "y": 2.4,
+            "w": 3.75,
+            "h": 1.04
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "02 个人信息收集\n定义函数构建个人信息字典，参数包含名、姓及可选年龄，无年龄则不显示该键。",
+          "lines": [
+            "02 个人信息收集",
+            "定义函数构建个人信息字典，参数包含名、姓及可选年龄，无年龄则不显示该键。"
+          ],
+          "pos": {
+            "x": 8.47,
+            "y": 2.4,
+            "w": 3.75,
+            "h": 1.04
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "03 创建模块\n将温度转换函数保存为 temperature.py，在新文件中导入并调用，体验模块化编程。",
+          "lines": [
+            "03 创建模块",
+            "将温度转换函数保存为 temperature.py，在新文件中导入并调用，体验模块化编程。"
+          ],
+          "pos": {
+            "x": 2.5,
+            "y": 5.04,
+            "w": 3.75,
+            "h": 1.04
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "04 猜数字游戏\n使用 random 模块生成1-100的随机数，编写逻辑让用户循环猜测直到猜对。",
+          "lines": [
+            "04 猜数字游戏",
+            "使用 random 模块生成1-100的随机数，编写逻辑让用户循环猜测直到猜对。"
+          ],
+          "pos": {
+            "x": 8.47,
+            "y": 5.04,
+            "w": 3.75,
+            "h": 1.04
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 15,
+      "title_guess": "Q & A",
+      "notes": "本章的内容就到这里。感谢大家的聆听！现在是提问环节，欢迎大家就本章内容提出任何疑问，我们一起交流探讨。",
+      "blocks": [
+        {
+          "text": "Q & A",
+          "lines": [
+            "Q & A"
+          ],
+          "pos": {
+            "x": 5.52,
+            "y": 2.42,
+            "w": 2.3,
+            "h": 1.0
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "再接再厉！",
+          "lines": [
+            "再接再厉！"
+          ],
+          "pos": {
+            "x": 5.41,
+            "y": 4.2,
+            "w": 2.51,
+            "h": 0.63
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "欢迎提出疑问与建议，让我们一起交流探讨技术细节，共同进步",
+          "lines": [
+            "欢迎提出疑问与建议，让我们一起交流探讨技术细节，共同进步"
+          ],
+          "pos": {
+            "x": 1.81,
+            "y": 5.24,
+            "w": 9.72,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    }
+  ]
+}

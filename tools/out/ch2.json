@@ -1,0 +1,1777 @@
+{
+  "chapter": 2,
+  "name": "控制逻辑流",
+  "subtitle": "条件分支、循环结构、推导式",
+  "source": "第二章-Python控制逻辑流教程.pptx",
+  "slide_count": 12,
+  "slides": [
+    {
+      "n": 1,
+      "title_guess": "Python控制逻辑流进阶技能",
+      "notes": "大家好，欢迎来到本次Python教程的第二章——控制逻辑流。在这一章中，我们将深入探讨Python中用于控制程序执行流程的核心结构，包括条件分支、循环结构以及一些进阶技巧。本PPT采用卡片式设计，方便大家快速查阅各个知识点，希望能帮助大家更好地掌握这些重要的编程概念。",
+      "blocks": [
+        {
+          "text": "Python控制逻辑流进阶技能",
+          "lines": [
+            "Python控制逻辑流进阶技能"
+          ],
+          "pos": {
+            "x": 3.56,
+            "y": 2.5,
+            "w": 6.21,
+            "h": 0.69
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "第二章 · 控制逻辑流 — 点击卡片展开知识点速查",
+          "lines": [
+            "第二章 · 控制逻辑流 — 点击卡片展开知识点速查"
+          ],
+          "pos": {
+            "x": 3.69,
+            "y": 3.69,
+            "w": 5.96,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 2,
+      "title_guess": "目录",
+      "notes": "本次教程将分为三个主要部分。首先，我们会学习条件分支，包括最基础的if语句、简洁的三元表达式以及Python 3.10+引入的模式匹配。接着，我们将深入循环结构，探讨for循环和while循环的使用方法，以及如何通过关键字控制循环流程。最后，我们会介绍一些进阶技巧，如推导式的高级用法、嵌套循环的应用以及Python中特殊的Truthy和Falsy值概念。",
+      "blocks": [
+        {
+          "text": "目录",
+          "lines": [
+            "目录"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.56,
+            "w": 1.01,
+            "h": 0.69
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "01",
+          "lines": [
+            "01"
+          ],
+          "pos": {
+            "x": 3.33,
+            "y": 2.37,
+            "w": 0.83,
+            "h": 0.4
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "02",
+          "lines": [
+            "02"
+          ],
+          "pos": {
+            "x": 7.36,
+            "y": 2.37,
+            "w": 0.83,
+            "h": 0.4
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "03",
+          "lines": [
+            "03"
+          ],
+          "pos": {
+            "x": 11.39,
+            "y": 2.37,
+            "w": 0.83,
+            "h": 0.4
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "条件分支",
+          "lines": [
+            "条件分支"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 2.97,
+            "w": 3.06,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "循环结构",
+          "lines": [
+            "循环结构"
+          ],
+          "pos": {
+            "x": 5.14,
+            "y": 2.97,
+            "w": 3.06,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "进阶技巧",
+          "lines": [
+            "进阶技巧"
+          ],
+          "pos": {
+            "x": 9.17,
+            "y": 2.97,
+            "w": 3.06,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "if/elif/else 条件语句\n三元表达式与条件赋值",
+          "lines": [
+            "if/elif/else 条件语句",
+            "三元表达式与条件赋值"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 3.74,
+            "w": 3.06,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "for循环与遍历迭代\nwhile循环与循环控制",
+          "lines": [
+            "for循环与遍历迭代",
+            "while循环与循环控制"
+          ],
+          "pos": {
+            "x": 5.14,
+            "y": 3.74,
+            "w": 3.06,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "推导式与条件结合\n嵌套循环与Truthy/Falsy值",
+          "lines": [
+            "推导式与条件结合",
+            "嵌套循环与Truthy/Falsy值"
+          ],
+          "pos": {
+            "x": 9.17,
+            "y": 3.74,
+            "w": 3.06,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 3,
+      "title_guess": "01 条件分支",
+      "notes": "现在，让我们进入第一部分：条件分支。条件分支是编程中最基础也是最重要的概念之一，它允许程序根据不同的条件执行不同的代码块，从而实现程序的逻辑判断能力。",
+      "blocks": [
+        {
+          "text": "01 条件分支",
+          "lines": [
+            "01 条件分支"
+          ],
+          "pos": {
+            "x": 5.16,
+            "y": 2.67,
+            "w": 3.01,
+            "h": 0.78
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "Conditional Branching",
+          "lines": [
+            "Conditional Branching"
+          ],
+          "pos": {
+            "x": 5.01,
+            "y": 4.0,
+            "w": 3.32,
+            "h": 0.33
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 4,
+      "title_guess": "if/elif/else 条件语句",
+      "notes": "最基础的条件分支结构是if/elif/else语句。if语句是入口，当条件满足时执行相应代码。如果if的条件不满足，程序会依次检查每个elif的条件，一旦找到满足的条件，就执行对应的代码块。如果所有if和elif的条件都不满足，程序会执行else块中的代码。这个结构非常灵活，可以处理多种情况的判断。",
+      "blocks": [
+        {
+          "text": "if/elif/else 条件语句",
+          "lines": [
+            "if/elif/else 条件语句"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.56,
+            "w": 4.43,
+            "h": 0.69
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "demo.py - Python",
+          "lines": [
+            "demo.py - Python"
+          ],
+          "pos": {
+            "x": 7.36,
+            "y": 1.64,
+            "w": 4.44,
+            "h": 0.19
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "if 语句 (条件入口)",
+          "lines": [
+            "if 语句 (条件入口)"
+          ],
+          "pos": {
+            "x": 1.67,
+            "y": 1.71,
+            "w": 4.72,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "用于检查一个条件是否为真，如果为真，则执行其内部的代码块。",
+          "lines": [
+            "用于检查一个条件是否为真，如果为真，则执行其内部的代码块。"
+          ],
+          "pos": {
+            "x": 1.67,
+            "y": 2.12,
+            "w": 4.72,
+            "h": 0.62
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "x = 10\nif  x >  0:\n    print(\"x是正数\")\nelif x ==0:\n    print(\"x是零\")\nelse:\n    print(\"x是负数\")",
+          "lines": [
+            "x = 10",
+            "if  x >  0:",
+            "    print(\"x是正数\")",
+            "elif x ==0:",
+            "    print(\"x是零\")",
+            "else:",
+            "    print(\"x是负数\")"
+          ],
+          "pos": {
+            "x": 7.36,
+            "y": 3.08,
+            "w": 4.44,
+            "h": 1.9
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "6A9955",
+            "CCCCCC",
+            "CE9178"
+          ],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "elif 语句 (条件分支)",
+          "lines": [
+            "elif 语句 (条件分支)"
+          ],
+          "pos": {
+            "x": 1.67,
+            "y": 3.37,
+            "w": 4.72,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "else if的缩写，用于在if条件不成立时检查另一个条件，可存在多个。",
+          "lines": [
+            "else if的缩写，用于在if条件不成立时检查另一个条件，可存在多个。"
+          ],
+          "pos": {
+            "x": 1.67,
+            "y": 3.78,
+            "w": 4.72,
+            "h": 0.62
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "else 语句 (默认分支)",
+          "lines": [
+            "else 语句 (默认分支)"
+          ],
+          "pos": {
+            "x": 1.67,
+            "y": 5.04,
+            "w": 4.72,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "当所有if和elif条件都不成立时执行的代码块，它是可选的。",
+          "lines": [
+            "当所有if和elif条件都不成立时执行的代码块，它是可选的。"
+          ],
+          "pos": {
+            "x": 1.67,
+            "y": 5.45,
+            "w": 4.72,
+            "h": 0.62
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "x = 10\nif  x >  0:\n    print(\"x是正数\")\nelif x ==0:\n    print(\"x是零\")\nelse:\n    print(\"x是负数\")",
+          "lines": [
+            "x = 10",
+            "if  x >  0:",
+            "    print(\"x是正数\")",
+            "elif x ==0:",
+            "    print(\"x是零\")",
+            "else:",
+            "    print(\"x是负数\")"
+          ],
+          "pos": {
+            "x": 7.36,
+            "y": 3.08,
+            "w": 4.44,
+            "h": 1.9
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "6A9955",
+            "CCCCCC",
+            "CE9178"
+          ],
+          "defects": [
+            "tight_equals"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "title_guess": "三元表达式与条件赋值",
+      "notes": "对于简单的条件判断，我们可以使用三元表达式来简化代码。它的语法非常直观，先写满足条件时的值，然后是if条件，最后是不满足条件时的值。\n将三元表达式的结果赋值给变量，就构成了条件赋值。这种写法让代码更加简洁明了，尤其适合处理简单的二选一情况。",
+      "blocks": [
+        {
+          "text": "三元表达式与条件赋值",
+          "lines": [
+            "三元表达式与条件赋值"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.56,
+            "w": 5.01,
+            "h": 0.69
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "三元表达式 (Ternary Expression)",
+          "lines": [
+            "三元表达式 (Ternary Expression)"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 1.89,
+            "w": 5.0,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "条件赋值 (Conditional Assignment)",
+          "lines": [
+            "条件赋值 (Conditional Assignment)"
+          ],
+          "pos": {
+            "x": 7.22,
+            "y": 1.89,
+            "w": 5.0,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "一种简洁的条件判断写法，将简单的 if-else 结构浓缩为一行代码，提升代码可读性与简洁度。",
+          "lines": [
+            "一种简洁的条件判断写法，将简单的 if-else 结构浓缩为一行代码，提升代码可读性与简洁度。"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 2.49,
+            "w": 5.0,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "将三元表达式的计算结果直接赋值给变量，是三元表达式最常见、最实用的应用场景。",
+          "lines": [
+            "将三元表达式的计算结果直接赋值给变量，是三元表达式最常见、最实用的应用场景。"
+          ],
+          "pos": {
+            "x": 7.22,
+            "y": 2.49,
+            "w": 5.0,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "# 语法格式\nvalue_if_true if condition else value_if_false\n# 示例：判断正负\nresult = \"Positive\" if x > 0 else \"Negative\"",
+          "lines": [
+            "# 语法格式",
+            "value_if_true if condition else value_if_false",
+            "# 示例：判断正负",
+            "result = \"Positive\" if x > 0 else \"Negative\""
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 3.67,
+            "w": 4.72,
+            "h": 0.86
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "FF6464",
+            "FFA500",
+            "FFFFFF"
+          ],
+          "defects": [
+            "tight_equals",
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "# 场景：根据状态设置变量\nis_active =True\nstatus =\"Active\" if is_active else \"Inactive\"\n# 输出: Active",
+          "lines": [
+            "# 场景：根据状态设置变量",
+            "is_active =True",
+            "status =\"Active\" if is_active else \"Inactive\"",
+            "# 输出: Active"
+          ],
+          "pos": {
+            "x": 7.36,
+            "y": 3.67,
+            "w": 4.72,
+            "h": 0.86
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "00FF00",
+            "FF6464",
+            "FFA500"
+          ],
+          "defects": [
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "核心优势：相比传统的 if-else 语句，三元表达式在处理简单二选一逻辑时，能减少代码行数，使逻辑更加紧凑直观。",
+          "lines": [
+            "核心优势：相比传统的 if-else 语句，三元表达式在处理简单二选一逻辑时，能减少代码行数，使逻辑更加紧凑直观。"
+          ],
+          "pos": {
+            "x": 1.53,
+            "y": 6.11,
+            "w": 10.83,
+            "h": 0.28
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "CCCCCC"
+          ]
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "# 语法格式\nvalue_if_true if condition else value_if_false\n# 示例：判断正负\nresult = \"Positive\" if x > 0 else \"Negative\"",
+          "lines": [
+            "# 语法格式",
+            "value_if_true if condition else value_if_false",
+            "# 示例：判断正负",
+            "result = \"Positive\" if x > 0 else \"Negative\""
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 3.67,
+            "w": 4.72,
+            "h": 0.86
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "FF6464",
+            "FFA500",
+            "FFFFFF"
+          ],
+          "defects": [
+            "tight_equals",
+            "chinese_punct_in_code"
+          ]
+        },
+        {
+          "text": "# 场景：根据状态设置变量\nis_active =True\nstatus =\"Active\" if is_active else \"Inactive\"\n# 输出: Active",
+          "lines": [
+            "# 场景：根据状态设置变量",
+            "is_active =True",
+            "status =\"Active\" if is_active else \"Inactive\"",
+            "# 输出: Active"
+          ],
+          "pos": {
+            "x": 7.36,
+            "y": 3.67,
+            "w": 4.72,
+            "h": 0.86
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "00FF00",
+            "FF6464",
+            "FFA500"
+          ],
+          "defects": [
+            "chinese_punct_in_code"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "title_guess": "02 循环结构",
+      "notes": "接下来，我们进入第二部分：循环结构。循环是编程中用于重复执行一段代码的强大工具，它能帮助我们高效地处理重复性任务，比如遍历列表、计算累加和等。Python主要提供了两种循环结构：for循环和while循环。",
+      "blocks": [
+        {
+          "text": "02 循环结构",
+          "lines": [
+            "02 循环结构"
+          ],
+          "pos": {
+            "x": 5.31,
+            "y": 2.99,
+            "w": 2.71,
+            "h": 0.69
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "Loop Structures",
+          "lines": [
+            "Loop Structures"
+          ],
+          "pos": {
+            "x": 5.47,
+            "y": 4.14,
+            "w": 2.39,
+            "h": 0.33
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "高效处理重复任务 · For & While",
+          "lines": [
+            "高效处理重复任务 · For & While"
+          ],
+          "pos": {
+            "x": 5.29,
+            "y": 4.72,
+            "w": 2.75,
+            "h": 0.28
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 7,
+      "title_guess": "for循环与遍历迭代",
+      "notes": "for循环是Python中最常用的循环结构。它的核心是遍历。我们可以直接遍历列表、字符串等数据。\n同时，Python提供了一些非常实用的内置函数来增强for循环的功能。比如，range函数可以让我们轻松地执行指定次数的循环；enumerate函数可以在遍历元素的同时获取其索引；而zip函数则可以让我们同时遍历多个列表，非常方便。",
+      "blocks": [
+        {
+          "text": "for循环与遍历迭代",
+          "lines": [
+            "for循环与遍历迭代"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.56,
+            "w": 4.18,
+            "h": 0.69
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "核心概念\n遍历可迭代对象（列表、字符串等），依次取出元素并执行代码块。",
+          "lines": [
+            "核心概念",
+            "遍历可迭代对象（列表、字符串等），依次取出元素并执行代码块。"
+          ],
+          "pos": {
+            "x": 1.53,
+            "y": 1.61,
+            "w": 4.72,
+            "h": 0.94
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "Code Example / main.py",
+          "lines": [
+            "Code Example / main.py"
+          ],
+          "pos": {
+            "x": 7.08,
+            "y": 1.64,
+            "w": 5.28,
+            "h": 0.19
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "# 1. 遍历列表\nfruits= [\"apple\",\"banana\"]\nfor fruit in fruits: \nprint(fruit)\n# 2. 使用 range() 生成数字\nfor i in range(5): print(i)\n# 3. enumerate 获取索引\nfor idx, fruit in enumerate(fruits):\nprint(f\"Index: {idx}”)\n# 4. zip 并行遍历\nfor name, score in zip(names, scores):\nprint(f\"{name}: {score}\")",
+          "lines": [
+            "# 1. 遍历列表",
+            "fruits= [\"apple\",\"banana\"]",
+            "for fruit in fruits: ",
+            "print(fruit)",
+            "# 2. 使用 range() 生成数字",
+            "for i in range(5): print(i)",
+            "# 3. enumerate 获取索引",
+            "for idx, fruit in enumerate(fruits):",
+            "print(f\"Index: {idx}”)",
+            "# 4. zip 并行遍历",
+            "for name, score in zip(names, scores):",
+            "print(f\"{name}: {score}\")"
+          ],
+          "pos": {
+            "x": 8.18,
+            "y": 2.42,
+            "w": 4.18,
+            "h": 3.08
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "B5CEA8",
+            "CE9178",
+            "DCDCAA",
+            "FFFFFF"
+          ],
+          "defects": [
+            "smart_quote",
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "range() 生成序列\n生成数字序列，常用于指定循环次数。",
+          "lines": [
+            "range() 生成序列",
+            "生成数字序列，常用于指定循环次数。"
+          ],
+          "pos": {
+            "x": 1.53,
+            "y": 3.03,
+            "w": 4.72,
+            "h": 0.6
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "enumerate() 获取索引\n遍历的同时获取元素的索引值。",
+          "lines": [
+            "enumerate() 获取索引",
+            "遍历的同时获取元素的索引值。"
+          ],
+          "pos": {
+            "x": 1.53,
+            "y": 4.14,
+            "w": 4.72,
+            "h": 0.6
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "zip() 并行遍历\n将多个可迭代对象打包，同时遍历。",
+          "lines": [
+            "zip() 并行遍历",
+            "将多个可迭代对象打包，同时遍历。"
+          ],
+          "pos": {
+            "x": 1.53,
+            "y": 5.26,
+            "w": 4.72,
+            "h": 0.6
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "# 1. 遍历列表\nfruits= [\"apple\",\"banana\"]\nfor fruit in fruits: \nprint(fruit)\n# 2. 使用 range() 生成数字\nfor i in range(5): print(i)\n# 3. enumerate 获取索引\nfor idx, fruit in enumerate(fruits):\nprint(f\"Index: {idx}”)\n# 4. zip 并行遍历\nfor name, score in zip(names, scores):\nprint(f\"{name}: {score}\")",
+          "lines": [
+            "# 1. 遍历列表",
+            "fruits= [\"apple\",\"banana\"]",
+            "for fruit in fruits: ",
+            "print(fruit)",
+            "# 2. 使用 range() 生成数字",
+            "for i in range(5): print(i)",
+            "# 3. enumerate 获取索引",
+            "for idx, fruit in enumerate(fruits):",
+            "print(f\"Index: {idx}”)",
+            "# 4. zip 并行遍历",
+            "for name, score in zip(names, scores):",
+            "print(f\"{name}: {score}\")"
+          ],
+          "pos": {
+            "x": 8.18,
+            "y": 2.42,
+            "w": 4.18,
+            "h": 3.08
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "B5CEA8",
+            "CE9178",
+            "DCDCAA",
+            "FFFFFF"
+          ],
+          "defects": [
+            "smart_quote",
+            "tight_equals"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "title_guess": "while循环与循环控制",
+      "notes": "while循环与for循环不同，它不依赖于可迭代对象，而是基于一个条件来决定是否继续循环。这使得它非常适合处理不确定循环次数的场景。但使用时必须小心，确保循环条件最终会变为False，否则会陷入无限循环。此外，我们还可以使用break、continue和pass这三个关键字来更精细地控制循环的流程，让我们的程序更加灵活。",
+      "blocks": [
+        {
+          "text": "while循环与循环控制",
+          "lines": [
+            "while循环与循环控制"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.56,
+            "w": 4.76,
+            "h": 0.69
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "while 循环机制",
+          "lines": [
+            "while 循环机制"
+          ],
+          "pos": {
+            "x": 1.53,
+            "y": 1.76,
+            "w": 4.17,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        },
+        {
+          "text": "循环控制关键字",
+          "lines": [
+            "循环控制关键字"
+          ],
+          "pos": {
+            "x": 7.64,
+            "y": 1.76,
+            "w": 4.17,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "基于条件判断的循环。只要条件表达式为真，持续执行循环体。需注意在循环体内更新变量，避免无限循环。",
+          "lines": [
+            "基于条件判断的循环。只要条件表达式为真，持续执行循环体。需注意在循环体内更新变量，避免无限循环。"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 2.42,
+            "w": 5.0,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "break\n立即终止整个循环，程序跳转到循环之后的代码。",
+          "lines": [
+            "break",
+            "立即终止整个循环，程序跳转到循环之后的代码。"
+          ],
+          "pos": {
+            "x": 7.78,
+            "y": 2.42,
+            "w": 4.31,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "continue\n跳过当前迭代的剩余代码，直接进入下一次循环。",
+          "lines": [
+            "continue",
+            "跳过当前迭代的剩余代码，直接进入下一次循环。"
+          ],
+          "pos": {
+            "x": 7.78,
+            "y": 3.39,
+            "w": 4.31,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "count = 0\nwhile count < 5:\n    print(count)\n    count += 1# 避免无限循环",
+          "lines": [
+            "count = 0",
+            "while count < 5:",
+            "    print(count)",
+            "    count += 1# 避免无限循环"
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 3.55,
+            "w": 4.72,
+            "h": 0.82
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "646464",
+            "FFFFFF"
+          ],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "pass\n空语句，作为占位符使用，不执行任何操作。",
+          "lines": [
+            "pass",
+            "空语句，作为占位符使用，不执行任何操作。"
+          ],
+          "pos": {
+            "x": 7.78,
+            "y": 4.36,
+            "w": 4.31,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "💡提示：合理使用循环控制关键字能让程序逻辑更灵活，配合 while 循环需时刻警惕死循环风险。",
+          "lines": [
+            "💡提示：合理使用循环控制关键字能让程序逻辑更灵活，配合 while 循环需时刻警惕死循环风险。"
+          ],
+          "pos": {
+            "x": 0.97,
+            "y": 6.37,
+            "w": 11.39,
+            "h": 0.32
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "chinese_punct_in_code"
+          ]
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "while 循环机制",
+          "lines": [
+            "while 循环机制"
+          ],
+          "pos": {
+            "x": 1.53,
+            "y": 1.76,
+            "w": 4.17,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        },
+        {
+          "text": "count = 0\nwhile count < 5:\n    print(count)\n    count += 1# 避免无限循环",
+          "lines": [
+            "count = 0",
+            "while count < 5:",
+            "    print(count)",
+            "    count += 1# 避免无限循环"
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 3.55,
+            "w": 4.72,
+            "h": 0.82
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "646464",
+            "FFFFFF"
+          ],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "💡提示：合理使用循环控制关键字能让程序逻辑更灵活，配合 while 循环需时刻警惕死循环风险。",
+          "lines": [
+            "💡提示：合理使用循环控制关键字能让程序逻辑更灵活，配合 while 循环需时刻警惕死循环风险。"
+          ],
+          "pos": {
+            "x": 0.97,
+            "y": 6.37,
+            "w": 11.39,
+            "h": 0.32
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": [
+            "chinese_punct_in_code"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "title_guess": "PYTHON 编程",
+      "notes": "掌握了基础的条件分支和循环结构后，我们来学习一些进阶技巧。这些技巧能让你的代码更加简洁、高效，也是区分初级和高级Python程序员的关键所在。",
+      "blocks": [
+        {
+          "text": "PYTHON 编程",
+          "lines": [
+            "PYTHON 编程"
+          ],
+          "pos": {
+            "x": 0.29,
+            "y": 0.1,
+            "w": 1.09,
+            "h": 0.24
+          },
+          "depth": 1,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "03",
+          "lines": [
+            "03"
+          ],
+          "pos": {
+            "x": 6.38,
+            "y": 2.27,
+            "w": 0.57,
+            "h": 0.6
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "进阶技巧",
+          "lines": [
+            "进阶技巧"
+          ],
+          "pos": {
+            "x": 5.33,
+            "y": 2.94,
+            "w": 2.68,
+            "h": 0.93
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "ADVANCED TECHNIQUES",
+          "lines": [
+            "ADVANCED TECHNIQUES"
+          ],
+          "pos": {
+            "x": 4.69,
+            "y": 4.42,
+            "w": 3.96,
+            "h": 0.33
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": []
+    },
+    {
+      "n": 10,
+      "title_guess": "推导式与条件结合",
+      "notes": "推导式是Python的一大特色，它能让你用一行代码完成原本需要多行循环才能实现的功能。\n最常见的是列表推导式，如左图所示，它可以快速生成一个新列表，比如0到9的平方数。\n更强大的是，我们可以在推导式中加入条件判断，如中间的例子，只筛选出偶数的平方，从而在生成数据的同时进行筛选，非常高效。\n除了列表，我们还可以创建字典推导式，如右图，这在处理键值对数据时非常实用。掌握推导式，能让你的Python代码更加Pythonic。",
+      "blocks": [
+        {
+          "text": "推导式与条件结合",
+          "lines": [
+            "推导式与条件结合"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.49,
+            "w": 4.01,
+            "h": 0.69
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "Python 中一种强大的创建数据结构的简洁方式，将循环和条件判断浓缩于一行代码中，提升效率与可读性。",
+          "lines": [
+            "Python 中一种强大的创建数据结构的简洁方式，将循环和条件判断浓缩于一行代码中，提升效率与可读性。"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 1.31,
+            "w": 11.67,
+            "h": 0.31
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "列表推导式",
+          "lines": [
+            "列表推导式"
+          ],
+          "pos": {
+            "x": 1.53,
+            "y": 2.13,
+            "w": 2.78,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "结合条件筛选",
+          "lines": [
+            "结合条件筛选"
+          ],
+          "pos": {
+            "x": 5.51,
+            "y": 2.13,
+            "w": 2.78,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "字典推导式",
+          "lines": [
+            "字典推导式"
+          ],
+          "pos": {
+            "x": 9.5,
+            "y": 2.13,
+            "w": 2.78,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "# 仅保留偶数的平方\neven = [x**2 for x in range(10)\nif x % 2 == 0]\n# [0, 4, 16, 36, 64]",
+          "lines": [
+            "# 仅保留偶数的平方",
+            "even = [x**2 for x in range(10)",
+            "if x % 2 == 0]",
+            "# [0, 4, 16, 36, 64]"
+          ],
+          "pos": {
+            "x": 5.1,
+            "y": 2.69,
+            "w": 3.14,
+            "h": 1.14
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "FF79C6"
+          ],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "# 生成0-9的平方列表\nsquares = [x**2 for x in range(10)]\n# [0, 1, 4, 9, ..., 81]",
+          "lines": [
+            "# 生成0-9的平方列表",
+            "squares = [x**2 for x in range(10)]",
+            "# [0, 1, 4, 9, ..., 81]"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 2.81,
+            "w": 3.14,
+            "h": 0.92
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "FF79C6"
+          ],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "# 生成数字到平方的映射\nd = {x: x**2 for x in range(5)}\n# {0:0, 1:1, 2:4, ...}",
+          "lines": [
+            "# 生成数字到平方的映射",
+            "d = {x: x**2 for x in range(5)}",
+            "# {0:0, 1:1, 2:4, ...}"
+          ],
+          "pos": {
+            "x": 9.08,
+            "y": 2.81,
+            "w": 3.14,
+            "h": 0.92
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "FF79C6"
+          ],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "快速生成新列表，替代传统的for循环+append操作，代码更简洁。",
+          "lines": [
+            "快速生成新列表，替代传统的for循环+append操作，代码更简洁。"
+          ],
+          "pos": {
+            "x": 1.04,
+            "y": 4.13,
+            "w": 3.28,
+            "h": 0.62
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "在推导过程中加入if条件判断，直接过滤掉不符合要求的元素。",
+          "lines": [
+            "在推导过程中加入if条件判断，直接过滤掉不符合要求的元素。"
+          ],
+          "pos": {
+            "x": 5.03,
+            "y": 4.13,
+            "w": 3.28,
+            "h": 0.62
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "不仅限于列表，同样的逻辑适用于字典，快速构建键值对映射关系。",
+          "lines": [
+            "不仅限于列表，同样的逻辑适用于字典，快速构建键值对映射关系。"
+          ],
+          "pos": {
+            "x": 9.01,
+            "y": 4.13,
+            "w": 3.28,
+            "h": 0.62
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "核心优势：代码量少、执行速度快、逻辑清晰直观，是Python“优雅”哲学的体现。",
+          "lines": [
+            "核心优势：代码量少、执行速度快、逻辑清晰直观，是Python“优雅”哲学的体现。"
+          ],
+          "pos": {
+            "x": 0.97,
+            "y": 5.69,
+            "w": 11.39,
+            "h": 0.28
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "CCCCCC"
+          ]
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "# 仅保留偶数的平方\neven = [x**2 for x in range(10)\nif x % 2 == 0]\n# [0, 4, 16, 36, 64]",
+          "lines": [
+            "# 仅保留偶数的平方",
+            "even = [x**2 for x in range(10)",
+            "if x % 2 == 0]",
+            "# [0, 4, 16, 36, 64]"
+          ],
+          "pos": {
+            "x": 5.1,
+            "y": 2.69,
+            "w": 3.14,
+            "h": 1.14
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "FF79C6"
+          ],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "# 生成0-9的平方列表\nsquares = [x**2 for x in range(10)]\n# [0, 1, 4, 9, ..., 81]",
+          "lines": [
+            "# 生成0-9的平方列表",
+            "squares = [x**2 for x in range(10)]",
+            "# [0, 1, 4, 9, ..., 81]"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 2.81,
+            "w": 3.14,
+            "h": 0.92
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "FF79C6"
+          ],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "# 生成数字到平方的映射\nd = {x: x**2 for x in range(5)}\n# {0:0, 1:1, 2:4, ...}",
+          "lines": [
+            "# 生成数字到平方的映射",
+            "d = {x: x**2 for x in range(5)}",
+            "# {0:0, 1:1, 2:4, ...}"
+          ],
+          "pos": {
+            "x": 9.08,
+            "y": 2.81,
+            "w": 3.14,
+            "h": 0.92
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "FF79C6"
+          ],
+          "defects": [
+            "tight_equals"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "title_guess": "嵌套循环与Truthy/Falsy",
+      "notes": "嵌套循环是处理复杂数据结构的常用手段，比如遍历一个二维列表。理解嵌套循环的执行顺序非常重要：外层循环每迭代一次，内层循环都会从头执行到尾。\n另外，理解Python中的Truthy和Falsy值概念也很关键。它允许我们在条件判断中直接使用对象本身，而无需显式地与True或False比较，这让代码更加简洁。例如，检查一个列表是否为空，只需写 if not my_list: 即可。",
+      "blocks": [
+        {
+          "text": "嵌套循环与Truthy/Falsy",
+          "lines": [
+            "嵌套循环与Truthy/Falsy"
+          ],
+          "pos": {
+            "x": 0.83,
+            "y": 0.53,
+            "w": 5.46,
+            "h": 0.69
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "嵌套循环 (Nested Loops)",
+          "lines": [
+            "嵌套循环 (Nested Loops)"
+          ],
+          "pos": {
+            "x": 1.53,
+            "y": 1.76,
+            "w": 4.17,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "布尔判断 (Truthy / Falsy)",
+          "lines": [
+            "布尔判断 (Truthy / Falsy)"
+          ],
+          "pos": {
+            "x": 7.64,
+            "y": 1.76,
+            "w": 4.17,
+            "h": 0.39
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "在一个循环内部定义另一个循环，常用于处理矩阵、嵌套列表等二维结构。外层循环执行一次，内层循环完整执行一遍。",
+          "lines": [
+            "在一个循环内部定义另一个循环，常用于处理矩阵、嵌套列表等二维结构。外层循环执行一次，内层循环完整执行一遍。"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 2.34,
+            "w": 5.0,
+            "h": 0.88
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "Python中任何对象都可被判断为True或False。\nTruthy：非零数字、非空序列/集合等。\nFalsy：0, 0.0, \"\", [], {}, None等。",
+          "lines": [
+            "Python中任何对象都可被判断为True或False。",
+            "Truthy：非零数字、非空序列/集合等。",
+            "Falsy：0, 0.0, \"\", [], {}, None等。"
+          ],
+          "pos": {
+            "x": 7.22,
+            "y": 2.34,
+            "w": 5.0,
+            "h": 0.88
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": [
+            "CCCCCC"
+          ]
+        },
+        {
+          "text": "for i in range(3):# 外层循环(行)\nfor j in range(2):\nprint(f\"i={i}, j={j}\", end=\" \")\nprint()# 换行",
+          "lines": [
+            "for i in range(3):# 外层循环(行)",
+            "for j in range(2):",
+            "print(f\"i={i}, j={j}\", end=\" \")",
+            "print()# 换行"
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 3.74,
+            "w": 4.72,
+            "h": 0.86
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "5C6370",
+            "98C379",
+            "D19A66",
+            "DCDFE4"
+          ],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "if \"Hello\":# Truthy\nprint(\"Truthy string\")\nif not[]:# 空列表是 Falsy\nprint(\"List is empty\")",
+          "lines": [
+            "if \"Hello\":# Truthy",
+            "print(\"Truthy string\")",
+            "if not[]:# 空列表是 Falsy",
+            "print(\"List is empty\")"
+          ],
+          "pos": {
+            "x": 7.36,
+            "y": 3.76,
+            "w": 4.72,
+            "h": 0.82
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "5C6370",
+            "98C379",
+            "DCDFE4"
+          ],
+          "defects": []
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "for i in range(3):# 外层循环(行)\nfor j in range(2):\nprint(f\"i={i}, j={j}\", end=\" \")\nprint()# 换行",
+          "lines": [
+            "for i in range(3):# 外层循环(行)",
+            "for j in range(2):",
+            "print(f\"i={i}, j={j}\", end=\" \")",
+            "print()# 换行"
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 3.74,
+            "w": 4.72,
+            "h": 0.86
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "5C6370",
+            "98C379",
+            "D19A66",
+            "DCDFE4"
+          ],
+          "defects": [
+            "tight_equals"
+          ]
+        },
+        {
+          "text": "if \"Hello\":# Truthy\nprint(\"Truthy string\")\nif not[]:# 空列表是 Falsy\nprint(\"List is empty\")",
+          "lines": [
+            "if \"Hello\":# Truthy",
+            "print(\"Truthy string\")",
+            "if not[]:# 空列表是 Falsy",
+            "print(\"List is empty\")"
+          ],
+          "pos": {
+            "x": 7.36,
+            "y": 3.76,
+            "w": 4.72,
+            "h": 0.82
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [
+            "5C6370",
+            "98C379",
+            "DCDFE4"
+          ],
+          "defects": []
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "title_guess": "感谢观看",
+      "notes": "本章的内容就到这里。我们回顾了条件分支、循环结构以及一些进阶技巧，这些都是Python编程的基础和核心。希望通过这次学习，大家能对Python的控制逻辑流有更深入的理解，并能熟练运用这些知识解决实际问题。感谢大家的观看！",
+      "blocks": [
+        {
+          "text": "感谢观看",
+          "lines": [
+            "感谢观看"
+          ],
+          "pos": {
+            "x": 5.66,
+            "y": 0.69,
+            "w": 2.01,
+            "h": 0.69
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "Python 核心控制流知识回顾",
+          "lines": [
+            "Python 核心控制流知识回顾"
+          ],
+          "pos": {
+            "x": 5.11,
+            "y": 1.42,
+            "w": 3.11,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "条件分支",
+          "lines": [
+            "条件分支"
+          ],
+          "pos": {
+            "x": 2.27,
+            "y": 3.02,
+            "w": 1.01,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "循环结构",
+          "lines": [
+            "循环结构"
+          ],
+          "pos": {
+            "x": 6.16,
+            "y": 3.02,
+            "w": 1.01,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "进阶技巧",
+          "lines": [
+            "进阶技巧"
+          ],
+          "pos": {
+            "x": 10.05,
+            "y": 3.02,
+            "w": 1.01,
+            "h": 0.35
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "if / elif / else 语句\n三元表达式技巧",
+          "lines": [
+            "if / elif / else 语句",
+            "三元表达式技巧"
+          ],
+          "pos": {
+            "x": 1.25,
+            "y": 3.6,
+            "w": 3.06,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "推导式与嵌套循环\nTruthy / Falsy 判断",
+          "lines": [
+            "推导式与嵌套循环",
+            "Truthy / Falsy 判断"
+          ],
+          "pos": {
+            "x": 9.03,
+            "y": 3.6,
+            "w": 3.06,
+            "h": 0.58
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        },
+        {
+          "text": "for 遍历与 while 循环\nbreak / continue / pass",
+          "lines": [
+            "for 遍历与 while 循环",
+            "break / continue / pass"
+          ],
+          "pos": {
+            "x": 5.14,
+            "y": 3.62,
+            "w": 3.06,
+            "h": 0.54
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        },
+        {
+          "text": "希望大家能对Python的控制逻辑流有更深入的理解，并能熟练运用这些知识解决实际问题。",
+          "lines": [
+            "希望大家能对Python的控制逻辑流有更深入的理解，并能熟练运用这些知识解决实际问题。"
+          ],
+          "pos": {
+            "x": 1.11,
+            "y": 5.54,
+            "w": 11.11,
+            "h": 0.31
+          },
+          "depth": 0,
+          "is_code": false,
+          "colors": []
+        }
+      ],
+      "code_blocks": [
+        {
+          "text": "for 遍历与 while 循环\nbreak / continue / pass",
+          "lines": [
+            "for 遍历与 while 循环",
+            "break / continue / pass"
+          ],
+          "pos": {
+            "x": 5.14,
+            "y": 3.62,
+            "w": 3.06,
+            "h": 0.54
+          },
+          "depth": 0,
+          "is_code": true,
+          "colors": [],
+          "defects": []
+        }
+      ]
+    }
+  ]
+}
