@@ -1,0 +1,159 @@
+/* ============================================================
+   窄屏重排
+   策略：内容重排而非整体缩放。桌面端一屏放下，窄屏允许页内纵向滚动。
+   代码块横向滚动，不缩字号——代码缩到看不清就失去意义。
+   ============================================================ */
+
+/* ---------- 平板 ---------- */
+@media (max-width: 1024px) {
+  :root {
+    --sp-6: 1.5rem;
+    --sp-7: 2rem;
+  }
+  .slide { padding: calc(var(--sp-5) + 36px) var(--sp-5) calc(var(--sp-5) + 40px); }
+  .nav-zone { display: none; }   /* 触屏上热区容易误触，交给滑动 */
+}
+
+/* ---------- 窄屏：左右分栏改为上下堆叠 ---------- */
+@media (max-width: 860px) {
+  .split {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-4);
+  }
+  .versus {
+    grid-template-columns: 1fr;
+    gap: var(--sp-3);
+  }
+  /* 竖排时 VS 分隔线转为一条水平线 */
+  .versus-divider {
+    padding: var(--sp-1) 0;
+  }
+  .versus-divider::before,
+  .versus-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .versus-divider { display: flex; align-items: center; gap: var(--sp-3); }
+
+  .cards { gap: var(--sp-3); }
+  .toc-grid { gap: var(--sp-3); }
+  .end-cards { gap: var(--sp-3); }
+}
+
+/* ---------- 手机 ---------- */
+@media (max-width: 640px) {
+  .slide {
+    padding: calc(var(--sp-4) + 34px) var(--sp-4) calc(var(--sp-5) + 36px);
+  }
+  .slide-inner { gap: var(--sp-4); }
+
+  /* 顶栏：只留必要元素 */
+  .chrome { padding: var(--sp-2) var(--sp-3); gap: var(--sp-1); }
+  .chrome-link span,
+  .chrome-chapter { display: none; }
+  .chrome-right { gap: 2px; }
+  .icon-btn { width: 32px; height: 32px; }
+  .icon-btn svg { width: 16px; height: 16px; }
+  .page-counter { font-size: 0.75rem; min-width: 3.6ch; }
+
+  /* 卡片内边距收紧 */
+  .card, .toc-item, .versus-col { padding: var(--sp-4); }
+  .card-icon { width: 32px; height: 32px; }
+  .card-icon svg { width: 17px; height: 17px; }
+
+  /* 分节页的大号数字别把标题挤出屏幕 */
+  .section-num { -webkit-text-stroke-width: 1.5px; }
+
+  /* 代码块：允许横向滚动，不缩字号 */
+  .code-body { font-size: var(--fs-code); }
+  .code-pre { padding: var(--sp-3); }
+  .code-gutter { padding: var(--sp-3) var(--sp-2) var(--sp-3) var(--sp-3); }
+
+  /* 操作按钮换行排布，避免挤成一团 */
+  .code-panel-head { flex-wrap: wrap; row-gap: var(--sp-2); }
+  .code-panel-actions { margin-left: 0; width: 100%; }
+  .btn { padding: var(--sp-1) var(--sp-2); font-size: 0.78rem; }
+
+  .term { max-height: 240px; }
+  .term-body { padding: var(--sp-3); }
+
+  /* 追踪控制条 */
+  .trace-bar { gap: var(--sp-1); }
+  .trace-range { min-width: 60px; }
+
+  /* 知识地图：窄屏改用纵向列表。780px 宽的思维导图在 390px 屏上
+     只能横向滚动，且第一眼看到的是被截断的图，不如纵向列表好读。 */
+  .km-wrap { display: none; }
+  .km-list { display: block; }
+
+  /* 总览网格更密 */
+  .overview { padding: var(--sp-4); }
+  .overview-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--sp-3); }
+
+  /* 讲解抽屉占满宽度更好读 */
+  .drawer { width: 100%; }
+
+  /* 底部提示避开浏览器手势条 */
+  .toast-host { bottom: calc(var(--sp-5) + 20px); }
+  .toast { max-width: 92vw; }
+}
+
+/* ---------- 超窄屏 ---------- */
+@media (max-width: 420px) {
+  /* 不把左右留白压到 12px：手机上文字会贴边，与其余页面的留白也不一致 */
+  .slide { padding-left: var(--sp-4); padding-right: var(--sp-4); }
+
+  /* 保留按钮文字。只留图标时「显示全部」会变成一个对勾，
+     语义完全不对（对勾通常表示确认），触屏上也没有 tooltip 可依赖。
+     收紧内边距让四个带字的按钮仍然排得下。 */
+  .btn { padding: var(--sp-1) var(--sp-2); gap: 4px; font-size: 0.72rem; }
+  .code-panel-actions { gap: 4px; }
+  .trace-bar { gap: 2px; }
+  .trace-step { min-width: 5.5ch; font-size: 0.7rem; }
+}
+
+/* ---------- 横屏手机：高度很小，压缩纵向留白 ---------- */
+@media (max-height: 520px) and (orientation: landscape) {
+  .slide { padding: calc(var(--sp-3) + 30px) var(--sp-4) var(--sp-4); }
+  .slide-inner { gap: var(--sp-3); }
+  .term { max-height: 160px; }
+}
+
+/* ---------- 宽屏：适度放大，但不无限拉伸 ---------- */
+@media (min-width: 1600px) {
+  .slide-inner { max-width: 1320px; }
+}
+
+/* ---------- 高对比度偏好 ---------- */
+@media (prefers-contrast: more) {
+  :root {
+    --border: #3d4757;
+    --border-hi: #5a6677;
+    --text-muted: #b6c2d1;
+  }
+  [data-theme="light"] {
+    --border: #a8b3bf;
+    --border-hi: #7d8896;
+    --text-muted: #3d444d;
+  }
+}
+
+/* ---------- 打印（便于学员导出留档） ---------- */
+@media print {
+  .chrome, .progress, .nav-zone, .drawer, .scrim, .overview, .toast-host,
+  .code-panel-actions, .trace-bar, .term { display: none !important; }
+  body::before { display: none; }
+  .deck { min-height: auto; }
+  .slide {
+    position: static;
+    visibility: visible !important;
+    opacity: 1 !important;
+    page-break-after: always;
+    padding: 1cm;
+  }
+  .slide:not(.is-active) { display: none; }
+  [data-anim] { opacity: 1 !important; animation: none !important; }
+  .code-body .tok { opacity: 1 !important; animation: none !important; }
+}

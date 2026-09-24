@@ -1,0 +1,368 @@
+/* ============================================================
+   代码块 / 语法高亮 / 终端 / 编辑器
+   高亮配色由 tokens.css 的 --c-* 提供（深色沿用 PPT 实测的 Dark+）
+   ============================================================ */
+
+/* ---------- 代码主体 ---------- */
+.code-body {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  font-family: var(--font-mono);
+  font-size: calc(var(--fs-code) * var(--scale-mode));
+  line-height: 1.7;
+  overflow: auto;
+  contain: content;          /* 隔离重排影响范围 */
+}
+
+/* 行号 gutter。
+   用 --text-muted 而非 --text-dim：后者在浅色主题下对比度只有约 3.4:1，
+   低于正文 4.5:1 的无障碍标准，行号会灰到看不清。 */
+.code-gutter {
+  flex-shrink: 0;
+  padding: var(--sp-4) var(--sp-3) var(--sp-4) var(--sp-4);
+  text-align: right;
+  color: var(--text-muted);
+  user-select: none;
+  background: var(--bg-code);
+  border-right: 1px solid var(--border-soft);
+  position: sticky;
+  left: 0;
+  z-index: 1;
+}
+.code-gutter span { display: block; }
+.code-gutter span.is-hot {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* 代码区 */
+.code-pre {
+  flex: 1;
+  margin: 0;
+  padding: var(--sp-4);
+  min-width: max-content;
+  white-space: pre;
+  tab-size: 4;
+  color: var(--c-text);
+  background: transparent;
+}
+
+/* 单行容器（按行揭示模式会用） */
+.code-line { display: block; min-height: 1.7em; }
+.code-line.is-hot {
+  background: var(--accent-soft);
+  box-shadow: inset 3px 0 0 var(--accent);
+  border-radius: 3px;
+}
+
+/* ---------- 语法高亮 token ---------- */
+.tok-kw        { color: var(--c-keyword); font-weight: 600; }
+.tok-str       { color: var(--c-string); }
+.tok-num       { color: var(--c-number); }
+.tok-comment   { color: var(--c-comment); font-style: italic; }
+.tok-func      { color: var(--c-func); }
+.tok-builtin   { color: var(--c-builtin); }
+.tok-class     { color: var(--c-class); }
+.tok-op        { color: var(--c-op); }
+.tok-decorator { color: var(--c-decorator); }
+.tok-param     { color: var(--c-param); }
+.tok-punct     { color: var(--c-text); opacity: 0.75; }
+.tok-plain     { color: var(--c-text); }
+.tok-error     { color: var(--c-error); text-decoration: wavy underline; }
+
+/* ---------- 代码块操作栏 ---------- */
+.code-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: all var(--dur-fast) var(--ease-soft);
+  white-space: nowrap;
+}
+.btn:hover:not(:disabled) {
+  color: var(--text);
+  border-color: var(--border-hi);
+  background: var(--bg-card-hi);
+}
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+.btn-run {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  background: var(--accent-soft);
+}
+.btn-run:hover:not(:disabled) {
+  color: var(--text-invert);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.btn-run.is-running {
+  color: var(--warn);
+  border-color: color-mix(in srgb, var(--warn) 40%, var(--border));
+  background: color-mix(in srgb, var(--warn) 12%, transparent);
+}
+.btn.is-on {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+}
+
+/* 运行中：按钮内的脉冲点 */
+.pulse-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: glowPulse 1s var(--ease-soft) infinite;
+}
+
+/* ---------- 终端输出 ---------- */
+.term {
+  border-top: 1px solid var(--border);
+  background: var(--term-bg);
+  font-family: var(--font-mono);
+  font-size: calc(var(--fs-code) * 0.95 * var(--scale-mode));
+  line-height: 1.65;
+  max-height: 320px;
+  overflow-y: auto;
+}
+.term-head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--border-soft);
+  position: sticky;
+  top: 0;
+  background: var(--term-bg);
+  z-index: 1;
+}
+.term-body {
+  padding: var(--sp-3) var(--sp-4);
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--term-text);
+  min-height: 2.4em;
+}
+/* min-height 不能少：空的 display:block 元素不产生行盒，高度为 0，
+   而程序输出里的空行（如 print 一个自身以换行结尾的字符串）正是空元素，
+   没有它这些空行会凭空消失。1.65em 与 line-height 一致，非空行不受影响。 */
+.term-line { display: block; min-height: 1.65em; }
+/* 输出者与错误行着色 */
+.term-line.is-stderr { color: var(--c-error); }
+.term-line.is-system { color: var(--text-dim); font-style: italic; }
+.term-line.is-echo   { color: var(--term-prompt); }
+
+/* 输出光标 */
+.term-caret {
+  display: inline-block;
+  width: 8px;
+  height: 1.05em;
+  vertical-align: text-bottom;
+  background: var(--accent);
+  animation: caretBlink 1s steps(1) infinite;
+}
+
+/* 输出为空时的占位 */
+.term-empty { color: var(--text-dim); font-style: italic; }
+
+/* ---------- 编辑器（textarea 叠层） ---------- */
+/* 底层 pre 显示高亮，上层 textarea 透明接收输入。
+   两者必须处于同一容器、共用完全一致的字体度量，
+   否则光标会和底层高亮错位——这是这类编辑器最常见的 bug。 */
+
+.code-area {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+}
+
+/* 编辑态：pre 转绝对定位，textarea 叠上去，两者独立滚动再同步 */
+.code-area.is-editing {
+  min-height: 160px;
+  max-height: 420px;
+}
+.code-area.is-editing > .code-pre {
+  position: absolute;
+  inset: 0;
+  overflow: auto;
+  /* 底层高亮不需要响应鼠标，事件全部交给 textarea */
+  pointer-events: none;
+}
+
+.code-area > textarea {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: var(--sp-4);
+  border: 0;
+  outline: none;
+  resize: none;
+  overflow: auto;
+  white-space: pre;
+  tab-size: 4;
+  font-family: var(--font-mono);
+  font-size: calc(var(--fs-code) * var(--scale-mode));
+  line-height: 1.7;
+  letter-spacing: 0;
+  background: transparent;
+  color: transparent;
+  caret-color: var(--accent);
+  -webkit-text-fill-color: transparent;
+  z-index: 2;
+  display: none;
+}
+.code-area.is-editing > textarea { display: block; }
+
+.code-area > textarea::selection {
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+/* 横向可滚动时的右侧渐隐提示（由 code.markOverflow 实测后加类） */
+.code-area.is-overflowing::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 36px;
+  background: linear-gradient(to right, transparent, var(--bg-code) 88%);
+  pointer-events: none;
+  z-index: 3;
+}
+/* 编辑时不显示：会盖住正在输入的文字 */
+.code-area.is-overflowing.is-editing::after { display: none; }
+
+/* 编辑态下隐藏打字光标动画，避免与真实光标重影 */
+.code-block:has(.code-area.is-editing) .caret { display: none; }
+
+/* 编辑提示条 */
+.editor-hint {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  border-top: 1px solid var(--border);
+  background: var(--bg-inset);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+.editor-hint kbd {
+  padding: 0.1em 0.4em;
+  border: 1px solid var(--border-hi);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: var(--bg-card);
+  font-size: 0.9em;
+  color: var(--text-muted);
+}
+
+/* ---------- 单步追踪播放器 ---------- */
+.trace-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  border-top: 1px solid var(--border);
+  background: var(--bg-inset);
+  flex-wrap: wrap;
+}
+.trace-step {
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  min-width: 7ch;
+  text-align: center;
+}
+.trace-range {
+  flex: 1;
+  min-width: 100px;
+  accent-color: var(--accent);
+}
+
+/* 变量监视面板 */
+.trace-vars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  padding: var(--sp-3);
+  border-top: 1px solid var(--border);
+  background: var(--bg-code);
+  min-height: 46px;
+  align-items: flex-start;
+}
+.trace-var {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 0.15rem 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--bg-inset);
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  animation: toastIn var(--dur-fast) var(--ease-out);
+}
+.trace-var-name { color: var(--c-param); }
+.trace-var-eq { color: var(--text-dim); }
+.trace-var-val { color: var(--c-string); }
+.trace-var.is-changed {
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+/* ---------- 无法运行的代码：斜纹底提示 ---------- */
+.code-panel.is-shell .code-panel-head::after {
+  content: "终端命令";
+  margin-left: var(--sp-2);
+  padding: 0.05rem 0.4rem;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--border-hi);
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+}
+
+/* 环境限制说明卡（如 requests / pip） */
+.limit-note {
+  display: flex;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px solid color-mix(in srgb, var(--warn) 35%, var(--border));
+  border-radius: var(--r-md);
+  background: color-mix(in srgb, var(--warn) 8%, transparent);
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+.limit-note svg { width: 18px; height: 18px; color: var(--warn); flex-shrink: 0; margin-top: 0.2em; }
+.limit-note strong { color: var(--text); }
+
+/* 运行时的等待遮罩（首次加载 Pyodide 才有感） */
+.run-loading {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+}
+.run-loading .spinner { width: 16px; height: 16px; border-width: 2px; }
