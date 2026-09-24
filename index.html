@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark" data-mode="self">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Python 入门教程 · 七章</title>
+<meta name="description" content="一套可交互、可运行代码的 Python 入门教程，共七章 87 页。">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/deck.css">
+<link rel="stylesheet" href="assets/css/code.css">
+<link rel="stylesheet" href="assets/css/anim.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+<link rel="stylesheet" href="assets/css/home.css">
+
+<script>
+(function () {
+  try {
+    var t = localStorage.getItem('pyt.theme');
+    if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body class="home">
+
+<header class="home-top">
+  <div class="home-brand">
+    <span class="home-logo" id="brand-icon"></span>
+    <span>Python 入门教程</span>
+  </div>
+  <div class="home-top-actions">
+    <button class="icon-btn" data-act="theme" type="button" aria-label="切换主题"></button>
+  </div>
+</header>
+
+<main class="home-main">
+
+  <section class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="hero-badge">七章 · 87 页 · 代码可直接运行</div>
+    <h1 class="hero-title">从零开始学 Python</h1>
+    <p class="hero-sub">
+      这套教程由七章课件整理而成。每一页都带讲师讲解，
+      代码可以直接修改并真实运行——不是截图，是在浏览器里跑的 Python。
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-run hero-cta" id="cta-start" href="chapter.html?ch=1">
+        <span>开始学习</span>
+      </a>
+      <button class="btn" id="cta-continue" type="button" hidden>
+        <span>继续上次进度</span>
+      </button>
+    </div>
+    <div class="hero-meta" id="hero-meta"></div>
+  </section>
+
+  <section class="chapters" aria-label="章节目录">
+    <h2 class="sr-only">章节目录</h2>
+    <div class="chapter-grid" id="chapter-grid"></div>
+  </section>
+
+  <section class="home-foot">
+    <div class="foot-card">
+      <h3>怎么用</h3>
+      <ul class="foot-list">
+        <li><kbd>←</kbd> <kbd>→</kbd> 翻页，<kbd>空格</kbd> 下一页</li>
+        <li><kbd>O</kbd> 打开本页总览，<kbd>S</kbd> 查看讲师讲解</li>
+        <li><kbd>F</kbd> 全屏，适合课堂投影</li>
+        <li>点「运行」真实执行代码，代码可以改</li>
+      </ul>
+    </div>
+    <div class="foot-card">
+      <h3>关于这套教程</h3>
+      <p>
+        原课件是七份 PPT。整理成网页时做了三件事：
+        把 PPT 备注里的讲师讲稿保留为「讲师讲解」；
+        把丢失缩进的代码逐条重新校订并实跑验证；
+        为关键概念配了可交互的动画演示。
+      </p>
+      <p class="dim" style="margin-top:var(--sp-3);font-size:var(--fs-small)">
+        Python 运行时（Pyodide）已内置，断网也能运行代码。
+      </p>
+    </div>
+  </section>
+
+  <div id="file-warning"></div>
+</main>
+
+<script src="assets/js/icons.js"></script>
+<script src="assets/js/code.js"></script>
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/mode.js"></script>
+<script src="assets/data/manifest.js"></script>
+<script src="assets/js/home.js"></script>
+</body>
+</html>
