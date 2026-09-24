@@ -1,0 +1,298 @@
+/* ============================================================
+   设计令牌
+   配色取自原 PPT 实测：代码块本就用 VS Code Dark+ 配色
+   （正文 #CCCCCC / 注释 #6A9955 / 字符串 #CE9178），
+   整体为深色底 + 霓虹辉光（青绿、紫、橙）。
+   这里沿用同一套视觉语言，保证与课件无缝衔接。
+   ============================================================ */
+
+:root {
+  /* ---- 霓虹色（与 PPT 结尾页的辉光插画同源）---- */
+  --neon-green:  #34e5a4;
+  --neon-cyan:   #22d3ee;
+  --neon-purple: #a78bfa;
+  --neon-orange: #ffa657;
+  --neon-pink:   #f472b6;
+  --neon-blue:   #60a5fa;
+
+  /* ---- 语义色 ---- */
+  --ok:    #34e5a4;
+  --warn:  #ffa657;
+  --err:   #ff7b72;
+  --info:  #60a5fa;
+
+  /* ---- 排版 ---- */
+  --font-sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+               "Noto Sans CJK SC", system-ui, -apple-system, sans-serif;
+  --font-mono: "SF Mono", "JetBrains Mono", "Cascadia Code", "Consolas",
+               "Menlo", "Noto Sans Mono CJK SC", "PingFang SC", monospace;
+
+  /* 流式字号：窄屏自动收缩，宽屏不无限放大 */
+  --fs-hero:    clamp(2rem,   6vw,  4.5rem);
+  --fs-h1:      clamp(1.5rem, 3.4vw, 2.6rem);
+  --fs-h2:      clamp(1.15rem, 2.2vw, 1.7rem);
+  --fs-h3:      clamp(1rem,   1.5vw, 1.2rem);
+  --fs-body:    clamp(0.9rem, 1.1vw, 1.05rem);
+  --fs-small:   clamp(0.8rem, 0.95vw, 0.9rem);
+  /* 代码字号下限不能太低：窄屏时若比正文还小，代码就成了最难看的部分。
+     正文最小 0.9rem，代码下限取 0.85rem，略小但不至于吃亏。 */
+  --fs-code:    clamp(0.85rem, 1vw, 0.95rem);
+  --fs-numeral: clamp(3rem,   9vw,  7rem);
+
+  /* ---- 间距 ---- */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+  --sp-8: 4rem;
+
+  /* ---- 圆角 ---- */
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+  --r-full: 999px;
+
+  /* ---- 动效 ---- */
+  --ease-out:  cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in:   cubic-bezier(0.55, 0.06, 0.68, 0.19);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast:  160ms;
+  --dur-base:  280ms;
+  --dur-slow:  420ms;
+  --dur-page:  380ms;
+
+  /* ---- 层级 ---- */
+  --z-slide:   1;
+  --z-chrome:  50;
+  --z-drawer:  70;
+  --z-overview:80;
+  --z-toast:   90;
+
+  /* ---- 讲授模式字号放大系数（由 mode.js 调整）---- */
+  --scale-mode: 1;
+}
+
+/* ============================================================
+   深色主题（默认）
+   ============================================================ */
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg-base:    #0a0e14;
+  --bg-elev:    #11161f;
+  --bg-card:    #151b26;
+  --bg-card-hi: #1b2330;
+  --bg-inset:   #0d1219;
+  --bg-code:    #0d1117;
+  --bg-overlay: rgba(5, 8, 12, 0.82);
+
+  --border:      #1f2733;
+  --border-soft: #171e28;
+  --border-hi:   #2d3846;
+
+  --text:        #e6edf3;
+  --text-muted:  #8b98a9;
+  --text-dim:    #5c6878;
+  --text-invert: #0a0e14;
+
+  --accent:        var(--neon-green);
+  --accent-soft:   rgba(52, 229, 164, 0.14);
+  --accent-glow:   rgba(52, 229, 164, 0.35);
+  --accent-2:      var(--neon-purple);
+  --accent-2-soft: rgba(167, 139, 250, 0.14);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.55);
+  --shadow-glow: 0 0 24px var(--accent-glow);
+
+  /* 代码高亮 —— 沿用 PPT 实测的 VS Code Dark+ 配色 */
+  --c-text:     #d4d4d4;
+  --c-comment:  #6a9955;
+  --c-string:   #ce9178;
+  --c-keyword:  #569cd6;
+  --c-number:   #b5cea8;
+  --c-func:     #dcdcaa;
+  --c-builtin:  #4ec9b0;
+  --c-class:    #4ec9b0;
+  --c-op:       #d4d4d4;
+  --c-decorator:#dcdcaa;
+  --c-param:    #9cdcfe;
+  --c-error:    #f44747;
+
+  --term-bg:    #0d1117;
+  --term-text:  #c9d1d9;
+  --term-prompt:#34e5a4;
+
+  --grid-line: rgba(255, 255, 255, 0.032);
+}
+
+/* ============================================================
+   浅色主题
+   保留同一套霓虹色的"身份"，但压低明度以在浅底上可读
+   ============================================================ */
+[data-theme="light"] {
+  color-scheme: light;
+
+  --bg-base:    #ffffff;
+  --bg-elev:    #f6f8fa;
+  --bg-card:    #ffffff;
+  --bg-card-hi: #f3f6f9;
+  --bg-inset:   #f6f8fa;
+  --bg-code:    #f8fafc;
+  --bg-overlay: rgba(255, 255, 255, 0.86);
+
+  --border:      #d8dee4;
+  --border-soft: #e8ecf0;
+  --border-hi:   #c2ccd6;
+
+  --text:        #1f2328;
+  --text-muted:  #59636e;
+  --text-dim:    #818b98;
+  --text-invert: #ffffff;
+
+  /* 浅底上必须压暗，否则对比度不足 */
+  --accent:        #0d9488;
+  --accent-soft:   rgba(13, 148, 136, 0.1);
+  --accent-glow:   rgba(13, 148, 136, 0.22);
+  --accent-2:      #7c3aed;
+  --accent-2-soft: rgba(124, 58, 237, 0.09);
+
+  --neon-green:  #0d9488;
+  --neon-purple: #7c3aed;
+  --neon-orange: #c2410c;
+
+  --shadow-sm: 0 1px 2px rgba(31, 35, 40, 0.08);
+  --shadow-md: 0 4px 14px rgba(31, 35, 40, 0.1);
+  --shadow-lg: 0 12px 32px rgba(31, 35, 40, 0.14);
+  --shadow-glow: 0 0 20px var(--accent-glow);
+
+  /* VS Code Light+ */
+  --c-text:     #1f2328;
+  --c-comment:  #008000;
+  --c-string:   #a31515;
+  --c-keyword:  #0000ff;
+  --c-number:   #098658;
+  --c-func:     #795e26;
+  --c-builtin:  #267f99;
+  --c-class:    #267f99;
+  --c-op:       #1f2328;
+  --c-decorator:#795e26;
+  --c-param:    #001080;
+  --c-error:    #cd3131;
+
+  --term-bg:    #f6f8fa;
+  --term-text:  #1f2328;
+  --term-prompt:#0d9488;
+
+  --grid-line: rgba(31, 35, 40, 0.045);
+}
+
+/* ============================================================
+   全局重置
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: calc(var(--fs-body) * var(--scale-mode));
+  line-height: 1.75;
+  color: var(--text);
+  background: var(--bg-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-wrap: break-word;
+}
+
+/* 页面底纹：极淡的网格，呼应 PPT 的科技网格背景 */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+p { margin: 0; }
+ul, ol { margin: 0; padding: 0; }
+li { list-style: none; }
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img, svg { max-width: 100%; display: block; }
+
+code, pre, kbd { font-family: var(--font-mono); }
+
+/* 可访问性：始终保留可见焦点环 */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
+/* 屏幕阅读器专用 */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 滚动条 */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--border-hi);
+  border-radius: var(--r-full);
+  border: 2px solid var(--bg-base);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
+
+/* 选中文字 */
+::selection {
+  background: var(--accent-soft);
+  color: var(--text);
+}
+
+/* ============================================================
+   工具类
+   ============================================================ */
+.muted   { color: var(--text-muted); }
+.dim     { color: var(--text-dim); }
+.accent  { color: var(--accent); }
+.mono    { font-family: var(--font-mono); }
+.nowrap  { white-space: nowrap; }
+
+.only-desktop { display: initial; }
+.only-mobile  { display: none; }
+@media (max-width: 720px) {
+  .only-desktop { display: none; }
+  .only-mobile  { display: initial; }
+}

@@ -1,0 +1,295 @@
+/* ============================================================
+   动画基元
+   原则：只动 transform / opacity（GPU 合成），零逐帧 JS。
+   入场错峰靠 CSS 变量 --i + animation-delay，JS 只负责加 class。
+   ============================================================ */
+
+/* ---------- 入场：上浮淡入 ---------- */
+@keyframes riseIn {
+  from { opacity: 0; transform: translate3d(0, 22px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+/* ---------- 入场：左入 / 右入 ---------- */
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translate3d(-28px, 0, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translate3d(28px, 0, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+/* ---------- 入场：缩放浮现（封面/分节页用） ---------- */
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ---------- 淡入 ---------- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ---------- 霓虹辉光呼吸 ---------- */
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 1; }
+}
+
+/* ---------- 光标闪烁（打字机） ---------- */
+@keyframes caretBlink {
+  0%, 45%   { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* ---------- 代码 token 逐字揭示 ---------- */
+@keyframes tokIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ---------- 线条绘制（知识地图连线） ---------- */
+@keyframes drawLine {
+  from { stroke-dashoffset: var(--dash, 200); }
+  to   { stroke-dashoffset: 0; }
+}
+
+/* ---------- 节点点亮（知识地图） ---------- */
+@keyframes nodeLit {
+  0%   { opacity: 0; transform: scale(0.82); }
+  60%  { opacity: 1; transform: scale(1.04); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* ---------- 数字滚动容器的辉光 ---------- */
+@keyframes numeralGlow {
+  from { text-shadow: 0 0 0 transparent; }
+  to   { text-shadow: 0 0 32px var(--accent-glow); }
+}
+
+/* ---------- 数值计数（背景高亮扫过） ---------- */
+@keyframes sweepIn {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0 0 0); }
+}
+
+/* ============================================================
+   入场动画的应用
+   带 [data-anim] 的元素在所在页激活时播放。
+   错峰由 --i 控制，JS 无需逐个调度。
+   ============================================================ */
+
+[data-anim] {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.slide.is-active [data-anim] {
+  animation-duration: var(--dur-base);
+  animation-timing-function: var(--ease-out);
+  animation-fill-mode: forwards;
+  animation-delay: calc(var(--i, 0) * 70ms);
+}
+
+.slide.is-active [data-anim="rise"]   { animation-name: riseIn; }
+.slide.is-active [data-anim="left"]   { animation-name: slideInLeft; }
+.slide.is-active [data-anim="right"]  { animation-name: slideInRight; }
+.slide.is-active [data-anim="scale"]  { animation-name: scaleIn; }
+.slide.is-active [data-anim="fade"]   { animation-name: fadeIn; }
+
+/* 动画结束后释放合成层，避免 87 页累积耗尽 GPU 显存。
+   同时兜底保证内容可见 —— [data-anim] 初始是 opacity:0，
+   万一动画因任何原因没跑（JS 报错、标签页切后台、被中断），
+   页面不能是一片空白。is-settled 只在动画播完后才由 JS 加上。 */
+.slide.is-settled [data-anim] {
+  will-change: auto;
+  opacity: 1;
+}
+
+/* ============================================================
+   代码 token 揭示
+   一次性构建 DOM，错峰交给 CSS 引擎，跳过 = 加一个 class
+   ============================================================ */
+.code-body .tok {
+  opacity: 0;
+  animation: tokIn 140ms var(--ease-out) forwards;
+  animation-delay: calc(var(--i, 0) * 18ms);
+}
+
+/* 跳过动画：容器加 .is-revealed 即可，不取消 250 个动画 */
+.code-block.is-revealed .tok {
+  animation: none;
+  opacity: 1;
+}
+
+/* 长代码按行揭示时，整行作为一个动画单元 */
+.code-block.reveal-by-line .tok {
+  animation: none;
+  opacity: 1;
+}
+.code-block.reveal-by-line .code-line {
+  opacity: 0;
+  animation: tokIn 200ms var(--ease-out) forwards;
+  animation-delay: calc(var(--i, 0) * 45ms);
+}
+.code-block.reveal-by-line.is-revealed .code-line {
+  animation: none;
+  opacity: 1;
+}
+
+/* 打字光标：跟随在最后一个揭示的 token 后 */
+.code-block .caret {
+  display: none;
+  width: 0.55em;
+  height: 1.05em;
+  margin-left: 1px;
+  vertical-align: text-bottom;
+  background: var(--accent);
+  animation: caretBlink 1s steps(1) infinite;
+}
+.code-block.is-typing .caret { display: inline-block; }
+
+/* ============================================================
+   知识地图（重做自第一章那张思维导图）
+   ============================================================ */
+.km-link {
+  stroke: var(--border-hi);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-dasharray: var(--dash, 200);
+  stroke-dashoffset: var(--dash, 200);
+}
+.slide.is-active .km-link {
+  animation: drawLine 420ms var(--ease-out) forwards;
+  animation-delay: calc(var(--i, 0) * 90ms);
+}
+.slide.is-settled .km-link { stroke-dashoffset: 0; }
+
+.km-node {
+  opacity: 0;
+  transform-origin: center;
+}
+.slide.is-active .km-node {
+  animation: nodeLit 320ms var(--ease-out) forwards;
+  animation-delay: calc(var(--i, 0) * 90ms);
+}
+.slide.is-settled .km-node { opacity: 1; transform: none; }
+
+/* ============================================================
+   循环迭代追踪（for / while 演示）
+   ============================================================ */
+.li-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-sm);
+  transition: background var(--dur-fast) var(--ease-soft),
+              box-shadow var(--dur-fast) var(--ease-soft);
+}
+.li-row.is-current {
+  background: var(--accent-soft);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+.li-row.is-past { opacity: 0.55; }
+
+.li-slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.6rem;
+  padding: 0.1rem 0.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  border: 1px solid var(--border-hi);
+  border-radius: var(--r-sm);
+  background: var(--bg-inset);
+  transition: all var(--dur-fast) var(--ease-out);
+}
+.li-row.is-current .li-slot {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+/* ============================================================
+   变量盒子（赋值可视化）
+   ============================================================ */
+.vb-box {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: var(--sp-3) var(--sp-4);
+  border: 1.5px solid var(--border-hi);
+  border-radius: var(--r-md);
+  background: var(--bg-inset);
+  font-family: var(--font-mono);
+  transition: all var(--dur-base) var(--ease-out);
+}
+.vb-box.is-bound {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+.vb-name { font-size: var(--fs-small); color: var(--text-muted); }
+.vb-value { font-size: var(--fs-h3); color: var(--accent); font-weight: 700; }
+
+/* ============================================================
+   条件分流（if / elif / else）
+   ============================================================ */
+.bf-branch {
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-md);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--bg-card);
+  opacity: 0.4;
+  transition: all var(--dur-base) var(--ease-out);
+}
+.bf-branch.is-taken {
+  opacity: 1;
+  border-color: var(--accent);
+  box-shadow: 0 0 24px var(--accent-glow);
+  transform: translateX(6px);
+}
+
+/* ============================================================
+   底部提示（Toast）
+   ============================================================ */
+@keyframes toastIn {
+  from { opacity: 0; transform: translate3d(0, 12px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+/* ============================================================
+   降级：尊重系统的"减少动态效果"设置
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  [data-anim] { opacity: 1 !important; animation: none !important; }
+  .slide.is-active [data-anim] { animation: none !important; opacity: 1 !important; }
+
+  .code-body .tok,
+  .code-block.reveal-by-line .code-line {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .km-link { animation: none !important; stroke-dashoffset: 0 !important; }
+  .km-node { animation: none !important; opacity: 1 !important; transform: none !important; }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .code-block .caret { animation: none; opacity: 1; }
+}
+
+/* 后台标签页暂停动画，避免 87 页幻灯片白烧 GPU */
+.is-backgrounded *,
+.is-backgrounded *::before,
+.is-backgrounded *::after {
+  animation-play-state: paused !important;
+}
